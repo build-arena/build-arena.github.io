@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=768">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: A Physics-Aligned Interactive Benchmark</title>
     <style>
@@ -31,11 +31,12 @@
             --gradient-end: #004990;         /* 渐变结束 */
         }
 
-        body {
+        html, body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--text-dark);
             line-height: 1.7;
             background-color: var(--bg-white);
+            min-width: 768px;
         }
 
         /* Header Container */
@@ -47,6 +48,12 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            align-items: center;
+        }
+        
+        .header-container > * {
+            max-width: 2000px;
+            width: 100%;
         }
 
         .header-container::before {
@@ -67,7 +74,6 @@
         /* Header Image Section */
         .header-image {
             width: 100%;
-            max-width: 2000px;
             height: auto;
             max-height: 800px;
             display: block;
@@ -75,9 +81,7 @@
             object-position: center;
             order: 2;
             margin: 0;
-            align-self: center;
             position: relative;
-            vertical-align: bottom;
         }
 
         /* Title Block - Top Glassmorphism Overlay (Left to Right Fade) */
@@ -88,7 +92,7 @@
             padding: 2.5rem 3rem;
             z-index: 2;
             margin: 0;
-            will-change: transform;
+            order: 1;
         }
 
         .title-block::before {
@@ -132,9 +136,9 @@
             width: 100%;
             color: white;
             padding: 1.5rem 3rem 1rem;
-            z-index: 10;
+            z-index: 2;
             margin: 0;
-            will-change: transform;
+            order: 3;
         }
 
         .authors-block::before {
@@ -153,13 +157,16 @@
             pointer-events: none;
         }
 
-        /* Two Column Layout in Authors Block - 1:2 ratio */
+        /* Two Column Layout in Authors Block - 1:1 ratio */
         .authors-block-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
             align-items: center;
             margin-bottom: 0;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .lab-left {
@@ -175,27 +182,12 @@
 
         .title-block {
             order: 1;
-            align-self: center;
             max-width: 2000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .authors-block {
-            order: 3;
-            align-self: center;
-            max-width: 2000px;
-        }
 
-        /* Trigger Area - Middle section between blocks */
-        .header-trigger {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
-            cursor: pointer;
-            pointer-events: none;
-        }
 
         /* Page Content Wrapper */
         .page-content {
@@ -203,7 +195,6 @@
             z-index: 1;
             background: white;
             margin: 0 auto;
-            will-change: margin-top;
         }
 
         /* Authors in Authors Block */
@@ -219,7 +210,7 @@
         .authors-block .affiliation-item {
             color: rgba(255, 255, 255, 0.95);
             font-size: 1rem;
-            font-style: italic;
+            font-style: normal;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             margin-top: 0.8rem;
             display: flex;
@@ -282,6 +273,7 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.9);
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            margin: 0.8rem 0;
         }
 
         .authors-block .contact-info a {
@@ -798,9 +790,10 @@
             }
 
             .header-image {
-                height: 400px;
+                height: auto;
+                max-height: 400px;
                 width: 100%;
-                object-fit: cover;
+                object-fit: contain;
                 order: 2;
             }
 
@@ -808,22 +801,8 @@
                 order: 1;
             }
 
-            .authors-block {
-                order: 3;
-            }
-
-            .header-trigger {
-                display: none;
-            }
-
             .page-content {
-                margin-top: 0;
-                transform: none !important;
-            }
-
-            /* Disable hover effect on mobile */
-            .header-trigger {
-                pointer-events: none;
+                margin: 0 auto;
             }
 
 
@@ -841,6 +820,15 @@
 
             .container {
                 padding: 2rem 1rem;
+                max-width: 100%;
+            }
+
+            .header-container::before {
+                display: block;
+            }
+
+            body {
+                background: var(--bg-white);
             }
         }
 
@@ -867,9 +855,6 @@
     <div class="header-container">
         <!-- Header Image in Middle -->
         <img src="header_image.png" alt="Build Arena Header" class="header-image">
-        
-        <!-- Trigger Area - Hover here to open curtains -->
-        <div class="header-trigger"></div>
 
         <!-- Top Title Block - Left to Right Fade -->
         <div class="title-block">
@@ -880,17 +865,8 @@
         <!-- Bottom Authors Block - Right to Left Fade -->
         <div class="authors-block">
             <div class="authors-block-content">
-                <!-- Left: Lab Info -->
+                <!-- Left: Authors and Affiliation -->
                 <div class="lab-left">
-                    <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank" class="lab-link" style="text-decoration: none; color: inherit; display: block;">
-                        <img src="lab_logo.png" alt="Lab Logo" class="lab-logo">
-                        <div class="lab-name">AI for Scientific Simulation and Discovery Lab</div>
-                    </a>
-                    <div class="contact-info">*Corresponding author: <a href="mailto:wutailin@westlake.edu.cn">wutailin@westlake.edu.cn</a></div>
-                </div>
-
-                <!-- Right: Authors, Affiliation and Links -->
-                <div class="authors-right">
                     <div class="author-names">
                         Tian Xia, 
                         Tianrun Gao, 
@@ -901,18 +877,26 @@
                         Chenglei Yu, 
                         Tailin Wu*
                     </div>
+                    <div class="contact-info">*Corresponding author: <a href="mailto:wutailin@westlake.edu.cn">wutailin@westlake.edu.cn</a></div>
                     <a href="https://www.westlake.edu.cn/" target="_blank" class="affiliation-link" style="text-decoration: none; color: inherit;">
                         <div class="affiliation-item">
                             <img src="westlake_logo.png" alt="Westlake University" class="westlake-logo">
                             Westlake University
                         </div>
                     </a>
+                </div>
+
+                <!-- Right: Lab Info and Links -->
+                <div class="authors-right">
+                    <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank" class="lab-link" style="text-decoration: none; color: inherit; display: block;">
+                        <img src="lab_logo.png" alt="Lab Logo" class="lab-logo">
+                        <div class="lab-name">AI for Scientific Simulation and Discovery Lab</div>
+                    </a>
                     
                     <div class="links">
                         <a href="https://github.com/build-arena/build-arena.github.io" target="_blank">📄 Paper</a>
-                        <a href="https://github.com/AI4Science-WestlakeU/Build Arena" target="_blank">💻 Code</a>
-                        <a href="#benchmark">📊 Benchmark</a>
-                        <a href="#results">🔬 Results</a>
+                        <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank">💻 Code</a>
+                        <a href="#benchmark">📊 Bench</a>
                         <a href="https://store.steampowered.com/app/346010/" target="_blank">🎮 Besiege</a>
                     </div>
                 </div>
@@ -1355,119 +1339,25 @@
     </div>
 
     <script>
-        // Smooth curtain animation based on header image visibility (desktop only)
-        if (window.innerWidth > 768) {
-            const headerContainer = document.querySelector('.header-container');
-            const headerImage = document.querySelector('.header-image');
-            const titleBlock = document.querySelector('.title-block');
-            const authorsBlock = document.querySelector('.authors-block');
-            
-            function updateCurtainPosition() {
-                // Get header image position and dimensions
-                const rect = headerImage.getBoundingClientRect();
-                const imageHeight = rect.height;
-                
-                // Calculate visible height of header image
-                let visibleHeight;
-                if (rect.top >= 0) {
-                    // Top of image is below viewport top
-                    visibleHeight = Math.min(imageHeight, window.innerHeight - rect.top);
-                } else {
-                    // Top of image is above viewport top
-                    visibleHeight = Math.min(imageHeight + rect.top, window.innerHeight);
+        // Animation on scroll for content sections
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
-                
-                // Calculate progress (0 = fully open, 1 = fully closed)
-                // When visibleHeight = imageHeight (full view) -> progress = 0 (open)
-                // When visibleHeight = 4/5 * imageHeight -> progress starts
-                // When visibleHeight = 0 -> progress = 1 (closed)
-                
-                const threshold = imageHeight * 4 / 5;
-                let progress;
-                
-                if (visibleHeight >= threshold) {
-                    // Above threshold - fully open
-                    progress = 0;
-                } else {
-                    // Below threshold - calculate closing progress
-                    // progress = (threshold - visibleHeight) / threshold
-                    progress = Math.max(0, Math.min(1, (threshold - visibleHeight) / threshold));
-                }
-                
-                // Get block heights
-                const titleBlockHeight = titleBlock.offsetHeight;
-                const authorsBlockHeight = authorsBlock.offsetHeight;
-                
-                // Calculate movement distances based on progress
-                // progress 0->1: blocks move from open to closed
-                const titleMoveDistance = -titleBlockHeight * (1 - progress);
-                const authorsMoveDistance = authorsBlockHeight * (1 - progress);
-                
-                const pageContent = document.querySelector('.page-content');
-                
-                // Always keep blocks centered and only animate vertical movement
-                if (progress > 0) {
-                    // Closing - use absolute positioning
-                    titleBlock.style.position = 'absolute';
-                    titleBlock.style.top = '0';
-                    titleBlock.style.left = '50%';
-                    titleBlock.style.transform = `translate(-50%, ${titleMoveDistance}px)`;
-                    titleBlock.style.zIndex = '2';
-                    
-                    authorsBlock.style.position = 'absolute';
-                    authorsBlock.style.bottom = '0';
-                    authorsBlock.style.left = '50%';
-                    authorsBlock.style.transform = `translate(-50%, ${authorsMoveDistance}px)`;
-                    authorsBlock.style.zIndex = '10';
-                    
-                    // Adjust header container
-                    headerContainer.style.height = 'auto';
-                    headerContainer.style.maxHeight = '800px';
-                    headerContainer.style.flexDirection = '';
-                    headerImage.style.order = 'initial';
-                    
-                    // Adjust page-content margin to follow authors block's actual bottom position
-                    // When authors block moves down by authorsMoveDistance, page-content should follow
-                    pageContent.style.marginTop = `${authorsMoveDistance}px`;
-                } else {
-                    // Fully open - back to relative positioning in flex
-                    titleBlock.style.position = 'relative';
-                    titleBlock.style.top = '';
-                    titleBlock.style.left = '';
-                    titleBlock.style.transform = '';
-                    
-                    authorsBlock.style.position = 'relative';
-                    authorsBlock.style.bottom = '';
-                    authorsBlock.style.left = '';
-                    authorsBlock.style.transform = '';
-                    
-                    headerContainer.style.height = '';
-                    headerContainer.style.maxHeight = '';
-                    headerContainer.style.flexDirection = 'column';
-                    headerImage.style.order = '2';
-                    
-                    // Reset page-content margin
-                    pageContent.style.marginTop = '';
-                }
-            }
-            
-            // Use requestAnimationFrame for smooth animation
-            let ticking = false;
-            function onScroll() {
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        updateCurtainPosition();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-            
-            window.addEventListener('scroll', onScroll);
-            
-            // Trigger once on load
-            updateCurtainPosition();
-        }
+            });
+        }, observerOptions);
+
+        // Observe all sections with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
