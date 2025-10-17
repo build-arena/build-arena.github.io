@@ -1,6 +1,6 @@
-# BuildArena
+# Build Arena
 
-A coming soon page for the BuildArena project.
+A coming soon page for the Build Arena project.
 
 ## Development
 

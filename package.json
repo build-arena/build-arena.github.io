@@ -1,7 +1,7 @@
 {
   "name": "build-arena",
   "version": "1.0.0",
-  "description": "BuildArena Project",
+  "description": "Build Arena Project",
   "scripts": {
     "dev": "live-server --port=3000 --open=index.html"
   },

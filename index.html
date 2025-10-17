@@ -42,35 +42,69 @@
         .header-container {
             position: relative;
             width: 100%;
-            height: 600px;
+            height: auto;
             overflow: visible;
-            background-color: var(--main-color);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .header-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 73, 144, 0.7), rgba(0, 73, 144, 0.7)),
+                url('header_background.png');
+            background-repeat: no-repeat, repeat;
+            background-size: cover, auto;
+            z-index: -1;
         }
 
         /* Header Image Section */
         .header-image {
             width: 100%;
-            height: 100%;
+            max-width: 2000px;
+            height: auto;
+            max-height: 1000px;
             display: block;
             object-fit: cover;
             object-position: center;
+            order: 2;
+            margin: 0;
+            align-self: center;
+            position: relative;
+            vertical-align: bottom;
         }
 
         /* Title Block - Top Glassmorphism Overlay (Left to Right Fade) */
         .title-block {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             width: 100%;
-            background: linear-gradient(to right, rgba(0, 73, 144, 0.85) 0%, rgba(0, 73, 144, 0.6) 50%, rgba(0, 73, 144, 0) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
             color: white;
             padding: 2.5rem 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             z-index: 2;
-            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            margin: 0;
+            will-change: transform;
+        }
+
+        .title-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            background: rgba(0, 73, 144, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .title-block h1 {
@@ -94,19 +128,29 @@
 
         /* Authors Block - Bottom Glassmorphism Overlay (Right to Left Fade) */
         .authors-block {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             width: 100%;
-            background: linear-gradient(to left, rgba(0, 73, 144, 0.85) 0%, rgba(0, 73, 144, 0.6) 50%, rgba(0, 73, 144, 0) 100%);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
             color: white;
             padding: 1.5rem 3rem 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
             z-index: 10;
-            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            margin: 0;
+            will-change: transform;
+        }
+
+        .authors-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            background: rgba(0, 73, 144, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* Two Column Layout in Authors Block - 1:2 ratio */
@@ -129,36 +173,37 @@
             padding-left: 2rem;
         }
 
+        .title-block {
+            order: 1;
+            align-self: center;
+            max-width: 2000px;
+        }
+
+        .authors-block {
+            order: 3;
+            align-self: center;
+            max-width: 2000px;
+        }
+
         /* Trigger Area - Middle section between blocks */
         .header-trigger {
             position: absolute;
-            top: 25%;
-            bottom: 25%;
+            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
             z-index: 1;
             cursor: pointer;
+            pointer-events: none;
         }
 
         /* Page Content Wrapper */
         .page-content {
-            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
             position: relative;
             z-index: 1;
             background: white;
-        }
-
-        /* Hover Effect - Open the curtains and push content down */
-        .header-trigger:hover ~ .title-block {
-            transform: translateY(-100%);
-        }
-
-        .header-trigger:hover ~ .authors-block {
-            transform: translateY(calc(100% - 10px));
-        }
-
-        .header-container:has(.header-trigger:hover) ~ .page-content {
-            transform: translateY(200px);
+            margin: 0 auto;
+            will-change: margin-top;
         }
 
         /* Authors in Authors Block */
@@ -177,6 +222,30 @@
             font-style: italic;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .westlake-logo {
+            height: 35px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        /* Affiliation Link Hover Effect */
+        .affiliation-link {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .affiliation-link:hover .westlake-logo {
+            transform: scale(1.1);
+        }
+
+        .affiliation-link:hover .affiliation-item {
+            color: var(--accent-color);
         }
 
         /* Lab Info in Authors Block Right Side */
@@ -461,7 +530,7 @@
         .table-container {
             overflow-x: auto;
             margin: 0 auto;
-            max-width: 900px;
+            max-width: 750px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border-radius: 8px;
         }
@@ -623,6 +692,11 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .title-block::before,
+            .authors-block::before {
+                display: none;
+            }
+
             .title-block {
                 padding: 2rem 1.5rem;
                 background: linear-gradient(to bottom, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
@@ -646,7 +720,7 @@
 
             .authors-block {
                 padding: 1.5rem 1.5rem 1rem;
-                background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
+                background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%) !important;
                 transform: none !important;
                 z-index: 10;
                 position: static !important;
@@ -748,13 +822,14 @@
         section {
             animation: fadeIn 0.6s ease-out;
         }
+
     </style>
 </head>
 <body>
     <!-- Header Container with Dual Overlay -->
     <div class="header-container">
         <!-- Header Image in Middle -->
-        <img src="header.png" alt="Build Arena Header" class="header-image">
+        <img src="header_image.png" alt="Build Arena Header" class="header-image">
         
         <!-- Trigger Area - Hover here to open curtains -->
         <div class="header-trigger"></div>
@@ -789,11 +864,16 @@
                         Chenglei Yu, 
                         Tailin Wu*
                     </div>
-                    <div class="affiliation-item">Westlake University</div>
+                    <a href="https://www.westlake.edu.cn/" target="_blank" class="affiliation-link" style="text-decoration: none; color: inherit;">
+                        <div class="affiliation-item">
+                            <img src="westlake_logo.png" alt="Westlake University" class="westlake-logo">
+                            Westlake University
+                        </div>
+                    </a>
                     
                     <div class="links">
                         <a href="https://github.com/build-arena/build-arena.github.io" target="_blank">📄 Paper</a>
-                        <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank">💻 Code</a>
+                        <a href="https://github.com/AI4Science-WestlakeU/Build Arena" target="_blank">💻 Code</a>
                         <a href="#benchmark">📊 Benchmark</a>
                         <a href="#results">🔬 Results</a>
                         <a href="https://store.steampowered.com/app/346010/" target="_blank">🎮 Besiege</a>
@@ -837,7 +917,7 @@
             </p>
 
             <p class="answer">
-                Here, we introduce <strong style="color: var(--accent-color);">BuildArena</strong>, the first physics-aligned interactive 
+                Here, we introduce <strong style="color: var(--accent-color);">Build Arena</strong>, the first physics-aligned interactive 
                 benchmark designed for language-driven engineering construction.
             </p>
         </div>
@@ -898,7 +978,7 @@
                             <td>✓</td>
                         </tr>
                         <tr class="highlight-row">
-                            <td><strong>BuildArena (ours)</strong></td>
+                            <td><strong>Build Arena (ours)</strong></td>
                             <td><strong>✓</strong></td>
                             <td><strong>✓</strong></td>
                             <td><strong>✓</strong></td>
@@ -910,7 +990,7 @@
             </div>
             <h3 class="comparison-subtitle">What Sets Build Arena Apart?</h3>
             <p style="margin-top: 1rem;">
-                BuildArena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
+                Build Arena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
                 planning, physical simulation, and interactive environments in a unified framework.
             </p>
         </section>
@@ -919,7 +999,7 @@
         <section id="tasks">
             <h2>Three Engineering Tasks</h2>
             <p>
-                BuildArena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
+                Build Arena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
                 Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
                 <strong>Magnitude</strong>, <strong>Compositionality</strong>, <strong>Precision</strong>, and <strong>Ambiguity</strong>.
             </p>
@@ -964,7 +1044,7 @@
         <section id="benchmark">
             <h2>Benchmark Framework</h2>
             <p>
-                BuildArena establishes a comprehensive evaluation framework with three core components:
+                Build Arena establishes a comprehensive evaluation framework with three core components:
             </p>
 
             <h3>1. Language-Driven and Physics-Grounded Construction</h3>
@@ -1156,7 +1236,7 @@
         <section id="conclusion">
             <h2>Conclusion</h2>
             <p>
-                BuildArena establishes the first comprehensive benchmark for evaluating LLMs on language-driven and physics-grounded 
+                Build Arena establishes the first comprehensive benchmark for evaluating LLMs on language-driven and physics-grounded 
                 engineering construction. Through systematic evaluation of eight frontier LLMs, we demonstrate that:
             </p>
             <ul>
@@ -1166,7 +1246,7 @@
                 <li>Our framework provides actionable insights for future LLM development in construction automation</li>
             </ul>
             <p>
-                BuildArena's modular design allows researchers to customize tasks, workflows, and evaluation metrics, making it a 
+                Build Arena's modular design allows researchers to customize tasks, workflows, and evaluation metrics, making it a 
                 valuable tool for advancing AI capabilities in engineering construction and related domains.
             </p>
         </section>
@@ -1199,5 +1279,121 @@
         </p>
         </footer>
     </div>
+
+    <script>
+        // Smooth curtain animation based on header image visibility (desktop only)
+        if (window.innerWidth > 768) {
+            const headerContainer = document.querySelector('.header-container');
+            const headerImage = document.querySelector('.header-image');
+            const titleBlock = document.querySelector('.title-block');
+            const authorsBlock = document.querySelector('.authors-block');
+            
+            function updateCurtainPosition() {
+                // Get header image position and dimensions
+                const rect = headerImage.getBoundingClientRect();
+                const imageHeight = rect.height;
+                
+                // Calculate visible height of header image
+                let visibleHeight;
+                if (rect.top >= 0) {
+                    // Top of image is below viewport top
+                    visibleHeight = Math.min(imageHeight, window.innerHeight - rect.top);
+                } else {
+                    // Top of image is above viewport top
+                    visibleHeight = Math.min(imageHeight + rect.top, window.innerHeight);
+                }
+                
+                // Calculate progress (0 = fully open, 1 = fully closed)
+                // When visibleHeight = imageHeight (full view) -> progress = 0 (open)
+                // When visibleHeight = 4/5 * imageHeight -> progress starts
+                // When visibleHeight = 0 -> progress = 1 (closed)
+                
+                const threshold = imageHeight * 4 / 5;
+                let progress;
+                
+                if (visibleHeight >= threshold) {
+                    // Above threshold - fully open
+                    progress = 0;
+                } else {
+                    // Below threshold - calculate closing progress
+                    // progress = (threshold - visibleHeight) / threshold
+                    progress = Math.max(0, Math.min(1, (threshold - visibleHeight) / threshold));
+                }
+                
+                // Get block heights
+                const titleBlockHeight = titleBlock.offsetHeight;
+                const authorsBlockHeight = authorsBlock.offsetHeight;
+                
+                // Calculate movement distances based on progress
+                // progress 0->1: blocks move from open to closed
+                const titleMoveDistance = -titleBlockHeight * (1 - progress);
+                const authorsMoveDistance = authorsBlockHeight * (1 - progress);
+                
+                const pageContent = document.querySelector('.page-content');
+                
+                // Always keep blocks centered and only animate vertical movement
+                if (progress > 0) {
+                    // Closing - use absolute positioning
+                    titleBlock.style.position = 'absolute';
+                    titleBlock.style.top = '0';
+                    titleBlock.style.left = '50%';
+                    titleBlock.style.transform = `translate(-50%, ${titleMoveDistance}px)`;
+                    titleBlock.style.zIndex = '2';
+                    
+                    authorsBlock.style.position = 'absolute';
+                    authorsBlock.style.bottom = '0';
+                    authorsBlock.style.left = '50%';
+                    authorsBlock.style.transform = `translate(-50%, ${authorsMoveDistance}px)`;
+                    authorsBlock.style.zIndex = '10';
+                    
+                    // Adjust header container
+                    headerContainer.style.height = 'auto';
+                    headerContainer.style.maxHeight = '1000px';
+                    headerContainer.style.flexDirection = '';
+                    headerImage.style.order = 'initial';
+                    
+                    // Adjust page-content margin to follow authors block's actual bottom position
+                    // When authors block moves down by authorsMoveDistance, page-content should follow
+                    pageContent.style.marginTop = `${authorsMoveDistance}px`;
+                } else {
+                    // Fully open - back to relative positioning in flex
+                    titleBlock.style.position = 'relative';
+                    titleBlock.style.top = '';
+                    titleBlock.style.left = '';
+                    titleBlock.style.transform = '';
+                    
+                    authorsBlock.style.position = 'relative';
+                    authorsBlock.style.bottom = '';
+                    authorsBlock.style.left = '';
+                    authorsBlock.style.transform = '';
+                    
+                    headerContainer.style.height = '';
+                    headerContainer.style.maxHeight = '';
+                    headerContainer.style.flexDirection = 'column';
+                    headerImage.style.order = '2';
+                    
+                    // Reset page-content margin
+                    pageContent.style.marginTop = '';
+                }
+            }
+            
+            // Use requestAnimationFrame for smooth animation
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateCurtainPosition();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            
+            // Trigger once on load
+            updateCurtainPosition();
+        }
+    </script>
 </body>
 </html>
