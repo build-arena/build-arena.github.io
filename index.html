@@ -264,8 +264,8 @@
 
         /* Abstract Box */
         .abstract-box {
-            padding: 2rem 0;
-            margin: 2rem 0;
+            padding: 2rem 0 0.5rem;
+            margin: 2rem 0 0;
         }
 
         .abstract-box p {
@@ -307,7 +307,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .gif-item {
@@ -344,6 +344,11 @@
         /* Section Styles */
         section {
             margin-bottom: 3.5rem;
+        }
+
+        #comparison {
+            margin-top: 0;
+            padding-top: 0;
         }
 
         section h2 {
@@ -455,7 +460,8 @@
         /* Table Styles */
         .table-container {
             overflow-x: auto;
-            margin: 2rem 0;
+            margin: 0 auto;
+            max-width: 900px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border-radius: 8px;
         }
@@ -775,22 +781,6 @@
     <div class="container">
         <!-- Abstract -->
         <div class="abstract-box">
-            <p>
-                Engineering construction automation aims to transform natural language specifications into physically viable structures, 
-                requiring complex integrated reasoning under strict physical constraints. While modern LLMs possess broad knowledge and 
-                strong reasoning capabilities that make them promising candidates for this domain, their construction competencies remain 
-                largely unevaluated.
-            </p>
-
-            <p class="question">
-                Question: How can we comprehensively evaluate LLMs for language-driven and physics-grounded construction automation?
-            </p>
-
-            <p class="answer">
-                Here, we introduce <strong style="color: var(--accent-color);">BuildArena</strong>, the first physics-aligned interactive 
-                benchmark designed for language-driven engineering construction.
-            </p>
-
             <!-- GIF Gallery -->
             <div class="gif-gallery">
                 <div class="gif-item">
@@ -806,11 +796,26 @@
                     <h3>Rocket Construction</h3>
                 </div>
             </div>
+
+            <p>
+                Engineering construction automation aims to transform natural language specifications into physically viable structures, 
+                requiring complex integrated reasoning under strict physical constraints. While modern LLMs possess broad knowledge and 
+                strong reasoning capabilities that make them promising candidates for this domain, their construction competencies remain 
+                largely unevaluated.
+            </p>
+
+            <p class="question">
+                Question: How can we comprehensively evaluate LLMs for language-driven and physics-grounded construction automation?
+            </p>
+
+            <p class="answer">
+                Here, we introduce <strong style="color: var(--accent-color);">BuildArena</strong>, the first physics-aligned interactive 
+                benchmark designed for language-driven engineering construction.
+            </p>
         </div>
 
         <!-- Comparison Table -->
         <section id="comparison">
-            <h2>Comparison with Existing Benchmarks</h2>
             <div class="table-container">
                 <table>
                     <thead>
@@ -875,6 +880,7 @@
                     </tbody>
                 </table>
             </div>
+            <h3 class="comparison-subtitle">What Sets Build Arena Apart?</h3>
             <p style="margin-top: 1rem;">
                 BuildArena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
                 planning, physical simulation, and interactive environments in a unified framework.
