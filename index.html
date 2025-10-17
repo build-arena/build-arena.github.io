@@ -69,9 +69,9 @@
             width: 100%;
             max-width: 2000px;
             height: auto;
-            max-height: 1000px;
+            max-height: 800px;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             order: 2;
             margin: 0;
@@ -570,6 +570,11 @@
             background: var(--bg-light);
         }
 
+        table sup {
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
         /* Workflow Boxes */
         .workflow-grid {
             display: grid;
@@ -663,6 +668,38 @@
         .badge-moderate {
             background: var(--bg-blue-light);
             color: var(--main-color);
+        }
+
+        /* References */
+        .references-list {
+            margin-top: 2rem;
+        }
+
+        .reference-item {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            text-align: left;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .ref-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        .reference-item strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .reference-item em {
+            font-style: italic;
         }
 
         /* Footer */
@@ -938,7 +975,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>PlanBench</td>
+                            <td>PlanBench<sup>[1]</sup></td>
                             <td>✗</td>
                             <td>✗</td>
                             <td>✗</td>
@@ -946,7 +983,7 @@
                             <td>✗</td>
                         </tr>
                         <tr>
-                            <td>PlanQA</td>
+                            <td>PlanQA<sup>[2]</sup></td>
                             <td>✓</td>
                             <td>✗</td>
                             <td>✗</td>
@@ -954,7 +991,7 @@
                             <td>✗</td>
                         </tr>
                         <tr>
-                            <td>PHYRE</td>
+                            <td>PHYRE<sup>[3]</sup></td>
                             <td>✓</td>
                             <td>✗</td>
                             <td>✗</td>
@@ -962,7 +999,7 @@
                             <td>✓</td>
                         </tr>
                         <tr>
-                            <td>VOYAGER</td>
+                            <td>VOYAGER<sup>[4]</sup></td>
                             <td>✓</td>
                             <td>✗</td>
                             <td>✓</td>
@@ -970,7 +1007,7 @@
                             <td>✓</td>
                         </tr>
                         <tr>
-                            <td>Embodied Agent Interface</td>
+                            <td>Embodied Agent Interface<sup>[5]</sup></td>
                             <td>✓</td>
                             <td>✓</td>
                             <td>✗</td>
@@ -1265,6 +1302,43 @@
                 funding entities.
             </p>
         </section>
+
+        <!-- References -->
+        <section id="references" class="animate-on-scroll">
+            <h2>References</h2>
+            <div class="references-list">
+                <p class="reference-item">
+                    <span class="ref-number">[1]</span>
+                    Karthik Valmeekam, Matthew Marquez, Alberto Olmo, Sarath Sreedharan, and Subbarao Kambhampati. 
+                    <strong>PlanBench: An Extensible Benchmark for Evaluating Large Language Models on Planning and Reasoning about Change.</strong>
+                    In <em>Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track</em>, 2023.
+                </p>
+                <p class="reference-item">
+                    <span class="ref-number">[2]</span>
+                    Fedor Rodionov, Abdelrahman Eldesokey, Michael Birsak, John Femiani, Bernard Ghanem, and Peter Wonka. 
+                    <strong>PlanQA: A Benchmark for Spatial Reasoning in LLMs using Structured Representations.</strong>
+                    <em>arXiv preprint arXiv:2507.07644</em>, 2025.
+                </p>
+                <p class="reference-item">
+                    <span class="ref-number">[3]</span>
+                    Anton Bakhtin, Laurens van der Maaten, Justin Johnson, Laura Gustafson, and Ross Girshick. 
+                    <strong>Phyre: A new benchmark for physical reasoning.</strong>
+                    <em>Advances in Neural Information Processing Systems</em>, 32, 2019.
+                </p>
+                <p class="reference-item">
+                    <span class="ref-number">[4]</span>
+                    Guanzhi Wang, Yuqi Xie, Yunfan Jiang, Ajay Mandlekar, Chaowei Xiao, Yuke Zhu, Linxi Fan, and Anima Anandkumar. 
+                    <strong>Voyager: An open-ended embodied agent with large language models.</strong>
+                    <em>arXiv preprint arXiv:2305.16291</em>, 2023.
+                </p>
+                <p class="reference-item">
+                    <span class="ref-number">[5]</span>
+                    Manling Li, Shiyu Zhao, Qineng Wang, Kangrui Wang, Yu Zhou, Sanjana Srivastava, Cem Gokmen, Tony Lee, Erran Li, Ruohan Zhang, et al. 
+                    <strong>Embodied agent interface: Benchmarking llms for embodied decision making.</strong>
+                    <em>Advances in Neural Information Processing Systems</em>, 37:100428–100534, 2024.
+                </p>
+            </div>
+        </section>
         </div>
 
         <!-- Footer -->
@@ -1348,7 +1422,7 @@
                     
                     // Adjust header container
                     headerContainer.style.height = 'auto';
-                    headerContainer.style.maxHeight = '1000px';
+                    headerContainer.style.maxHeight = '800px';
                     headerContainer.style.flexDirection = '';
                     headerImage.style.order = 'initial';
                     
