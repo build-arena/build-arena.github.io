@@ -264,25 +264,42 @@
 
         /* Abstract Box */
         .abstract-box {
-            background: var(--bg-light);
-            border-left: 4px solid var(--accent-color);
-            padding: 2rem;
+            padding: 2rem 0;
             margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px var(--shadow-color);
-        }
-
-        .abstract-box h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--main-color);
-            font-weight: 600;
         }
 
         .abstract-box p {
             line-height: 1.8;
             color: var(--text-medium);
-            text-align: justify;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .abstract-box .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--main-color);
+            margin: 2rem 0;
+            padding-left: 3.5rem;
+            position: relative;
+        }
+
+        .abstract-box .question::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+            font-size: 4rem;
+            color: var(--accent-color);
+            font-family: Georgia, serif;
+            line-height: 1;
+            opacity: 0.6;
+        }
+
+        .abstract-box .answer {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
 
         /* GIF Gallery in Abstract */
@@ -758,18 +775,20 @@
     <div class="container">
         <!-- Abstract -->
         <div class="abstract-box">
-            <h2>Abstract</h2>
             <p>
                 Engineering construction automation aims to transform natural language specifications into physically viable structures, 
                 requiring complex integrated reasoning under strict physical constraints. While modern LLMs possess broad knowledge and 
                 strong reasoning capabilities that make them promising candidates for this domain, their construction competencies remain 
-                largely unevaluated. To address this gap, we introduce <strong style="color: var(--accent-color);">BuildArena, the first physics-aligned interactive 
-                benchmark designed for language-driven engineering construction.</strong> It contributes to the community in four aspects: (1) a highly 
-                customizable benchmarking framework for in-depth comparison and analysis of LLMs; (2) an extendable task design strategy 
-                spanning static and dynamic mechanics across multiple difficulty tiers; (3) a 3D Spatial Geometric Computation Library for 
-                supporting construction based on language instructions; (4) a baseline LLM agentic workflow that effectively evaluates 
-                diverse model capabilities. On eight frontier LLMs, BuildArena comprehensively evaluates their capabilities for language-driven 
-                and physics-grounded construction automation.
+                largely unevaluated.
+            </p>
+
+            <p class="question">
+                Question: How can we comprehensively evaluate LLMs for language-driven and physics-grounded construction automation?
+            </p>
+
+            <p class="answer">
+                Here, we introduce <strong style="color: var(--accent-color);">BuildArena</strong>, the first physics-aligned interactive 
+                benchmark designed for language-driven engineering construction.
             </p>
 
             <!-- GIF Gallery -->
@@ -789,27 +808,77 @@
             </div>
         </div>
 
-        <!-- Introduction Section -->
-        <section id="introduction">
-            <h2>Introduction</h2>
-            <p>
-                Engineering construction automation is a critical field in AI for Engineering, with applications spanning automotive, 
-                transportation, and civil infrastructure. The goal is to translate high-level task descriptions into executable end-to-end 
-                build plans that cover design, fabrication, and assembly. An ideal workflow enables users to specify functional intent in 
-                plain language—for example, "Design a rocket that meets Mars mission requirements"—and the system creates realistic parts 
-                with precise material details and manufacturing specifications, along with assembly instructions suitable for integration 
-                into production systems.
-            </p>
-            <p>
-                Large language models (LLMs) have demonstrated remarkable capabilities in language understanding, mathematical reasoning, 
-                and code generation, making them promising candidates for automatic engineering construction. However, current evaluations 
-                of LLMs provide insufficient evidence of their capacity to construct physical entities. Established benchmarks predominantly 
-                assess capabilities in textual or static environments, without interactions with physical constraints.
-            </p>
-            <div class="highlight-box">
-                <p><strong>Research Question:</strong> How can we comprehensively evaluate LLMs for language-driven and physics-grounded 
-                construction automation?</p>
+        <!-- Comparison Table -->
+        <section id="comparison">
+            <h2>Comparison with Existing Benchmarks</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Benchmark</th>
+                            <th>Spatial Reasoning</th>
+                            <th>3D Construction</th>
+                            <th>Construction Planning</th>
+                            <th>Physical Simulator</th>
+                            <th>Interactive Environment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PlanBench</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                        </tr>
+                        <tr>
+                            <td>PlanQA</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                        </tr>
+                        <tr>
+                            <td>PHYRE</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>VOYAGER</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Embodied Agent Interface</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>BuildArena (ours)</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <p style="margin-top: 1rem;">
+                BuildArena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
+                planning, physical simulation, and interactive environments in a unified framework.
+            </p>
         </section>
 
         <!-- Tasks Section -->
@@ -1047,79 +1116,6 @@
                 <p>A collaborative multi-entity workflow (Planner, Drafter, Reviewer, Builder, Guidance) that serves as a baseline for 
                 future workflow development in engineering construction.</p>
             </div>
-        </section>
-
-        <!-- Comparison Table -->
-        <section id="comparison">
-            <h2>Comparison with Existing Benchmarks</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Benchmark</th>
-                            <th>Spatial Reasoning</th>
-                            <th>3D Construction</th>
-                            <th>Construction Planning</th>
-                            <th>Physical Simulator</th>
-                            <th>Interactive Environment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>PlanBench</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                        </tr>
-                        <tr>
-                            <td>PlanQA</td>
-                            <td>✓</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                        </tr>
-                        <tr>
-                            <td>PHYRE</td>
-                            <td>✓</td>
-                            <td>✗</td>
-                            <td>✗</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td>VOYAGER</td>
-                            <td>✓</td>
-                            <td>✗</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr>
-                            <td>Embodied Agent Interface</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                            <td>✗</td>
-                            <td>✓</td>
-                            <td>✓</td>
-                        </tr>
-                        <tr class="highlight-row">
-                            <td><strong>BuildArena (ours)</strong></td>
-                            <td><strong>✓</strong></td>
-                            <td><strong>✓</strong></td>
-                            <td><strong>✓</strong></td>
-                            <td><strong>✓</strong></td>
-                            <td><strong>✓</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p style="margin-top: 1rem;">
-                BuildArena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
-                planning, physical simulation, and interactive environments in a unified framework.
-            </p>
         </section>
 
         <!-- Conclusion -->
