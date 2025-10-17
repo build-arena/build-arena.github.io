@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=768">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: A Physics-Aligned Interactive Benchmark</title>
     <style>
@@ -31,12 +31,13 @@
             --gradient-end: #004990;         /* 渐变结束 */
         }
 
-        html, body {
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: var(--text-dark);
             line-height: 1.7;
             background-color: var(--bg-white);
             min-width: 768px;
+            overflow-x: hidden;
         }
 
         /* Header Container */
@@ -210,7 +211,7 @@
         .authors-block .affiliation-item {
             color: rgba(255, 255, 255, 0.95);
             font-size: 1rem;
-            font-style: normal;
+            font-style: italic;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
             margin-top: 0.8rem;
             display: flex;
@@ -397,8 +398,8 @@
 
         @media (max-width: 768px) {
             .gif-gallery {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
         }
 
