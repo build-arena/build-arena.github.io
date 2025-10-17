@@ -285,6 +285,45 @@
             text-align: justify;
         }
 
+        /* GIF Gallery in Abstract */
+        .gif-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gif-item {
+            text-align: center;
+        }
+
+        .gif-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gif-item img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gif-item h3 {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .gif-gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
         /* Section Styles */
         section {
             margin-bottom: 3.5rem;
@@ -732,6 +771,22 @@
                 diverse model capabilities. On eight frontier LLMs, BuildArena comprehensively evaluates their capabilities for language-driven 
                 and physics-grounded construction automation.
             </p>
+
+            <!-- GIF Gallery -->
+            <div class="gif-gallery">
+                <div class="gif-item">
+                    <img src="assets/construction_brige.gif" alt="Bridge Construction">
+                    <h3>Bridge Construction</h3>
+                </div>
+                <div class="gif-item">
+                    <img src="assets/construction_vehicle.gif" alt="Vehicle Construction">
+                    <h3>Vehicle Construction</h3>
+                </div>
+                <div class="gif-item">
+                    <img src="assets/construction_racket.gif" alt="Rocket Construction">
+                    <h3>Rocket Construction</h3>
+                </div>
+            </div>
         </div>
 
         <!-- Introduction Section -->
