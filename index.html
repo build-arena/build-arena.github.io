@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BuildArena - Coming Soon">
-    <title>BuildArena</title>
+    <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
+    <title>Build Arena: A Physics-Aligned Interactive Benchmark</title>
     <style>
         * {
             margin: 0;
@@ -12,62 +12,1115 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --main-color: #004990;           /* 主色：深蓝 */
+            --main-dark: #003366;            /* 主色深色变体 */
+            --main-light: #0066cc;           /* 主色浅色变体 */
+            --accent-color: #f18d00;         /* 辅助色：橙色 */
+            --accent-light: #ffa726;         /* 辅助色浅色 */
+            --accent-dark: #e67e00;          /* 辅助色深色 */
+            --text-dark: #1a1a1a;            /* 深色文字 */
+            --text-medium: #4a4a4a;          /* 中等文字 */
+            --text-light: #666666;           /* 浅色文字 */
+            --bg-light: #fafafa;             /* 浅色背景 */
+            --bg-white: #ffffff;             /* 白色背景 */
+            --bg-blue-light: #e6f2ff;        /* 浅蓝背景 */
+            --border-color: #e0e0e0;         /* 边框颜色 */
+            --shadow-color: rgba(0, 73, 144, 0.1);  /* 阴影颜色 */
+            --gradient-start: #003d7a;       /* 渐变起始 */
+            --gradient-end: #004990;         /* 渐变结束 */
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--bg-white);
+        }
+
+        /* Header Container */
+        .header-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: visible;
+        }
+
+        /* Header Image Section */
+        .header-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Title Block - Top Glassmorphism Overlay (Left to Right Fade) */
+        .title-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(to right, rgba(0, 73, 144, 0.85) 0%, rgba(0, 73, 144, 0.6) 50%, rgba(0, 73, 144, 0) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             color: white;
+            padding: 2.5rem 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 2;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
-        .container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+        .title-block h1 {
+            font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+            text-align: left;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            max-width: 70%;
         }
 
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .title-block .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            text-align: left;
+            font-weight: 400;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+            max-width: 70%;
         }
 
-        .status {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
+        /* Authors Block - Bottom Glassmorphism Overlay (Right to Left Fade) */
+        .authors-block {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(to left, rgba(0, 73, 144, 0.85) 0%, rgba(0, 73, 144, 0.6) 50%, rgba(0, 73, 144, 0) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            color: white;
+            padding: 1.5rem 3rem 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 10;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        /* Two Column Layout in Authors Block - 1:2 ratio */
+        .authors-block-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .lab-left {
+            text-align: center;
+            padding-right: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .authors-right {
+            text-align: center;
+            padding-left: 2rem;
+        }
+
+        /* Trigger Area - Middle section between blocks */
+        .header-trigger {
+            position: absolute;
+            top: 25%;
+            bottom: 25%;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        /* Page Content Wrapper */
+        .page-content {
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            background: white;
+        }
+
+        /* Hover Effect - Open the curtains and push content down */
+        .header-trigger:hover ~ .title-block {
+            transform: translateY(-100%);
+        }
+
+        .header-trigger:hover ~ .authors-block {
+            transform: translateY(200px);
+        }
+
+        .header-container:has(.header-trigger:hover) ~ .page-content {
+            transform: translateY(200px);
+        }
+
+        /* Authors in Authors Block */
+        .authors-block .author-names {
             font-size: 1.1rem;
-            margin-top: 1rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-weight: 400;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         }
 
+        .authors-block .affiliation-item {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1rem;
+            font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 0.8rem;
+        }
+
+        /* Lab Info in Authors Block Right Side */
+        .authors-block .lab-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .authors-block .lab-name {
+            font-size: 1rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Lab Link Hover Effect */
+        .lab-link {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 0.3rem;
+            margin: -0.3rem;
+        }
+
+        .lab-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .lab-link:hover .lab-logo {
+            transform: scale(1.05);
+        }
+
+        .lab-link:hover .lab-name {
+            color: var(--accent-color);
+        }
+
+        .authors-block .contact-info {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .authors-block .contact-info a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .authors-block .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Links Section in Authors Right */
+        .authors-right .links {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .authors-right .links a {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .authors-right .links a:hover {
+            background: rgba(241, 141, 0, 0.85);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(241, 141, 0, 0.5);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem 2rem 3rem;
+        }
+
+        /* Abstract Box */
+        .abstract-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .abstract-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        .abstract-box p {
+            line-height: 1.8;
+            color: var(--text-medium);
+            text-align: justify;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--main-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent-color);
+            font-weight: 600;
+        }
+
+        section h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section li {
+            color: var(--text-medium);
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        section li strong {
+            color: var(--main-color);
+        }
+
+        /* Task Cards */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .task-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px var(--shadow-color);
+            border-color: var(--main-color);
+        }
+
+        .task-card h3 {
+            color: var(--main-color);
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .task-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            text-align: left;
+        }
+
+        .task-label {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 73, 144, 0.05) 0%, rgba(0, 73, 144, 0.08) 100%);
+            border-left: 4px solid var(--main-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+            color: var(--text-medium);
+        }
+
+        .highlight-box strong {
+            color: var(--main-color);
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-white);
+        }
+
+        table th {
+            background: var(--main-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        table tr.highlight-row {
+            background: var(--bg-blue-light);
+        }
+
+        table tr.highlight-row td {
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        table tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* Workflow Boxes */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .workflow-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .workflow-box:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 16px rgba(241, 141, 0, 0.15);
+            background: white;
+        }
+
+        .workflow-box h4 {
+            color: var(--main-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .workflow-box p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            text-align: center;
+        }
+
+        /* Key Findings */
+        .findings-list {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .findings-list h3 {
+            color: var(--main-color);
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .finding-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .finding-item:last-child {
+            border-bottom: none;
+        }
+
+        .finding-item strong {
+            color: var(--main-color);
+            font-size: 1.05rem;
+        }
+
+        .finding-item p {
+            color: var(--text-medium);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .badge-excellent {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-good {
+            background: #fff4e6;
+            color: var(--accent-dark);
+        }
+
+        .badge-moderate {
+            background: var(--bg-blue-light);
+            color: var(--main-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--main-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .title-block {
+                padding: 2rem 1.5rem;
+                background: linear-gradient(to bottom, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
             }
-            
-            p {
-                font-size: 1.2rem;
+
+            .title-block h1 {
+                font-size: 2rem;
+                max-width: 100%;
+                text-align: center;
             }
+
+            .title-block .subtitle {
+                font-size: 1rem;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .authors-block {
+                padding: 2rem 1.5rem;
+                background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
+            }
+
+            .authors-block-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .lab-left {
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding-bottom: 1.5rem;
+            }
+
+            .authors-right {
+                padding-left: 0;
+                padding-top: 1rem;
+            }
+
+            .authors-block .author-names {
+                font-size: 0.95rem;
+            }
+
+            .authors-block .lab-logo {
+                height: 40px;
+            }
+
+            .header-container {
+                height: 400px;
+            }
+
+            /* Mobile: tap to open instead of hover */
+            .header-trigger:active ~ .title-block {
+                transform: translateY(-100%);
+            }
+
+            .header-trigger:active ~ .authors-block {
+                transform: translateY(100%);
+            }
+
+            .header-container:has(.header-trigger:active) ~ .page-content {
+                transform: translateY(150px);
+            }
+
+
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
 <body>
+    <!-- Header Container with Dual Overlay -->
+    <div class="header-container">
+        <!-- Header Image in Middle -->
+        <img src="header.png" alt="Build Arena Header" class="header-image">
+        
+        <!-- Trigger Area - Hover here to open curtains -->
+        <div class="header-trigger"></div>
+
+        <!-- Top Title Block - Left to Right Fade -->
+        <div class="title-block">
+            <h1>Build Arena</h1>
+            <p class="subtitle">A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction</p>
+        </div>
+
+        <!-- Bottom Authors Block - Right to Left Fade -->
+        <div class="authors-block">
+            <div class="authors-block-content">
+                <!-- Left: Lab Info -->
+                <div class="lab-left">
+                    <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank" class="lab-link" style="text-decoration: none; color: inherit; display: block;">
+                        <img src="lab_logo.png" alt="Lab Logo" class="lab-logo">
+                        <div class="lab-name">AI for Scientific Simulation and Discovery Lab</div>
+                    </a>
+                    <div class="contact-info">*Corresponding author: <a href="mailto:wutailin@westlake.edu.cn">wutailin@westlake.edu.cn</a></div>
+                </div>
+
+                <!-- Right: Authors, Affiliation and Links -->
+                <div class="authors-right">
+                    <div class="author-names">
+                        Tian Xia, 
+                        Tianrun Gao, 
+                        Wenhao Deng, 
+                        Long Wei, 
+                        Xiaowei Qian, 
+                        Yixian Jiang, 
+                        Chenglei Yu, 
+                        Tailin Wu*
+                    </div>
+                    <div class="affiliation-item">Westlake University</div>
+                    
+                    <div class="links">
+                        <a href="https://github.com/build-arena/build-arena.github.io" target="_blank">📄 Paper</a>
+                        <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank">💻 Code</a>
+                        <a href="#benchmark">📊 Benchmark</a>
+                        <a href="#results">🔬 Results</a>
+                        <a href="https://store.steampowered.com/app/346010/" target="_blank">🎮 Besiege</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content Wrapper (will be pushed down on hover) -->
+    <div class="page-content">
+        <!-- Main Content -->
     <div class="container">
-        <h1>BuildArena</h1>
-        <p>Coming Soon</p>
-        <div class="status">🚀 Under Construction</div>
+        <!-- Abstract -->
+        <div class="abstract-box">
+            <h2>Abstract</h2>
+            <p>
+                Engineering construction automation aims to transform natural language specifications into physically viable structures, 
+                requiring complex integrated reasoning under strict physical constraints. While modern LLMs possess broad knowledge and 
+                strong reasoning capabilities that make them promising candidates for this domain, their construction competencies remain 
+                largely unevaluated. To address this gap, we introduce <strong style="color: var(--accent-color);">BuildArena, the first physics-aligned interactive 
+                benchmark designed for language-driven engineering construction.</strong> It contributes to the community in four aspects: (1) a highly 
+                customizable benchmarking framework for in-depth comparison and analysis of LLMs; (2) an extendable task design strategy 
+                spanning static and dynamic mechanics across multiple difficulty tiers; (3) a 3D Spatial Geometric Computation Library for 
+                supporting construction based on language instructions; (4) a baseline LLM agentic workflow that effectively evaluates 
+                diverse model capabilities. On eight frontier LLMs, BuildArena comprehensively evaluates their capabilities for language-driven 
+                and physics-grounded construction automation.
+            </p>
+        </div>
+
+        <!-- Introduction Section -->
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>
+                Engineering construction automation is a critical field in AI for Engineering, with applications spanning automotive, 
+                transportation, and civil infrastructure. The goal is to translate high-level task descriptions into executable end-to-end 
+                build plans that cover design, fabrication, and assembly. An ideal workflow enables users to specify functional intent in 
+                plain language—for example, "Design a rocket that meets Mars mission requirements"—and the system creates realistic parts 
+                with precise material details and manufacturing specifications, along with assembly instructions suitable for integration 
+                into production systems.
+            </p>
+            <p>
+                Large language models (LLMs) have demonstrated remarkable capabilities in language understanding, mathematical reasoning, 
+                and code generation, making them promising candidates for automatic engineering construction. However, current evaluations 
+                of LLMs provide insufficient evidence of their capacity to construct physical entities. Established benchmarks predominantly 
+                assess capabilities in textual or static environments, without interactions with physical constraints.
+            </p>
+            <div class="highlight-box">
+                <p><strong>Research Question:</strong> How can we comprehensively evaluate LLMs for language-driven and physics-grounded 
+                construction automation?</p>
+            </div>
+        </section>
+
+        <!-- Tasks Section -->
+        <section id="tasks">
+            <h2>Three Engineering Tasks</h2>
+            <p>
+                BuildArena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
+                Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
+                <strong>Magnitude</strong>, <strong>Compositionality</strong>, <strong>Precision</strong>, and <strong>Ambiguity</strong>.
+            </p>
+            
+            <div class="task-grid">
+                <div class="task-card">
+                    <h3>🚗 Transport</h3>
+                    <p>
+                        Construct mechanical structures capable of directional movement on a planar surface. Tests the ability to exploit 
+                        spatial movement afforded by building components. As difficulty increases, explicit instructions are removed and 
+                        cargo loads are added.
+                    </p>
+                    <span class="task-label">Dynamic Horizontal Movement</span>
+                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Maximum transport distance</p>
+                </div>
+                
+                <div class="task-card">
+                    <h3>🌉 Support</h3>
+                    <p>
+                        Build static structures to support loads across gaps—essentially designing bridges. The span multiplies across 
+                        difficulty levels, requiring larger-scale structures and more precise assembly. Modular construction with multiple 
+                        substructures is required at higher levels.
+                    </p>
+                    <span class="task-label">Static Structural Stability</span>
+                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Maximum load weight</p>
+                </div>
+                
+                <div class="task-card">
+                    <h3>🚀 Lift</h3>
+                    <p>
+                        Construct rockets capable of vertical movement. Lv.1 requires building a single rocket engine (TWR > 1). 
+                        Lv.2 requires an integrated rocket-powered aircraft. Lv.3 demands modular construction of separate substructures 
+                        (engine + frame) and their assembly.
+                    </p>
+                    <span class="task-label">Dynamic Vertical Movement</span>
+                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Thrust-to-weight ratio / Maximum height</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benchmark Framework -->
+        <section id="benchmark">
+            <h2>Benchmark Framework</h2>
+            <p>
+                BuildArena establishes a comprehensive evaluation framework with three core components:
+            </p>
+
+            <h3>1. Language-Driven and Physics-Grounded Construction</h3>
+            <p>
+                We develop an open-source <strong>3D Spatial Geometric Computation Library</strong> that mirrors Besiege's construction 
+                logic and physical constraints. This library enables LLMs to interact with the construction space through natural language 
+                interfaces, ensuring consistency between language-based actions and physics-aligned outcomes.
+            </p>
+            <p>
+                Construction is inherently iterative: structures are assembled step by step, each component must connect to existing ones, 
+                and physical feasibility (e.g., collision avoidance) is continuously verified. Actions fall into four categories: 
+                <strong>Build</strong>, <strong>Refine</strong>, <strong>Query</strong>, and <strong>Control</strong>.
+            </p>
+
+            <h3>2. LLM Agentic Workflow</h3>
+            <p>
+                Inspired by human engineering practices, our workflow follows a coarse-to-fine structure with multi-party collaboration. 
+                It employs five specialized entities working together:
+            </p>
+            
+            <div class="workflow-grid">
+                <div class="workflow-box">
+                    <h4>Planner</h4>
+                    <p>Takes task description and module set, outputs structured construction plan</p>
+                </div>
+                <div class="workflow-box">
+                    <h4>Drafter</h4>
+                    <p>Produces detailed design schematics based on the plan</p>
+                </div>
+                <div class="workflow-box">
+                    <h4>Reviewer</h4>
+                    <p>Reviews and verifies schematics, guides revisions</p>
+                </div>
+                <div class="workflow-box">
+                    <h4>Builder</h4>
+                    <p>Implements high-level suggestions into concrete API calls</p>
+                </div>
+                <div class="workflow-box">
+                    <h4>Guidance</h4>
+                    <p>Generates step-by-step execution suggestions</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 1.5rem;">
+                The workflow progresses through three stages: <strong>Plan Phase</strong> → <strong>Draft-Review Loop</strong> → 
+                <strong>Build-Guidance Loop</strong>, producing a simulation-compatible construction result.
+            </p>
+
+            <h3>3. Simulation-Based Evaluation</h3>
+            <p>
+                Construction results are evaluated in the Besiege physics simulator with task-specific protocols. For each task-LLM pair, 
+                we sample 64 times to ensure reliability. Evaluation metrics cover both <strong>performance</strong> (number of parts, 
+                success rate, task-specific indicators) and <strong>cost</strong> (input/output tokens, number of requests).
+            </p>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results">
+            <h2>Key Findings</h2>
+            
+            <div class="findings-list">
+                <div class="finding-item">
+                    <p><strong>1. LLMs Can Perform Language-Driven 3D Construction</strong></p>
+                    <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
+                    that language models can translate natural language into physically viable 3D structures.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>2. Performance Varies Significantly Across Models</strong></p>
+                    <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
+                    <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
+                    but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>3. LLMs Exhibit Creative Problem-Solving</strong></p>
+                    <p>When explicit constraints are relaxed, LLMs propose unconventional solutions such as propulsion-powered carriers 
+                    for transport tasks and wheel-integrated bridge structures that utilize automatic braking for stabilization.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>4. Real-World Engineering Knowledge Is Captured</strong></p>
+                    <p>LLMs construct structures mirroring real-world practices, such as steel trusses in bridges and differential 
+                    steering in vehicles, suggesting that structural concepts learned from text carry implicit spatial information.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>5. Significant Limitations Remain</strong></p>
+                    <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
+                    Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
+                    construction and precise spatial alignment.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>6. More Tokens ≠ Better Performance</strong></p>
+                    <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
+                    consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
+                    threshold, additional inference cost does not translate into better results.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2.5rem;">Performance Comparison</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Transport<br>Success Rate</th>
+                            <th>Support<br>Success Rate</th>
+                            <th>Lift<br>Success Rate</th>
+                            <th>Overall<br>Strength</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Grok-4</strong></td>
+                            <td>11.5%</td>
+                            <td>20.8%</td>
+                            <td>21.9%</td>
+                            <td><span class="badge badge-excellent">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude-4</strong></td>
+                            <td>12.5%</td>
+                            <td>3.1%</td>
+                            <td>4.2%</td>
+                            <td><span class="badge badge-good">Good</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seed-1.6</strong></td>
+                            <td>6.2%</td>
+                            <td>19.3%</td>
+                            <td>2.1%</td>
+                            <td><span class="badge badge-good">Good</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>GPT-4o</strong></td>
+                            <td>6.2%</td>
+                            <td>13.5%</td>
+                            <td>3.6%</td>
+                            <td><span class="badge badge-moderate">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kimi-K2</strong></td>
+                            <td>4.7%</td>
+                            <td>11.5%</td>
+                            <td>5.2%</td>
+                            <td><span class="badge badge-moderate">Moderate</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-light); font-style: italic;">
+                Success rates averaged across all difficulty levels (Lv.1, Lv.2, Lv.3) for each task category.
+            </p>
+        </section>
+
+        <!-- Contributions Section -->
+        <section id="contributions">
+            <h2>Technical Contributions</h2>
+            
+            <div class="highlight-box">
+                <p><strong>1. Customizable Benchmarking Framework</strong></p>
+                <p>A highly flexible framework supporting in-depth LLM comparison with detailed logging, customizable tasks, workflows, 
+                and simulators.</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>2. Extendable Task Design Strategy</strong></p>
+                <p>Three task categories with quantifiable difficulty levels across six engineering dimensions, along with corresponding 
+                evaluation metrics.</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>3. 3D Spatial Geometric Computation Library</strong></p>
+                <p>An open-source module that reproduces Besiege's construction logic, enabling language-driven manipulation of 3D 
+                structures with accurate spatial computation and physical constraints.</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>4. Baseline LLM Agentic Workflow</strong></p>
+                <p>A collaborative multi-entity workflow (Planner, Drafter, Reviewer, Builder, Guidance) that serves as a baseline for 
+                future workflow development in engineering construction.</p>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section id="comparison">
+            <h2>Comparison with Existing Benchmarks</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Benchmark</th>
+                            <th>Spatial Reasoning</th>
+                            <th>3D Construction</th>
+                            <th>Construction Planning</th>
+                            <th>Physical Simulator</th>
+                            <th>Interactive Environment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PlanBench</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                        </tr>
+                        <tr>
+                            <td>PlanQA</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                        </tr>
+                        <tr>
+                            <td>PHYRE</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>VOYAGER</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr>
+                            <td>Embodied Agent Interface</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                            <td>✗</td>
+                            <td>✓</td>
+                            <td>✓</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>BuildArena (ours)</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                            <td><strong>✓</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: 1rem;">
+                BuildArena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
+                planning, physical simulation, and interactive environments in a unified framework.
+            </p>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>Conclusion</h2>
+            <p>
+                BuildArena establishes the first comprehensive benchmark for evaluating LLMs on language-driven and physics-grounded 
+                engineering construction. Through systematic evaluation of eight frontier LLMs, we demonstrate that:
+            </p>
+            <ul>
+                <li>LLMs can successfully perform language-driven 3D construction with physics constraints</li>
+                <li>Current models show promising capabilities in handling magnitude and ambiguity but struggle with precision and compositionality</li>
+                <li>There exists significant room for improvement, particularly in hierarchical assembly and high-precision tasks</li>
+                <li>Our framework provides actionable insights for future LLM development in construction automation</li>
+            </ul>
+            <p>
+                BuildArena's modular design allows researchers to customize tasks, workflows, and evaluation metrics, making it a 
+                valuable tool for advancing AI capabilities in engineering construction and related domains.
+            </p>
+        </section>
+
+        <!-- Acknowledgments -->
+        <section id="acknowledgments" class="animate-on-scroll">
+            <h2>Acknowledgments</h2>
+            <p>
+                We are grateful to Spiderling Studios for creating Besiege, the inspiring physics sandbox that underpins our work. 
+                We also thank the developers of the open-source projects Lua Scripting Mod and Besiege Creation Import Addon for Blender 
+                for their valuable contributions to the community.
+            </p>
+            <p>
+                We also gratefully acknowledge the support of Westlake University Research Center for Industries of the Future.
+                The content is solely the responsibility of the authors and does not necessarily represent the official views of the
+                funding entities.
+            </p>
+        </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        <p>&copy; 2025 AI for Scientific Simulation and Discovery Lab, Westlake University. All rights reserved.</p>
+        <p style="margin-top: 0.8rem;">
+            <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank">🔬 Lab Website</a> | 
+            <a href="mailto:wutailin@westlake.edu.cn">✉️ Contact</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+            For questions and collaborations, please reach out via email or GitHub Issues
+        </p>
+        </footer>
     </div>
 </body>
 </html>
-
