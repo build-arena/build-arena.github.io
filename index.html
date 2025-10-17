@@ -46,15 +46,6 @@
             width: 100%;
             height: auto;
             overflow: visible;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            align-items: center;
-        }
-        
-        .header-container > * {
-            max-width: 2000px;
-            width: 100%;
         }
 
         .header-container::before {
@@ -80,66 +71,66 @@
             display: block;
             object-fit: contain;
             object-position: center;
-            order: 2;
             margin: 0;
-            position: relative;
         }
 
-        /* Title Block - Top Glassmorphism Overlay (Left to Right Fade) */
+        /* Title Block - Overlay on Image */
         .title-block {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             color: white;
-            padding: 2.5rem 3rem;
-            z-index: 2;
+            padding: 2rem 0;
+            z-index: 3;
             margin: 0;
-            order: 1;
         }
 
         .title-block::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100%;
-            background: rgba(0, 73, 144, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 73, 144, 0.001);
             z-index: -1;
             pointer-events: none;
         }
 
         .title-block h1 {
-            font-size: 3.5rem;
+            font-size: 8rem;
             font-weight: 700;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             line-height: 1.2;
             text-align: left;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
-            max-width: 70%;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            padding-left: 0;
+            padding-right: 0;
         }
 
         .title-block .subtitle {
-            font-size: 1.4rem;
-            opacity: 0.95;
-            text-align: left;
+            display: block;
+            font-size: 1.3rem;
             font-weight: 400;
+            text-align: left;
+            opacity: 0.95;
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-            max-width: 70%;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
         }
+
 
         /* Authors Block - Bottom Glassmorphism Overlay (Right to Left Fade) */
         .authors-block {
             position: relative;
             width: 100%;
             color: white;
-            padding: 1.5rem 3rem 1rem;
+            padding: 1.5rem 0 1rem;
             z-index: 2;
             margin: 0;
-            order: 3;
         }
 
         .authors-block::before {
@@ -168,25 +159,21 @@
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
+            padding-left: 20%;
+            padding-right: 20%;
         }
 
         .lab-left {
             text-align: center;
-            padding-right: 2rem;
+            padding: 0 calc(15% + 2rem) 0 15%;
             border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .authors-right {
             text-align: center;
-            padding-left: 2rem;
+            padding: 0 15% 0 calc(15% + 2rem);
         }
 
-        .title-block {
-            order: 1;
-            max-width: 2000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
 
 
 
@@ -720,36 +707,47 @@
             text-decoration: underline;
         }
 
+        /* Large Screen Layout - Width >= 2000px */
+        @media (min-width: 2000px) {
+            .title-block h1 {
+                padding-left: 10%;
+                padding-right: 10%;
+            }
+
+            .title-block .subtitle {
+                padding-left: 10%;
+                padding-right: 10%;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .title-block::before,
             .authors-block::before {
-                display: none;
+                display: block;
             }
 
             .title-block {
-                padding: 2rem 1.5rem;
-                background: linear-gradient(to bottom, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
-                position: static !important;
-                transform: none !important;
-                width: 100%;
-                order: 1;
+                padding: 1.5rem 0;
+                position: absolute;
             }
 
             .title-block h1 {
-                font-size: 2rem;
-                max-width: 100%;
-                text-align: center;
+                font-size: 1.8rem;
+                text-align: left;
+                padding-left: 0;
+                padding-right: 0;
             }
 
             .title-block .subtitle {
                 font-size: 1rem;
-                max-width: 100%;
-                text-align: center;
+                display: block;
+                padding-left: 0;
+                padding-right: 0;
             }
 
             .authors-block {
-                padding: 1.5rem 1.5rem 1rem;
+                padding: 1.5rem 0 1rem;
                 background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%) !important;
                 transform: none !important;
                 z-index: 10;
@@ -761,18 +759,18 @@
             .authors-block-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                padding-left: 20%;
+                padding-right: 20%;
             }
 
             .lab-left {
-                padding-right: 0;
+                padding: 0 15% 1.5rem 15%;
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                padding-bottom: 1.5rem;
             }
 
             .authors-right {
-                padding-left: 0;
-                padding-top: 1rem;
+                padding: 1rem 15% 0 15%;
             }
 
             .authors-block .author-names {
@@ -786,8 +784,6 @@
             .header-container {
                 height: auto;
                 overflow: visible;
-                display: flex;
-                flex-direction: column;
             }
 
             .header-image {
@@ -795,11 +791,6 @@
                 max-height: 400px;
                 width: 100%;
                 object-fit: contain;
-                order: 2;
-            }
-
-            .title-block {
-                order: 1;
             }
 
             .page-content {
@@ -854,13 +845,15 @@
 <body>
     <!-- Header Container with Dual Overlay -->
     <div class="header-container">
-        <!-- Header Image in Middle -->
-        <img src="header_image.png" alt="Build Arena Header" class="header-image">
-
-        <!-- Top Title Block - Left to Right Fade -->
-        <div class="title-block">
-            <h1>Build Arena</h1>
-            <p class="subtitle">A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction</p>
+        <!-- Header Image Wrapper with Title Overlay -->
+        <div style="position: relative; width: 100%;">
+            <img src="header_image.png" alt="Build Arena Header" class="header-image">
+            
+            <!-- Title Block Overlay on Image -->
+            <div class="title-block">
+                <h1>Build Arena</h1>
+                <p class="subtitle">Physics-Aligned Interactive Agentic Engineering Construction Benchmark</p>
+            </div>
         </div>
 
         <!-- Bottom Authors Block - Right to Left Fade -->
