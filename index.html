@@ -626,6 +626,10 @@
             .title-block {
                 padding: 2rem 1.5rem;
                 background: linear-gradient(to bottom, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
+                position: static !important;
+                transform: none !important;
+                width: 100%;
+                order: 1;
             }
 
             .title-block h1 {
@@ -641,8 +645,13 @@
             }
 
             .authors-block {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem 1.5rem 1rem;
                 background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%);
+                transform: none !important;
+                z-index: 10;
+                position: static !important;
+                width: 100%;
+                order: 3;
             }
 
             .authors-block-content {
@@ -671,20 +680,39 @@
             }
 
             .header-container {
+                height: auto;
+                overflow: visible;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header-image {
                 height: 400px;
+                width: 100%;
+                object-fit: cover;
+                order: 2;
             }
 
-            /* Mobile: tap to open instead of hover */
-            .header-trigger:active ~ .title-block {
-                transform: translateY(-100%);
+            .title-block {
+                order: 1;
             }
 
-            .header-trigger:active ~ .authors-block {
-                transform: translateY(100%);
+            .authors-block {
+                order: 3;
             }
 
-            .header-container:has(.header-trigger:active) ~ .page-content {
-                transform: translateY(150px);
+            .header-trigger {
+                display: none;
+            }
+
+            .page-content {
+                margin-top: 0;
+                transform: none !important;
+            }
+
+            /* Disable hover effect on mobile */
+            .header-trigger {
+                pointer-events: none;
             }
 
 
