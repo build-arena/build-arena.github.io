@@ -35,10 +35,11 @@ let currentSlide = 0;
 let autoSlideInterval;
 const slides = document.querySelectorAll('.carousel-image');
 const indicators = document.querySelectorAll('.indicator');
-const headerVideo = document.getElementById('header-video');
+const rocketLaunchVideo = document.getElementById('rocket-launch-video');
+const headerRocketVideo = document.getElementById('header-rocket-video');
 
 // Slide durations: video plays through once (no timer), static images stay for 3 seconds
-const slideDurations = [null, 3000, 3000]; // milliseconds (null for video - use 'ended' event instead)
+const slideDurations = [null, 3000, null, 3000]; // milliseconds (null for videos - use 'ended' event instead)
 
 function showSlide(index) {
     // Update indicators immediately
@@ -57,10 +58,16 @@ function showSlide(index) {
     
     currentSlide = index;
     
-    // If switching to video, restart it
-    if (index === 0 && headerVideo) {
-        headerVideo.currentTime = 0;
-        headerVideo.play();
+    // If switching to rocket launch video (index 0), restart it
+    if (index === 0 && rocketLaunchVideo) {
+        rocketLaunchVideo.currentTime = 0;
+        rocketLaunchVideo.play();
+    }
+    
+    // If switching to header rocket video (index 2), restart it
+    if (index === 2 && headerRocketVideo) {
+        headerRocketVideo.currentTime = 0;
+        headerRocketVideo.play();
     }
     
     // Reset auto-slide timer with appropriate duration
@@ -102,10 +109,18 @@ function resetAutoSlide() {
     }
 }
 
-// Video ended event listener - auto advance to next slide
-if (headerVideo) {
-    headerVideo.addEventListener('ended', function() {
+// Video ended event listeners - auto advance to next slide
+if (rocketLaunchVideo) {
+    rocketLaunchVideo.addEventListener('ended', function() {
         if (currentSlide === 0) {
+            nextSlide();
+        }
+    });
+}
+
+if (headerRocketVideo) {
+    headerRocketVideo.addEventListener('ended', function() {
+        if (currentSlide === 2) {
             nextSlide();
         }
     });
@@ -124,16 +139,22 @@ if (carouselContainer) {
         if (autoSlideInterval) {
             clearInterval(autoSlideInterval);
         }
-        // Also pause video if it's playing
-        if (currentSlide === 0 && headerVideo) {
-            headerVideo.pause();
+        // Also pause videos if they're playing
+        if (currentSlide === 0 && rocketLaunchVideo) {
+            rocketLaunchVideo.pause();
+        }
+        if (currentSlide === 2 && headerRocketVideo) {
+            headerRocketVideo.pause();
         }
     });
     
     carouselContainer.addEventListener('mouseleave', () => {
-        // Resume video if on video slide
-        if (currentSlide === 0 && headerVideo) {
-            headerVideo.play();
+        // Resume videos if on video slides
+        if (currentSlide === 0 && rocketLaunchVideo) {
+            rocketLaunchVideo.play();
+        }
+        if (currentSlide === 2 && headerRocketVideo) {
+            headerRocketVideo.play();
         }
         resetAutoSlide();
     });

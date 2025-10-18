@@ -14,10 +14,13 @@
         <div style="position: relative; width: 100%;">
             <!-- Carousel Container -->
             <div class="carousel-container">
-                <video autoplay muted playsinline class="header-image carousel-image active" id="header-video">
-                    <source src="header_rocket.mp4" type="video/mp4">
+                <video autoplay muted playsinline class="header-image carousel-image active" id="rocket-launch-video">
+                    <source src="rocket_launch.mp4" type="video/mp4">
                 </video>
                 <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
+                <video muted playsinline class="header-image carousel-image" id="header-rocket-video">
+                    <source src="header_rocket.mp4" type="video/mp4">
+                </video>
                 <img src="header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
             </div>
             
@@ -30,6 +33,7 @@
                 <span class="indicator active" onclick="goToSlide(0)"></span>
                 <span class="indicator" onclick="goToSlide(1)"></span>
                 <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
             </div>
             
             <!-- Title Block Overlay on Image -->
