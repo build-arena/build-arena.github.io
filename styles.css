@@ -47,6 +47,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: var(--main-color);
     background-image: 
         linear-gradient(rgba(0, 73, 144, 0.7), rgba(0, 73, 144, 0.7)),
         url('header_background.png');
