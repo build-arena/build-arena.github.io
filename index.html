@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=768, initial-scale=1.0, minimum-scale=0.1, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: A Physics-Aligned Interactive Benchmark</title>
     <style>
@@ -643,6 +643,83 @@
             text-align: center;
         }
 
+        /* Expandable Workflow Cards */
+        .workflow-grid-expandable {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .workflow-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .workflow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px var(--shadow-color);
+            border-color: var(--main-color);
+        }
+
+        .workflow-card h4 {
+            color: var(--main-color);
+            margin: 0;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            user-select: none;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .workflow-card h4:hover {
+            color: var(--main-light);
+        }
+
+        .workflow-toggle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 0 5px 8px;
+            border-color: transparent transparent transparent var(--main-color);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .workflow-card.collapsed .workflow-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .workflow-content {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .workflow-card.collapsed .workflow-content {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .workflow-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            text-align: left;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
         /* Key Findings */
         .findings-list {
             background: white;
@@ -784,17 +861,17 @@
             }
 
             .title-block h1 {
-                font-size: 1.8rem;
+                font-size: 3rem;
                 text-align: left;
-                padding-left: 0;
-                padding-right: 0;
+                padding-left: 5%;
+                padding-right: 5%;
             }
 
             .title-block .subtitle {
-                font-size: 1rem;
+                font-size: 1.3rem;
                 display: block;
-                padding-left: 0;
-                padding-right: 0;
+                padding-left: 5%;
+                padding-right: 5%;
             }
 
             .authors-block {
@@ -851,6 +928,40 @@
 
             .workflow-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .workflow-grid-expandable {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .workflow-card {
+                padding: 1.2rem;
+            }
+
+            .workflow-card h4 {
+                font-size: 1rem;
+            }
+
+            .workflow-card p {
+                font-size: 0.9rem;
+            }
+
+            .task-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .task-card {
+                padding: 1.2rem;
+            }
+
+            .task-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .task-card p {
+                font-size: 0.95rem;
             }
 
             section h2 {
@@ -1082,26 +1193,75 @@
                 It employs five specialized entities working together:
             </p>
             
-            <div class="workflow-grid">
-                <div class="workflow-box">
-                    <h4>Planner</h4>
-                    <p>Takes task description and module set, outputs structured construction plan</p>
+            <div class="workflow-grid-expandable">
+                <div class="workflow-card collapsed">
+                    <h4 onclick="toggleWorkflow(this)">
+                        <span class="workflow-toggle"></span>
+                        📋 Planner
+                    </h4>
+                    <div class="workflow-content">
+                        <p>
+                            The Planner takes the task description and available module set as input, and outputs a high-level 
+                            structured construction plan. It decomposes the overall goal into manageable phases and determines 
+                            the key components and their functional roles in the final structure.
+                        </p>
+                    </div>
                 </div>
-                <div class="workflow-box">
-                    <h4>Drafter</h4>
-                    <p>Produces detailed design schematics based on the plan</p>
+                
+                <div class="workflow-card collapsed">
+                    <h4 onclick="toggleWorkflow(this)">
+                        <span class="workflow-toggle"></span>
+                        ✏️ Drafter
+                    </h4>
+                    <div class="workflow-content">
+                        <p>
+                            The Drafter takes the construction plan and produces detailed design schematics. It specifies spatial 
+                            configurations, component arrangements, and structural details, translating abstract plans into 
+                            concrete blueprints ready for implementation.
+                        </p>
+                    </div>
                 </div>
-                <div class="workflow-box">
-                    <h4>Reviewer</h4>
-                    <p>Reviews and verifies schematics, guides revisions</p>
+                
+                <div class="workflow-card collapsed">
+                    <h4 onclick="toggleWorkflow(this)">
+                        <span class="workflow-toggle"></span>
+                        🔍 Reviewer
+                    </h4>
+                    <div class="workflow-content">
+                        <p>
+                            The Reviewer examines and verifies the design schematics for feasibility, structural integrity, and 
+                            alignment with task requirements. It identifies potential issues and guides revisions, ensuring that 
+                            the design can be successfully realized in the physical simulator.
+                        </p>
+                    </div>
                 </div>
-                <div class="workflow-box">
-                    <h4>Builder</h4>
-                    <p>Implements high-level suggestions into concrete API calls</p>
+                
+                <div class="workflow-card collapsed">
+                    <h4 onclick="toggleWorkflow(this)">
+                        <span class="workflow-toggle"></span>
+                        🔨 Builder
+                    </h4>
+                    <div class="workflow-content">
+                        <p>
+                            The Builder implements high-level construction suggestions into concrete API calls. It translates 
+                            design specifications into precise placement commands, manages spatial coordinates, and handles 
+                            physical constraints to construct the actual structure.
+                        </p>
+                    </div>
                 </div>
-                <div class="workflow-box">
-                    <h4>Guidance</h4>
-                    <p>Generates step-by-step execution suggestions</p>
+                
+                <div class="workflow-card collapsed">
+                    <h4 onclick="toggleWorkflow(this)">
+                        <span class="workflow-toggle"></span>
+                        🧭 Guidance
+                    </h4>
+                    <div class="workflow-content">
+                        <p>
+                            The Guidance entity generates step-by-step execution suggestions based on current construction state. 
+                            It provides actionable recommendations for the next building steps, helping maintain construction 
+                            momentum and ensuring proper assembly sequence.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -1204,62 +1364,10 @@
             </p>
         </section>
 
-        <!-- Results Section -->
-        <section id="results">
-            <h2>Key Findings</h2>
-            
-            <div class="findings-list">
-                <div class="finding-item">
-                    <p><strong>1. LLMs Can Perform Language-Driven 3D Construction</strong></p>
-                    <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
-                    that language models can translate natural language into physically viable 3D structures.</p>
-                </div>
-
-                <div class="finding-item">
-                    <p><strong>2. Performance Varies Significantly Across Models</strong></p>
-                    <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
-                    <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
-                    but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
-                </div>
-
-                <div class="finding-item">
-                    <p><strong>3. LLMs Exhibit Creative Problem-Solving</strong></p>
-                    <p>When explicit constraints are relaxed, LLMs propose unconventional solutions such as propulsion-powered carriers 
-                    for transport tasks and wheel-integrated bridge structures that utilize automatic braking for stabilization.</p>
-                </div>
-
-                <div class="finding-item">
-                    <p><strong>4. Real-World Engineering Knowledge Is Captured</strong></p>
-                    <p>LLMs construct structures mirroring real-world practices, such as steel trusses in bridges and differential 
-                    steering in vehicles, suggesting that structural concepts learned from text carry implicit spatial information.</p>
-                </div>
-
-                <div class="finding-item">
-                    <p><strong>5. Significant Limitations Remain</strong></p>
-                    <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
-                    Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
-                    construction and precise spatial alignment.</p>
-                </div>
-
-                <div class="finding-item">
-                    <p><strong>6. More Tokens ≠ Better Performance</strong></p>
-                    <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
-                    consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
-                    threshold, additional inference cost does not translate into better results.</p>
-                </div>
-            </div>
-
-        </section>
-
         <!-- Performance Leaderboard Section -->
         <section id="leaderboard">
             <h2>Performance Leaderboard</h2>
-            <p>
-                We evaluate eight frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
-                and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard). Performance is measured by success rate, with 64 samples 
-                per task-model pair to ensure statistical reliability.
-            </p>
-            
+
             <div class="table-container" style="max-width: 900px;">
                 <table>
                     <thead>
@@ -1336,18 +1444,58 @@
                 Success rates are averaged across all three difficulty levels (Lv.1, Lv.2, Lv.3) for each task category. 
                 Full model snapshots and detailed experimental setup are available in the paper appendix.
             </p>
+            <p>
+                We evaluate eight frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
+                and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard). Performance is measured by success rate, with 64 samples 
+                per task-model pair to ensure statistical reliability.
+            </p>
+        </section>
 
-            <div class="highlight-box" style="margin-top: 2rem;">
-                <p><strong>Key Observations from the Leaderboard:</strong></p>
-                <p><strong>• Grok-4 (grok4-0709)</strong> demonstrates exceptional performance across all three task categories, 
-                particularly excelling in Lift tasks (21.9% success rate) and Support tasks (20.8% success rate).</p>
-                <p><strong>• Claude-4 (claude-sonnet-4-20250514)</strong> shows the highest performance on Transport tasks (12.5%) 
-                but faces challenges with hierarchical assembly in Support tasks.</p>
-                <p><strong>• Seed-1.6 (doubao-seed-1-6-250615)</strong> achieves the second-highest performance on Support tasks (19.3%), 
-                demonstrating strong capabilities in large-scale structural construction.</p>
-                <p><strong>• Precision and Compositionality</strong> remain major challenges: all models show low absolute success rates, 
-                with most models achieving near-zero performance on Lift tasks, highlighting the difficulty of high-precision spatial alignment.</p>
+        <!-- Results Section -->
+        <section id="results">
+            <h2>Key Findings</h2>
+            
+            <div class="findings-list">
+                <div class="finding-item">
+                    <p><strong>1. LLMs Can Perform Language-Driven 3D Construction</strong></p>
+                    <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
+                    that language models can translate natural language into physically viable 3D structures.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>2. Performance Varies Significantly Across Models</strong></p>
+                    <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
+                    <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
+                    but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>3. LLMs Exhibit Creative Problem-Solving</strong></p>
+                    <p>When explicit constraints are relaxed, LLMs propose unconventional solutions such as propulsion-powered carriers 
+                    for transport tasks and wheel-integrated bridge structures that utilize automatic braking for stabilization.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>4. Real-World Engineering Knowledge Is Captured</strong></p>
+                    <p>LLMs construct structures mirroring real-world practices, such as steel trusses in bridges and differential 
+                    steering in vehicles, suggesting that structural concepts learned from text carry implicit spatial information.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>5. Significant Limitations Remain</strong></p>
+                    <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
+                    Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
+                    construction and precise spatial alignment.</p>
+                </div>
+
+                <div class="finding-item">
+                    <p><strong>6. More Tokens ≠ Better Performance</strong></p>
+                    <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
+                    consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
+                    threshold, additional inference cost does not translate into better results.</p>
+                </div>
             </div>
+
         </section>
 
         <!-- Contributions Section -->
@@ -1489,6 +1637,12 @@
         function toggleTask(element) {
             const taskCard = element.closest('.task-card');
             taskCard.classList.toggle('collapsed');
+        }
+
+        // Toggle workflow card collapse/expand
+        function toggleWorkflow(element) {
+            const workflowCard = element.closest('.workflow-card');
+            workflowCard.classList.toggle('collapsed');
         }
     </script>
 </body>
