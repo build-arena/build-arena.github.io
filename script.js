@@ -181,30 +181,32 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlide(0);
 });
 
-// Pause carousel on hover (optional enhancement)
+// Pause carousel on hover - stop auto-sliding but keep videos playing in loop
 const carouselContainer = document.querySelector('.carousel-container');
 if (carouselContainer) {
     carouselContainer.addEventListener('mouseenter', () => {
+        // Stop auto-slide interval
         if (autoSlideInterval) {
             clearInterval(autoSlideInterval);
         }
-        // Also pause videos if they're playing
+        // Enable loop on current video so it keeps playing
         if (currentSlide === 0 && rocketLaunchVideo) {
-            rocketLaunchVideo.pause();
+            rocketLaunchVideo.loop = true;
         }
         if (currentSlide === 2 && headerRocketVideo) {
-            headerRocketVideo.pause();
+            headerRocketVideo.loop = true;
         }
     });
     
     carouselContainer.addEventListener('mouseleave', () => {
-        // Resume videos if on video slides
-        if (currentSlide === 0 && rocketLaunchVideo) {
-            rocketLaunchVideo.play();
+        // Disable loop on videos so they advance to next slide after ending
+        if (rocketLaunchVideo) {
+            rocketLaunchVideo.loop = false;
         }
-        if (currentSlide === 2 && headerRocketVideo) {
-            headerRocketVideo.play();
+        if (headerRocketVideo) {
+            headerRocketVideo.loop = false;
         }
+        // Resume auto-slide
         resetAutoSlide();
     });
 }
