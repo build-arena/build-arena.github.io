@@ -720,37 +720,72 @@
             line-height: 1.6;
         }
 
-        /* Key Findings */
+        /* Key Findings - Elegant Style */
         .findings-list {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 2px 12px var(--shadow-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .findings-list h3 {
-            color: var(--main-color);
-            margin-top: 0;
-            font-weight: 600;
+            max-width: 900px;
+            margin: 2rem auto;
         }
 
         .finding-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            align-items: flex-start;
         }
 
         .finding-item:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        .finding-item strong {
+        .finding-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--main-color);
-            font-size: 1.05rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.05));
+            border-radius: 50%;
+            position: relative;
         }
 
-        .finding-item p {
+        .finding-number::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .finding-content {
+            flex: 1;
+        }
+
+        .finding-content h4 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .finding-content p {
+            margin: 0;
             color: var(--text-medium);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .finding-content strong {
+            color: var(--main-color);
+            font-weight: 600;
         }
 
         /* Badge */
@@ -1018,7 +1053,7 @@
             <!-- Title Block Overlay on Image -->
             <div class="title-block">
                 <h1>Build Arena</h1>
-                <p class="subtitle">Physics-Aligned Interactive Agentic Engineering Construction Benchmark</p>
+                <p class="subtitle">Towards Physics-Aligned Interactive Agentic Engineering Construction</p>
             </div>
         </div>
 
@@ -1056,7 +1091,7 @@
                     <div class="links">
                         <a href="https://github.com/build-arena/build-arena.github.io" target="_blank">📄 Paper</a>
                         <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank">💻 Code</a>
-                        <a href="#leaderboard">🏆 Leaderboard</a>
+                        <a href="#benchmark">📈 Bench</a>
                         <a href="https://store.steampowered.com/app/346010/" target="_blank">🎮 Besiege</a>
                     </div>
                 </div>
@@ -1195,9 +1230,9 @@
                 <strong>Build</strong>, <strong>Refine</strong>, <strong>Query</strong>, and <strong>Control</strong>.
             </p>
 
-            <h3>2. LLM Agentic Workflow</h3>
+            <h3>2. Agentic Workflow (Baseline & Customizable)</h3>
             <p>
-                Inspired by human engineering practices, our workflow follows a coarse-to-fine structure with multi-party collaboration. 
+                Inspired by human engineering practices, we design a baseline workflow that follows a coarse-to-fine structure with multi-party collaboration. 
                 It employs five specialized entities working together:
             </p>
             
@@ -1274,11 +1309,20 @@
             </div>
 
             <p style="margin-top: 1.5rem;">
-                The workflow progresses through three stages: <strong>Plan Phase</strong> → <strong>Draft-Review Loop</strong> → 
-                <strong>Build-Guidance Loop</strong>, producing a simulation-compatible construction result.
+                The baseline workflow progresses through three stages: <strong>Plan Phase</strong> → <strong>Draft-Review Loop</strong> → 
+                <strong>Build-Guidance Loop</strong>, producing a simulation-compatible construction result. 
+                Our framework supports <strong>flexible workflow customization</strong>: you can define your own agent 
+                collaboration patterns, modify the multi-stage structure, or integrate alternative reasoning strategies to suit specific task requirements.
             </p>
 
-            <h3>3. Three Base Engineering Tasks with Customizable Task Support</h3>
+            <h3>3. Simulation-Based Evaluation</h3>
+            <p>
+                Construction results are evaluated in the Besiege physics simulator with task-specific protocols. For each task-LLM pair, 
+                we sample 64 times to ensure reliability. Evaluation metrics cover both <strong>performance</strong> (number of parts, 
+                success rate, task-specific indicators) and <strong>cost</strong> (input/output tokens, number of requests).
+            </p>
+
+            <h3>4. Three Base Engineering Tasks with Customizable Task Support</h3>
             <p>
                 Build Arena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
                 Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
@@ -1364,12 +1408,6 @@
                 </div>
             </div>
 
-            <h3>4. Simulation-Based Evaluation</h3>
-            <p>
-                Construction results are evaluated in the Besiege physics simulator with task-specific protocols. For each task-LLM pair, 
-                we sample 64 times to ensure reliability. Evaluation metrics cover both <strong>performance</strong> (number of parts, 
-                success rate, task-specific indicators) and <strong>cost</strong> (input/output tokens, number of requests).
-            </p>
         </section>
 
         <!-- Performance Leaderboard Section -->
@@ -1449,12 +1487,12 @@
             </div>
 
             <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-light); font-style: italic;">
-                Success rates are averaged across all three difficulty levels (Lv.1, Lv.2, Lv.3) for each task category. 
+                Success rates are averaged across all three difficulty levels (Lv.1, Lv.2, Lv.3) for each task category under our baseline agentic workflow. 
                 Full model snapshots and detailed experimental setup are available in the paper appendix.
             </p>
             <p>
                 We evaluate eight frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
-                and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard). Performance is measured by success rate, with 64 samples 
+                and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard) under our baseline agentic workflow. Performance is measured by success rate, with 64 samples 
                 per task-model pair to ensure statistical reliability.
             </p>
         </section>
@@ -1465,93 +1503,74 @@
             
             <div class="findings-list">
                 <div class="finding-item">
-                    <p><strong>1. LLMs Can Perform Language-Driven 3D Construction</strong></p>
-                    <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
-                    that language models can translate natural language into physically viable 3D structures.</p>
+                    <div class="finding-number">1</div>
+                    <div class="finding-content">
+                        <h4>LLMs Can Perform Language-Driven 3D Construction</h4>
+                        <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
+                        that language models can translate natural language into physically viable 3D structures.</p>
+                    </div>
                 </div>
 
                 <div class="finding-item">
-                    <p><strong>2. Performance Varies Significantly Across Models</strong></p>
-                    <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
-                    <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
-                    but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
+                    <div class="finding-number">2</div>
+                    <div class="finding-content">
+                        <h4>Performance Varies Significantly Across Models</h4>
+                        <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
+                        <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
+                        but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
+                    </div>
                 </div>
 
                 <div class="finding-item">
-                    <p><strong>3. LLMs Exhibit Creative Problem-Solving</strong></p>
-                    <p>When explicit constraints are relaxed, LLMs propose unconventional solutions such as propulsion-powered carriers 
-                    for transport tasks and wheel-integrated bridge structures that utilize automatic braking for stabilization.</p>
+                    <div class="finding-number">3</div>
+                    <div class="finding-content">
+                        <h4>LLMs Exhibit Creative Problem-Solving</h4>
+                        <p>When explicit constraints are relaxed, LLMs propose unconventional solutions such as propulsion-powered carriers 
+                        for transport tasks and wheel-integrated bridge structures that utilize automatic braking for stabilization.</p>
+                    </div>
                 </div>
 
                 <div class="finding-item">
-                    <p><strong>4. Real-World Engineering Knowledge Is Captured</strong></p>
-                    <p>LLMs construct structures mirroring real-world practices, such as steel trusses in bridges and differential 
-                    steering in vehicles, suggesting that structural concepts learned from text carry implicit spatial information.</p>
+                    <div class="finding-number">4</div>
+                    <div class="finding-content">
+                        <h4>Real-World Engineering Knowledge Is Captured</h4>
+                        <p>LLMs construct structures mirroring real-world practices, such as steel trusses in bridges and differential 
+                        steering in vehicles, suggesting that structural concepts learned from text carry implicit spatial information.</p>
+                    </div>
                 </div>
 
                 <div class="finding-item">
-                    <p><strong>5. Significant Limitations Remain</strong></p>
-                    <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
-                    Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
-                    construction and precise spatial alignment.</p>
+                    <div class="finding-number">5</div>
+                    <div class="finding-content">
+                        <h4>Significant Limitations Remain</h4>
+                        <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
+                        Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
+                        construction and precise spatial alignment.</p>
+                    </div>
                 </div>
 
                 <div class="finding-item">
-                    <p><strong>6. More Tokens ≠ Better Performance</strong></p>
-                    <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
-                    consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
-                    threshold, additional inference cost does not translate into better results.</p>
+                    <div class="finding-number">6</div>
+                    <div class="finding-content">
+                        <h4>More Tokens ≠ Better Performance</h4>
+                        <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
+                        consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
+                        threshold, additional inference cost does not translate into better results.</p>
+                    </div>
                 </div>
             </div>
 
-        </section>
-
-        <!-- Contributions Section -->
-        <section id="contributions">
-            <h2>Technical Contributions</h2>
-            
-            <div class="highlight-box">
-                <p><strong>1. Customizable Benchmarking Framework</strong></p>
-                <p>A highly flexible framework supporting in-depth LLM comparison with detailed logging, customizable tasks, workflows, 
-                and simulators.</p>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>2. Extendable Task Design Strategy</strong></p>
-                <p>Three task categories with quantifiable difficulty levels across six engineering dimensions, along with corresponding 
-                evaluation metrics.</p>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>3. 3D Spatial Geometric Computation Library</strong></p>
-                <p>An open-source module that reproduces Besiege's construction logic, enabling language-driven manipulation of 3D 
-                structures with accurate spatial computation and physical constraints.</p>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>4. Baseline LLM Agentic Workflow</strong></p>
-                <p>A collaborative multi-entity workflow (Planner, Drafter, Reviewer, Builder, Guidance) that serves as a baseline for 
-                future workflow development in engineering construction.</p>
-            </div>
         </section>
 
         <!-- Conclusion -->
         <section id="conclusion">
             <h2>Conclusion</h2>
-            <p>
-                Build Arena establishes the first comprehensive benchmark for evaluating LLMs on language-driven and physics-grounded 
-                engineering construction. Through systematic evaluation of eight frontier LLMs, we demonstrate that:
-            </p>
             <ul>
                 <li>LLMs can successfully perform language-driven 3D construction with physics constraints</li>
                 <li>Current models show promising capabilities in handling magnitude and ambiguity but struggle with precision and compositionality</li>
                 <li>There exists significant room for improvement, particularly in hierarchical assembly and high-precision tasks</li>
-                <li>Our framework provides actionable insights for future LLM development in construction automation</li>
             </ul>
-            <p>
-                Build Arena's modular design allows researchers to customize tasks, workflows, and evaluation metrics, making it a 
-                valuable tool for advancing AI capabilities in engineering construction and related domains.
-            </p>
+            <p>Our framework provides actionable insights for future LLM development in construction automation.</p>
         </section>
 
         <!-- Acknowledgments -->
