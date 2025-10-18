@@ -84,11 +84,12 @@ let currentSlide = 0;
 let autoSlideInterval;
 const slides = document.querySelectorAll('.carousel-image');
 const indicators = document.querySelectorAll('.indicator');
-const rocketLaunchVideo = document.getElementById('rocket-launch-video');
 const headerRocketVideo = document.getElementById('header-rocket-video');
+const headerVehicleVideo = document.getElementById('header-vehicle-video');
+const headerBridgeVideo = document.getElementById('header-bridge-video');
 
 // Slide durations: video plays through once (no timer), static images stay for 3 seconds
-const slideDurations = [null, 3000, null, 3000]; // milliseconds (null for videos - use 'ended' event instead)
+const slideDurations = [null, 3000, null, 3000, null]; // milliseconds (null for videos - use 'ended' event instead)
 
 function showSlide(index) {
     // Update indicators immediately
@@ -107,16 +108,22 @@ function showSlide(index) {
     
     currentSlide = index;
     
-    // If switching to rocket launch video (index 0), restart it
-    if (index === 0 && rocketLaunchVideo) {
-        rocketLaunchVideo.currentTime = 0;
-        rocketLaunchVideo.play();
-    }
-    
-    // If switching to header rocket video (index 2), restart it
-    if (index === 2 && headerRocketVideo) {
+    // If switching to header rocket video (index 0), restart it
+    if (index === 0 && headerRocketVideo) {
         headerRocketVideo.currentTime = 0;
         headerRocketVideo.play();
+    }
+    
+    // If switching to header vehicle video (index 2), restart it
+    if (index === 2 && headerVehicleVideo) {
+        headerVehicleVideo.currentTime = 0;
+        headerVehicleVideo.play();
+    }
+    
+    // If switching to header bridge video (index 4), restart it
+    if (index === 4 && headerBridgeVideo) {
+        headerBridgeVideo.currentTime = 0;
+        headerBridgeVideo.play();
     }
     
     // Reset auto-slide timer with appropriate duration
@@ -159,17 +166,25 @@ function resetAutoSlide() {
 }
 
 // Video ended event listeners - auto advance to next slide
-if (rocketLaunchVideo) {
-    rocketLaunchVideo.addEventListener('ended', function() {
+if (headerRocketVideo) {
+    headerRocketVideo.addEventListener('ended', function() {
         if (currentSlide === 0) {
             nextSlide();
         }
     });
 }
 
-if (headerRocketVideo) {
-    headerRocketVideo.addEventListener('ended', function() {
+if (headerVehicleVideo) {
+    headerVehicleVideo.addEventListener('ended', function() {
         if (currentSlide === 2) {
+            nextSlide();
+        }
+    });
+}
+
+if (headerBridgeVideo) {
+    headerBridgeVideo.addEventListener('ended', function() {
+        if (currentSlide === 4) {
             nextSlide();
         }
     });
@@ -190,21 +205,27 @@ if (carouselContainer) {
             clearInterval(autoSlideInterval);
         }
         // Enable loop on current video so it keeps playing
-        if (currentSlide === 0 && rocketLaunchVideo) {
-            rocketLaunchVideo.loop = true;
-        }
-        if (currentSlide === 2 && headerRocketVideo) {
+        if (currentSlide === 0 && headerRocketVideo) {
             headerRocketVideo.loop = true;
+        }
+        if (currentSlide === 2 && headerVehicleVideo) {
+            headerVehicleVideo.loop = true;
+        }
+        if (currentSlide === 4 && headerBridgeVideo) {
+            headerBridgeVideo.loop = true;
         }
     });
     
     carouselContainer.addEventListener('mouseleave', () => {
         // Disable loop on videos so they advance to next slide after ending
-        if (rocketLaunchVideo) {
-            rocketLaunchVideo.loop = false;
-        }
         if (headerRocketVideo) {
             headerRocketVideo.loop = false;
+        }
+        if (headerVehicleVideo) {
+            headerVehicleVideo.loop = false;
+        }
+        if (headerBridgeVideo) {
+            headerBridgeVideo.loop = false;
         }
         // Resume auto-slide
         resetAutoSlide();
