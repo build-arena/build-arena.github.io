@@ -442,8 +442,8 @@
         /* Task Cards */
         .task-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
@@ -468,6 +468,42 @@
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
             font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            user-select: none;
+        }
+
+        .task-card h3:hover {
+            color: var(--main-light);
+        }
+
+        .task-toggle {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 0 6px 10px;
+            border-color: transparent transparent transparent var(--main-color);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .task-card.collapsed .task-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .task-content {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .task-card.collapsed .task-content {
+            max-height: 0;
+            opacity: 0;
         }
 
         .task-card p {
@@ -485,6 +521,21 @@
             font-size: 0.85rem;
             margin-top: 0.5rem;
             font-weight: 500;
+        }
+
+        .task-footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .task-footer .task-label {
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .task-footer p {
+            text-align: center;
+            margin-bottom: 0;
         }
 
         /* Highlight Box */
@@ -798,10 +849,6 @@
             }
 
 
-            .task-grid {
-                grid-template-columns: 1fr;
-            }
-
             .workflow-grid {
                 grid-template-columns: 1fr;
             }
@@ -890,7 +937,7 @@
                     <div class="links">
                         <a href="https://github.com/build-arena/build-arena.github.io" target="_blank">📄 Paper</a>
                         <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank">💻 Code</a>
-                        <a href="#benchmark">📊 Bench</a>
+                        <a href="#leaderboard">🏆 Leaderboard</a>
                         <a href="https://store.steampowered.com/app/346010/" target="_blank">🎮 Besiege</a>
                     </div>
                 </div>
@@ -1010,56 +1057,11 @@
             </p>
         </section>
 
-        <!-- Tasks Section -->
-        <section id="tasks">
-            <h2>Three Engineering Tasks</h2>
-            <p>
-                Build Arena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
-                Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
-                <strong>Magnitude</strong>, <strong>Compositionality</strong>, <strong>Precision</strong>, and <strong>Ambiguity</strong>.
-            </p>
-            
-            <div class="task-grid">
-                <div class="task-card">
-                    <h3>🚗 Transport</h3>
-                    <p>
-                        Construct mechanical structures capable of directional movement on a planar surface. Tests the ability to exploit 
-                        spatial movement afforded by building components. As difficulty increases, explicit instructions are removed and 
-                        cargo loads are added.
-                    </p>
-                    <span class="task-label">Dynamic Horizontal Movement</span>
-                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Maximum transport distance</p>
-                </div>
-                
-                <div class="task-card">
-                    <h3>🌉 Support</h3>
-                    <p>
-                        Build static structures to support loads across gaps—essentially designing bridges. The span multiplies across 
-                        difficulty levels, requiring larger-scale structures and more precise assembly. Modular construction with multiple 
-                        substructures is required at higher levels.
-                    </p>
-                    <span class="task-label">Static Structural Stability</span>
-                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Maximum load weight</p>
-                </div>
-                
-                <div class="task-card">
-                    <h3>🚀 Lift</h3>
-                    <p>
-                        Construct rockets capable of vertical movement. Lv.1 requires building a single rocket engine (TWR > 1). 
-                        Lv.2 requires an integrated rocket-powered aircraft. Lv.3 demands modular construction of separate substructures 
-                        (engine + frame) and their assembly.
-                    </p>
-                    <span class="task-label">Dynamic Vertical Movement</span>
-                    <p style="margin-top: 1rem; font-size: 0.85rem;"><strong>Metric:</strong> Thrust-to-weight ratio / Maximum height</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Benchmark Framework -->
         <section id="benchmark">
             <h2>Benchmark Framework</h2>
             <p>
-                Build Arena establishes a comprehensive evaluation framework with three core components:
+                Build Arena establishes a comprehensive evaluation framework with four core components:
             </p>
 
             <h3>1. Language-Driven and Physics-Grounded Construction</h3>
@@ -1108,7 +1110,93 @@
                 <strong>Build-Guidance Loop</strong>, producing a simulation-compatible construction result.
             </p>
 
-            <h3>3. Simulation-Based Evaluation</h3>
+            <h3>3. Three Base Engineering Tasks with Customizable Task Support</h3>
+            <p>
+                Build Arena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
+                Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
+                <strong>Magnitude</strong>, <strong>Compositionality</strong>, <strong>Precision</strong>, and <strong>Ambiguity</strong>.
+            </p>
+            
+            <div class="task-grid">
+                <div class="task-card collapsed">
+                    <h3 onclick="toggleTask(this)">
+                        <span class="task-toggle"></span>
+                        🚗 Transport
+                    </h3>
+                    <div class="task-content">
+                        <p>
+                            Construct mechanical structures capable of directional movement on a planar surface. Tests the ability to exploit 
+                            spatial movement afforded by building components. As difficulty increases, explicit instructions are removed and 
+                            cargo loads are added.
+                        </p>
+                    </div>
+                    <div class="task-footer">
+                        <span class="task-label">Dynamic Horizontal Movement</span>
+                        <p style="font-size: 0.85rem;"><strong>Metric:</strong> Maximum transport distance</p>
+                    </div>
+                </div>
+                
+                <div class="task-card collapsed">
+                    <h3 onclick="toggleTask(this)">
+                        <span class="task-toggle"></span>
+                        🌉 Support
+                    </h3>
+                    <div class="task-content">
+                        <p>
+                            Build static structures to support loads across gaps—essentially designing bridges. The span multiplies across 
+                            difficulty levels, requiring larger-scale structures and more precise assembly. Modular construction with multiple 
+                            substructures is required at higher levels.
+                        </p>
+                    </div>
+                    <div class="task-footer">
+                        <span class="task-label">Static Structural Stability</span>
+                        <p style="font-size: 0.85rem;"><strong>Metric:</strong> Maximum load weight</p>
+                    </div>
+                </div>
+                
+                <div class="task-card collapsed">
+                    <h3 onclick="toggleTask(this)">
+                        <span class="task-toggle"></span>
+                        🚀 Lift
+                    </h3>
+                    <div class="task-content">
+                        <p>
+                            Construct rockets capable of vertical movement. Lv.1 requires building a single rocket engine (TWR > 1). 
+                            Lv.2 requires an integrated rocket-powered aircraft. Lv.3 demands modular construction of separate substructures 
+                            (engine + frame) and their assembly.
+                        </p>
+                    </div>
+                    <div class="task-footer">
+                        <span class="task-label">Dynamic Vertical Movement</span>
+                        <p style="font-size: 0.85rem;"><strong>Metric:</strong> Thrust-to-weight ratio / Maximum height</p>
+                    </div>
+                </div>
+
+                <div class="task-card collapsed">
+                    <h3 onclick="toggleTask(this)">
+                        <span class="task-toggle"></span>
+                        ⚙️ Yours
+                    </h3>
+                    <div class="task-content">
+                        <p>
+                            Build Arena provides a flexible framework that allows you to define your own engineering construction tasks. 
+                            You can customize task descriptions, evaluation metrics, and physical constraints to suit 
+                            your specific research needs or application scenarios.
+                        </p>
+                        <p>
+                            <strong>To create your custom task:</strong> Refer to the three base tasks above as templates. Define your task's 
+                            objectives, specify the required components and constraints, and establish appropriate evaluation 
+                            metrics. The framework's modular design ensures seamless integration of new tasks.
+                        </p>
+                    </div>
+                    <div class="task-footer">
+                        <span class="task-label" style="background: var(--main-color);">User-Defined Tasks</span>
+                        <p style="font-size: 0.85rem;"><strong>Metric:</strong> Custom evaluation criteria</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Simulation-Based Evaluation</h3>
             <p>
                 Construction results are evaluated in the Besiege physics simulator with task-specific protocols. For each task-LLM pair, 
                 we sample 64 times to ensure reliability. Evaluation metrics cover both <strong>performance</strong> (number of parts, 
@@ -1161,52 +1249,83 @@
                 </div>
             </div>
 
-            <h3 style="margin-top: 2.5rem;">Performance Comparison</h3>
-            <div class="table-container">
+        </section>
+
+        <!-- Performance Leaderboard Section -->
+        <section id="leaderboard">
+            <h2>Performance Leaderboard</h2>
+            <p>
+                We evaluate eight frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
+                and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard). Performance is measured by success rate, with 64 samples 
+                per task-model pair to ensure statistical reliability.
+            </p>
+            
+            <div class="table-container" style="max-width: 900px;">
                 <table>
                     <thead>
                         <tr>
-                            <th>Model</th>
-                            <th>Transport<br>Success Rate</th>
-                            <th>Support<br>Success Rate</th>
-                            <th>Lift<br>Success Rate</th>
-                            <th>Overall<br>Strength</th>
+                            <th style="min-width: 200px;">Model (Full Name)</th>
+                            <th>Transport<br>Avg Success Rate</th>
+                            <th>Support<br>Avg Success Rate</th>
+                            <th>Lift<br>Avg Success Rate</th>
+                            <th>Overall<br>Performance</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Grok-4</strong></td>
-                            <td>11.5%</td>
-                            <td>20.8%</td>
-                            <td>21.9%</td>
-                            <td><span class="badge badge-excellent">Excellent</span></td>
+                        <tr class="highlight-row">
+                            <td><strong>Grok-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">grok4-0709</span></td>
+                            <td><strong>11.5%</strong></td>
+                            <td><strong>20.8%</strong></td>
+                            <td><strong>21.9%</strong></td>
+                            <td><span class="badge badge-excellent">🥇 Excellent</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Claude-4</strong></td>
+                            <td><strong>Claude-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">claude-sonnet-4-20250514</span></td>
                             <td>12.5%</td>
                             <td>3.1%</td>
                             <td>4.2%</td>
-                            <td><span class="badge badge-good">Good</span></td>
+                            <td><span class="badge badge-good">🥈 Good</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Seed-1.6</strong></td>
+                            <td><strong>Seed-1.6</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">doubao-seed-1-6-250615</span></td>
                             <td>6.2%</td>
                             <td>19.3%</td>
                             <td>2.1%</td>
-                            <td><span class="badge badge-good">Good</span></td>
+                            <td><span class="badge badge-good">🥉 Good</span></td>
                         </tr>
                         <tr>
-                            <td><strong>GPT-4o</strong></td>
+                            <td><strong>GPT-4o</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">gpt-4o</span></td>
                             <td>6.2%</td>
                             <td>13.5%</td>
                             <td>3.6%</td>
                             <td><span class="badge badge-moderate">Moderate</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Kimi-K2</strong></td>
+                            <td><strong>Kimi-K2</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">kimi-k2-turbo-preview</span></td>
                             <td>4.7%</td>
                             <td>11.5%</td>
                             <td>5.2%</td>
+                            <td><span class="badge badge-moderate">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Qwen-3</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">qwen-plus (Qwen3 series)</span></td>
+                            <td>5.7%</td>
+                            <td>5.7%</td>
+                            <td>1.0%</td>
+                            <td><span class="badge badge-moderate">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>DeepSeek-3.1</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">deepseek-chat (DeepSeek-V3.1)</span></td>
+                            <td>2.6%</td>
+                            <td>8.3%</td>
+                            <td>3.6%</td>
+                            <td><span class="badge badge-moderate">Moderate</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini-2.0</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">gemini-2.0-flash</span></td>
+                            <td>1.6%</td>
+                            <td>7.8%</td>
+                            <td>0.0%</td>
                             <td><span class="badge badge-moderate">Moderate</span></td>
                         </tr>
                     </tbody>
@@ -1214,8 +1333,21 @@
             </div>
 
             <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-light); font-style: italic;">
-                Success rates averaged across all difficulty levels (Lv.1, Lv.2, Lv.3) for each task category.
+                Success rates are averaged across all three difficulty levels (Lv.1, Lv.2, Lv.3) for each task category. 
+                Full model snapshots and detailed experimental setup are available in the paper appendix.
             </p>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <p><strong>Key Observations from the Leaderboard:</strong></p>
+                <p><strong>• Grok-4 (grok4-0709)</strong> demonstrates exceptional performance across all three task categories, 
+                particularly excelling in Lift tasks (21.9% success rate) and Support tasks (20.8% success rate).</p>
+                <p><strong>• Claude-4 (claude-sonnet-4-20250514)</strong> shows the highest performance on Transport tasks (12.5%) 
+                but faces challenges with hierarchical assembly in Support tasks.</p>
+                <p><strong>• Seed-1.6 (doubao-seed-1-6-250615)</strong> achieves the second-highest performance on Support tasks (19.3%), 
+                demonstrating strong capabilities in large-scale structural construction.</p>
+                <p><strong>• Precision and Compositionality</strong> remain major challenges: all models show low absolute success rates, 
+                with most models achieving near-zero performance on Lift tasks, highlighting the difficulty of high-precision spatial alignment.</p>
+            </div>
         </section>
 
         <!-- Contributions Section -->
@@ -1352,6 +1484,12 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Toggle task card collapse/expand
+        function toggleTask(element) {
+            const taskCard = element.closest('.task-card');
+            taskCard.classList.toggle('collapsed');
+        }
     </script>
 </body>
 </html>
