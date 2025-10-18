@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Resource Priority: Load critical resources first -->
-    <!-- Highest Priority: Main video -->
-    <link rel="preload" href="rocket_launch.mp4" as="video" type="video/mp4">
+    <!-- Highest Priority: Main carousel video -->
+    <link rel="preload" href="header_rocket.mp4" as="video" type="video/mp4">
     
-    <!-- High Priority: Header images and carousel video -->
+    <!-- High Priority: Header images and carousel videos -->
     <link rel="preload" href="benchmark_framework.png" as="image">
     <link rel="preload" href="header_image.png" as="image">
     <link rel="preload" href="header_arena.png" as="image">
-    <link rel="preload" href="header_rocket.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="header_vehicle.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="header_bridge.mp4" as="video" type="video/mp4">
     
     <!-- Medium Priority: Logos -->
     <link rel="preload" href="westlake_logo.png" as="image">
@@ -30,14 +31,17 @@
         <div style="position: relative; width: 100%;">
             <!-- Carousel Container -->
             <div class="carousel-container">
-                <video autoplay muted playsinline preload="auto" class="header-image carousel-image active" id="rocket-launch-video">
-                    <source src="rocket_launch.mp4" type="video/mp4">
-                </video>
-                <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
-                <video muted playsinline preload="auto" class="header-image carousel-image" id="header-rocket-video">
+                <video autoplay muted playsinline preload="auto" class="header-image carousel-image active" id="header-rocket-video">
                     <source src="header_rocket.mp4" type="video/mp4">
                 </video>
+                <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
+                <video muted playsinline preload="metadata" class="header-image carousel-image" id="header-vehicle-video">
+                    <source src="header_vehicle.mp4" type="video/mp4">
+                </video>
                 <img src="header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
+                <video muted playsinline preload="metadata" class="header-image carousel-image" id="header-bridge-video">
+                    <source src="header_bridge.mp4" type="video/mp4">
+                </video>
             </div>
             
             <!-- Carousel Navigation -->
@@ -50,6 +54,7 @@
                 <span class="indicator" onclick="goToSlide(1)"></span>
                 <span class="indicator" onclick="goToSlide(2)"></span>
                 <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
             </div>
             
             <!-- Title Block Overlay on Image -->
