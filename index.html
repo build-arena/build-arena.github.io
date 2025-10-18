@@ -17,6 +17,7 @@
     <link rel="preload" href="header_arena.png" as="image">
     <link rel="preload" href="header_vehicle.mp4" as="video" type="video/mp4">
     <link rel="preload" href="header_bridge.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="radar_plot.jpg" as="video" type="video/mp4">
     
     <!-- Medium Priority: Logos -->
     <link rel="preload" href="westlake_logo.png" as="image">
@@ -642,6 +643,49 @@
                 and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard) under our baseline agentic workflow. Performance is measured by success rate, with 64 samples 
                 per task-model pair to ensure statistical reliability.
             </p>
+
+            <!-- Radar Plot Analysis -->
+            <div class="radar-analysis-container">
+                <h3 style="text-align: center; margin-bottom: 1rem; color: var(--main-color); font-size: 1.3rem;">
+                    Multi-Dimensional Performance Analysis
+                </h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-light); font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Performance of different LLMs against six dimensions of task difficulty: 
+                    <strong>Quantification (Q)</strong>, <strong>Robustness (R)</strong>, <strong>Magnitude (M)</strong>, 
+                    <strong>Compositionality (C)</strong>, <strong>Precision (P)</strong>, <strong>Ambiguity (A)</strong>
+                </p>
+                
+                <div class="radar-image-wrapper">
+                    <img src="radar_plot.jpg" alt="LLM Performance Radar Chart across Six Task Difficulty Dimensions" class="radar-plot">
+                </div>
+                
+                <div class="dimension-legend">
+                    <div class="legend-item">
+                        <span class="legend-label">Q</span>
+                        <span class="legend-desc">Quantification</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">R</span>
+                        <span class="legend-desc">Robustness</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">M</span>
+                        <span class="legend-desc">Magnitude</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">C</span>
+                        <span class="legend-desc">Compositionality</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">P</span>
+                        <span class="legend-desc">Precision</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-label">A</span>
+                        <span class="legend-desc">Ambiguity</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Results Section -->
