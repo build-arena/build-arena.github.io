@@ -6,6 +6,21 @@
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: Towards Physics-Aligned Interactive Agentic Engineering Construction Automation</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Resource Priority: Load critical resources first -->
+    <!-- Highest Priority: Main video -->
+    <link rel="preload" href="rocket_launch.mp4" as="video" type="video/mp4">
+    
+    <!-- High Priority: Header images and carousel video -->
+    <link rel="preload" href="header_image.png" as="image">
+    <link rel="preload" href="header_arena.png" as="image">
+    <link rel="preload" href="header_rocket.mp4" as="video" type="video/mp4">
+    
+    <!-- Medium Priority: Logos -->
+    <link rel="preload" href="westlake_logo.png" as="image">
+    <link rel="preload" href="lab_logo.png" as="image">
+    
+    <!-- Low Priority: GIFs will be lazy loaded via Intersection Observer -->
 </head>
 <body>
     <!-- Header Container with Dual Overlay -->
@@ -14,11 +29,11 @@
         <div style="position: relative; width: 100%;">
             <!-- Carousel Container -->
             <div class="carousel-container">
-                <video autoplay muted playsinline class="header-image carousel-image active" id="rocket-launch-video">
+                <video autoplay muted playsinline preload="auto" class="header-image carousel-image active" id="rocket-launch-video">
                     <source src="rocket_launch.mp4" type="video/mp4">
                 </video>
                 <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
-                <video muted playsinline class="header-image carousel-image" id="header-rocket-video">
+                <video muted playsinline preload="auto" class="header-image carousel-image" id="header-rocket-video">
                     <source src="header_rocket.mp4" type="video/mp4">
                 </video>
                 <img src="header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
@@ -92,155 +107,6 @@
         <!-- Abstract -->
         <div class="abstract-box">
 
-            <!-- Agentic Engineering Construction Automation Arena -->
-            <div class="arena-section">
-                <h2 class="arena-title">Agentic Engineering Construction Automation Arena</h2>
-                
-                <!-- Grok -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/grok.svg" alt="Grok">
-                        <span class="model-name">Grok</span>
-                    </div>
-                    <img src="assets/construction_grid/grok/0.gif" alt="Grok Construction 0">
-                    <img src="assets/construction_grid/grok/1.gif" alt="Grok Construction 1">
-                    <img src="assets/construction_grid/grok/2.gif" alt="Grok Construction 2">
-                    <img src="assets/construction_grid/grok/3.gif" alt="Grok Construction 3">
-                    <img src="assets/construction_grid/grok/4.gif" alt="Grok Construction 4">
-                    <img src="assets/construction_grid/grok/5.gif" alt="Grok Construction 5">
-                    <img src="assets/construction_grid/grok/6.gif" alt="Grok Construction 6">
-                    <img src="assets/construction_grid/grok/7.gif" alt="Grok Construction 7">
-                </div>
-
-                <!-- Claude -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/claude-color.svg" alt="Claude">
-                        <span class="model-name">Claude</span>
-                    </div>
-                    <img src="assets/construction_grid/claude/0.gif" alt="Claude Construction 0">
-                    <img src="assets/construction_grid/claude/1.gif" alt="Claude Construction 1">
-                    <img src="assets/construction_grid/claude/2.gif" alt="Claude Construction 2">
-                    <img src="assets/construction_grid/claude/3.gif" alt="Claude Construction 3">
-                    <img src="assets/construction_grid/claude/4.gif" alt="Claude Construction 4">
-                    <img src="assets/construction_grid/claude/5.gif" alt="Claude Construction 5">
-                    <img src="assets/construction_grid/claude/6.gif" alt="Claude Construction 6">
-                    <img src="assets/construction_grid/claude/7.gif" alt="Claude Construction 7">
-                </div>
-
-                <!-- Doubao (Seed) -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/doubao-color.svg" alt="Doubao">
-                        <span class="model-name">Doubao</span>
-                    </div>
-                    <img src="assets/construction_grid/doubao/0.gif" alt="Doubao Construction 0">
-                    <img src="assets/construction_grid/doubao/1.gif" alt="Doubao Construction 1">
-                    <img src="assets/construction_grid/doubao/2.gif" alt="Doubao Construction 2">
-                    <img src="assets/construction_grid/doubao/3.gif" alt="Doubao Construction 3">
-                    <img src="assets/construction_grid/doubao/4.gif" alt="Doubao Construction 4">
-                    <img src="assets/construction_grid/doubao/5.gif" alt="Doubao Construction 5">
-                    <img src="assets/construction_grid/doubao/6.gif" alt="Doubao Construction 6">
-                    <div class="arena-placeholder"></div>
-                </div>
-
-                <!-- GPT -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/openai.svg" alt="GPT">
-                        <span class="model-name">GPT</span>
-                    </div>
-                    <img src="assets/construction_grid/gpt/0.gif" alt="GPT Construction 0">
-                    <img src="assets/construction_grid/gpt/1.gif" alt="GPT Construction 1">
-                    <img src="assets/construction_grid/gpt/2.gif" alt="GPT Construction 2">
-                    <img src="assets/construction_grid/gpt/3.gif" alt="GPT Construction 3">
-                    <img src="assets/construction_grid/gpt/4.gif" alt="GPT Construction 4">
-                    <img src="assets/construction_grid/gpt/5.gif" alt="GPT Construction 5">
-                    <img src="assets/construction_grid/gpt/6.gif" alt="GPT Construction 6">
-                    <img src="assets/construction_grid/gpt/7.gif" alt="GPT Construction 7">
-                </div>
-
-                <!-- Kimi -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/kimi-color.svg" alt="Kimi">
-                        <span class="model-name">Kimi</span>
-                    </div>
-                    <img src="assets/construction_grid/kimi/0.gif" alt="Kimi Construction 0">
-                    <img src="assets/construction_grid/kimi/1.gif" alt="Kimi Construction 1">
-                    <img src="assets/construction_grid/kimi/2.gif" alt="Kimi Construction 2">
-                    <img src="assets/construction_grid/kimi/3.gif" alt="Kimi Construction 3">
-                    <img src="assets/construction_grid/kimi/4.gif" alt="Kimi Construction 4">
-                    <img src="assets/construction_grid/kimi/5.gif" alt="Kimi Construction 5">
-                    <img src="assets/construction_grid/kimi/6.gif" alt="Kimi Construction 6">
-                    <img src="assets/construction_grid/kimi/7.gif" alt="Kimi Construction 7">
-                </div>
-
-                <!-- Qwen -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/qwen-color.svg" alt="Qwen">
-                        <span class="model-name">Qwen</span>
-                    </div>
-                    <img src="assets/construction_grid/qwen/0.gif" alt="Qwen Construction 0">
-                    <img src="assets/construction_grid/qwen/1.gif" alt="Qwen Construction 1">
-                    <img src="assets/construction_grid/qwen/2.gif" alt="Qwen Construction 2">
-                    <img src="assets/construction_grid/qwen/3.gif" alt="Qwen Construction 3">
-                    <img src="assets/construction_grid/qwen/4.gif" alt="Qwen Construction 4">
-                    <img src="assets/construction_grid/qwen/5.gif" alt="Qwen Construction 5">
-                    <div class="arena-placeholder"></div>
-                    <div class="arena-placeholder"></div>
-                </div>
-
-                <!-- DeepSeek -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/deepseek-color.svg" alt="DeepSeek">
-                        <span class="model-name">DeepSeek</span>
-                    </div>
-                    <img src="assets/construction_grid/deepseek/0.gif" alt="DeepSeek Construction 0">
-                    <img src="assets/construction_grid/deepseek/1.gif" alt="DeepSeek Construction 1">
-                    <img src="assets/construction_grid/deepseek/2.gif" alt="DeepSeek Construction 2">
-                    <img src="assets/construction_grid/deepseek/3.gif" alt="DeepSeek Construction 3">
-                    <img src="assets/construction_grid/deepseek/4.gif" alt="DeepSeek Construction 4">
-                    <img src="assets/construction_grid/deepseek/5.gif" alt="DeepSeek Construction 5">
-                    <img src="assets/construction_grid/deepseek/6.gif" alt="DeepSeek Construction 6">
-                    <img src="assets/construction_grid/deepseek/7.gif" alt="DeepSeek Construction 7">
-                </div>
-
-                <!-- Gemini -->
-                <div class="arena-row">
-                    <div class="arena-model-logo">
-                        <img src="assets/construction_grid/model_logos/gemini-color.svg" alt="Gemini">
-                        <span class="model-name">Gemini</span>
-                    </div>
-                    <img src="assets/construction_grid/gemini/0.gif" alt="Gemini Construction 0">
-                    <img src="assets/construction_grid/gemini/1.gif" alt="Gemini Construction 1">
-                    <img src="assets/construction_grid/gemini/2.gif" alt="Gemini Construction 2">
-                    <img src="assets/construction_grid/gemini/3.gif" alt="Gemini Construction 3">
-                    <img src="assets/construction_grid/gemini/4.gif" alt="Gemini Construction 4">
-                    <img src="assets/construction_grid/gemini/5.gif" alt="Gemini Construction 5">
-                    <img src="assets/construction_grid/gemini/6.gif" alt="Gemini Construction 6">
-                    <img src="assets/construction_grid/gemini/7.gif" alt="Gemini Construction 7">
-                </div>
-            </div>
-
-            <!-- GIF Gallery -->
-            <div class="gif-gallery">
-                <div class="gif-item">
-                    <img src="assets/construction_brige.gif" alt="Bridge Construction">
-                    <h3>Bridge Construction</h3>
-                </div>
-                <div class="gif-item">
-                    <img src="assets/construction_vehicle.gif" alt="Vehicle Construction">
-                    <h3>Vehicle Construction</h3>
-                </div>
-                <div class="gif-item">
-                    <img src="assets/construction_racket.gif" alt="Rocket Construction">
-                    <h3>Rocket Construction</h3>
-                </div>
-            </div>
-
             <p>
                 <strong>Engineering construction automation</strong> aims to transform natural language specifications into physically viable structures, 
                 requiring complex integrated reasoning under strict physical constraints. While modern LLMs possess broad knowledge and 
@@ -252,19 +118,171 @@
                 Question: How can we comprehensively evaluate LLMs for language-driven and physics-grounded construction automation?
             </p>
 
+            <!-- GIF Gallery -->
+            <div class="gif-gallery">
+                <div class="gif-item">
+                    <img data-src="assets/construction_brige.gif" alt="Bridge Construction" class="lazy-gif" loading="lazy">
+                    <h3>Bridge Construction</h3>
+                </div>
+                <div class="gif-item">
+                    <img data-src="assets/construction_vehicle.gif" alt="Vehicle Construction" class="lazy-gif" loading="lazy">
+                    <h3>Vehicle Construction</h3>
+                </div>
+                <div class="gif-item">
+                    <img data-src="assets/construction_racket.gif" alt="Rocket Construction" class="lazy-gif" loading="lazy">
+                    <h3>Rocket Construction</h3>
+                </div>
+            </div>
+
             <p class="answer">
                 Here, we introduce <strong style="color: var(--accent-color);">Build Arena</strong>, the first physics-aligned interactive 
                 benchmark designed for language-driven engineering construction.
             </p>
 
+            <!-- Agentic Engineering Construction Automation Arena -->
+            <div class="arena-section">
+                <h2 class="arena-title">Agentic Engineering Construction Automation Arena</h2>
 
+                <!-- Grok -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/grok.svg" alt="Grok">
+                        <span class="model-name">Grok</span>
+                    </div>
+                    <img data-src="assets/construction_grid/grok/0.gif" alt="Grok Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/1.gif" alt="Grok Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/2.gif" alt="Grok Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/3.gif" alt="Grok Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/4.gif" alt="Grok Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/5.gif" alt="Grok Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/6.gif" alt="Grok Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/grok/7.gif" alt="Grok Construction 7" class="lazy-gif" loading="lazy">
+                </div>
 
+                <!-- Claude -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/claude-color.svg" alt="Claude">
+                        <span class="model-name">Claude</span>
+                    </div>
+                    <img data-src="assets/construction_grid/claude/0.gif" alt="Claude Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/1.gif" alt="Claude Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/2.gif" alt="Claude Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/3.gif" alt="Claude Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/4.gif" alt="Claude Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/5.gif" alt="Claude Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/6.gif" alt="Claude Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/claude/7.gif" alt="Claude Construction 7" class="lazy-gif" loading="lazy">
+                </div>
+
+                <!-- Doubao (Seed) -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/doubao-color.svg" alt="Doubao">
+                        <span class="model-name">Doubao</span>
+                    </div>
+                    <img data-src="assets/construction_grid/doubao/0.gif" alt="Doubao Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/1.gif" alt="Doubao Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/2.gif" alt="Doubao Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/3.gif" alt="Doubao Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/4.gif" alt="Doubao Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/5.gif" alt="Doubao Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/doubao/6.gif" alt="Doubao Construction 6" class="lazy-gif" loading="lazy">
+                    <div class="arena-placeholder"></div>
+                </div>
+
+                <!-- GPT -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/openai.svg" alt="GPT">
+                        <span class="model-name">GPT</span>
+                    </div>
+                    <img data-src="assets/construction_grid/gpt/0.gif" alt="GPT Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/1.gif" alt="GPT Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/2.gif" alt="GPT Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/3.gif" alt="GPT Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/4.gif" alt="GPT Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/5.gif" alt="GPT Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/6.gif" alt="GPT Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gpt/7.gif" alt="GPT Construction 7" class="lazy-gif" loading="lazy">
+                </div>
+
+                <!-- Kimi -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/kimi-color.svg" alt="Kimi">
+                        <span class="model-name">Kimi</span>
+                    </div>
+                    <img data-src="assets/construction_grid/kimi/0.gif" alt="Kimi Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/1.gif" alt="Kimi Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/2.gif" alt="Kimi Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/3.gif" alt="Kimi Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/4.gif" alt="Kimi Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/5.gif" alt="Kimi Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/6.gif" alt="Kimi Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/kimi/7.gif" alt="Kimi Construction 7" class="lazy-gif" loading="lazy">
+                </div>
+
+                <!-- Qwen -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/qwen-color.svg" alt="Qwen">
+                        <span class="model-name">Qwen</span>
+                    </div>
+                    <img data-src="assets/construction_grid/qwen/0.gif" alt="Qwen Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/qwen/1.gif" alt="Qwen Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/qwen/2.gif" alt="Qwen Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/qwen/3.gif" alt="Qwen Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/qwen/4.gif" alt="Qwen Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/qwen/5.gif" alt="Qwen Construction 5" class="lazy-gif" loading="lazy">
+                    <div class="arena-placeholder"></div>
+                    <div class="arena-placeholder"></div>
+                </div>
+
+                <!-- DeepSeek -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/deepseek-color.svg" alt="DeepSeek">
+                        <span class="model-name">DeepSeek</span>
+                    </div>
+                    <img data-src="assets/construction_grid/deepseek/0.gif" alt="DeepSeek Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/1.gif" alt="DeepSeek Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/2.gif" alt="DeepSeek Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/3.gif" alt="DeepSeek Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/4.gif" alt="DeepSeek Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/5.gif" alt="DeepSeek Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/6.gif" alt="DeepSeek Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/deepseek/7.gif" alt="DeepSeek Construction 7" class="lazy-gif" loading="lazy">
+                </div>
+
+                <!-- Gemini -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/gemini-color.svg" alt="Gemini">
+                        <span class="model-name">Gemini</span>
+                    </div>
+                    <img data-src="assets/construction_grid/gemini/0.gif" alt="Gemini Construction 0" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/1.gif" alt="Gemini Construction 1" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/2.gif" alt="Gemini Construction 2" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/3.gif" alt="Gemini Construction 3" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/4.gif" alt="Gemini Construction 4" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/5.gif" alt="Gemini Construction 5" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/6.gif" alt="Gemini Construction 6" class="lazy-gif" loading="lazy">
+                    <img data-src="assets/construction_grid/gemini/7.gif" alt="Gemini Construction 7" class="lazy-gif" loading="lazy">
+                </div>
+            </div>
 
         </div>
 
 
         <!-- Comparison Table -->
         <section id="comparison">
+            <h3 class="comparison-subtitle">What Sets Build Arena Apart?</h3>
+            <p style="margin-top: 1rem;">
+                Build Arena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
+                planning, physical simulation, and interactive environments in a unified framework.
+            </p>
+
             <div class="table-container">
                 <table>
                     <thead>
@@ -329,11 +347,6 @@
                     </tbody>
                 </table>
             </div>
-            <h3 class="comparison-subtitle">What Sets Build Arena Apart?</h3>
-            <p style="margin-top: 1rem;">
-                Build Arena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
-                planning, physical simulation, and interactive environments in a unified framework.
-            </p>
         </section>
 
         <!-- Benchmark Framework -->

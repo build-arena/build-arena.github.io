@@ -18,6 +18,55 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
+// Lazy Loading for GIFs using Intersection Observer
+const lazyGifOptions = {
+    root: null,
+    rootMargin: '200px', // Start loading 200px before entering viewport
+    threshold: 0.01
+};
+
+const lazyGifObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            
+            // Check if image has data-src (not yet loaded)
+            if (img.dataset.src) {
+                // Create a placeholder while loading
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.3s ease-in';
+                
+                // Load the actual GIF
+                img.src = img.dataset.src;
+                
+                // When loaded, fade in and remove data-src
+                img.onload = () => {
+                    img.style.opacity = '1';
+                    img.classList.add('lazy-loaded');
+                    delete img.dataset.src;
+                };
+                
+                // Stop observing this image
+                observer.unobserve(img);
+            }
+        }
+    });
+}, lazyGifOptions);
+
+// Observe all lazy GIFs
+document.addEventListener('DOMContentLoaded', () => {
+    const lazyGifs = document.querySelectorAll('.lazy-gif');
+    lazyGifs.forEach(gif => {
+        // Add initial styling - aspect-ratio in CSS handles dimensions
+        if (gif.dataset.src) {
+            gif.style.backgroundColor = '#f0f0f0'; // Placeholder background
+        }
+        lazyGifObserver.observe(gif);
+    });
+    
+    console.log(`🎯 Lazy loading initialized for ${lazyGifs.length} GIFs`);
+});
+
 // Toggle task card collapse/expand
 function toggleTask(element) {
     const taskCard = element.closest('.task-card');

@@ -561,13 +561,13 @@ video.carousel-image {
 
 .arena-row > img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    display: block;
 }
 
 .arena-row > img:hover {
@@ -1353,5 +1353,44 @@ footer a:hover {
 
 section {
     animation: fadeIn 0.6s ease-out;
+}
+
+/* Lazy Loading GIF Styles */
+.lazy-gif {
+    background-color: #f0f0f0;
+    background-image: linear-gradient(
+        90deg,
+        #f0f0f0 0%,
+        #f8f8f8 50%,
+        #f0f0f0 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    /* Remove min-height to let aspect-ratio control dimensions */
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-gif.lazy-loaded {
+    background: none;
+    animation: none;
+}
+
+/* Shimmer animation for loading placeholder */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Performance: GPU acceleration for lazy loading */
+.lazy-gif {
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
