@@ -5,1055 +5,37 @@
     <meta name="viewport" content="width=768, minimum-scale=0.1, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: A Physics-Aligned Interactive Benchmark</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --main-color: #004990;           /* 主色：深蓝 */
-            --main-dark: #003366;            /* 主色深色变体 */
-            --main-light: #0066cc;           /* 主色浅色变体 */
-            --accent-color: #f18d00;         /* 辅助色：橙色 */
-            --accent-light: #ffa726;         /* 辅助色浅色 */
-            --accent-dark: #e67e00;          /* 辅助色深色 */
-            --text-dark: #1a1a1a;            /* 深色文字 */
-            --text-medium: #4a4a4a;          /* 中等文字 */
-            --text-light: #666666;           /* 浅色文字 */
-            --bg-light: #fafafa;             /* 浅色背景 */
-            --bg-white: #ffffff;             /* 白色背景 */
-            --bg-blue-light: #e6f2ff;        /* 浅蓝背景 */
-            --border-color: #e0e0e0;         /* 边框颜色 */
-            --shadow-color: rgba(0, 73, 144, 0.1);  /* 阴影颜色 */
-            --gradient-start: #003d7a;       /* 渐变起始 */
-            --gradient-end: #004990;         /* 渐变结束 */
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.7;
-            background-color: var(--bg-white);
-            min-width: 768px;
-            overflow-x: hidden;
-        }
-
-        /* Header Container */
-        .header-container {
-            position: relative;
-            width: 100%;
-            height: auto;
-            overflow: visible;
-        }
-
-        .header-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(0, 73, 144, 0.7), rgba(0, 73, 144, 0.7)),
-                url('header_background.png');
-            background-repeat: no-repeat, repeat;
-            background-size: cover, auto;
-            z-index: -1;
-        }
-
-        /* Header Image Section */
-        .header-image {
-            width: 100%;
-            height: auto;
-            max-height: 800px;
-            display: block;
-            object-fit: contain;
-            object-position: center;
-            margin: 0;
-        }
-
-        /* Title Block - Overlay on Image */
-        .title-block {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            color: white;
-            padding: 2rem 0;
-            z-index: 3;
-            margin: 0;
-        }
-
-        .title-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 73, 144, 0.001);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .title-block h1 {
-            font-size: 8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-            text-align: left;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-        .title-block .subtitle {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 400;
-            text-align: left;
-            opacity: 0.95;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-            margin: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
-
-
-        /* Authors Block - Bottom Glassmorphism Overlay (Right to Left Fade) */
-        .authors-block {
-            position: relative;
-            width: 100%;
-            color: white;
-            padding: 1.5rem 0 1rem;
-            z-index: 2;
-            margin: 0;
-        }
-
-        .authors-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100vw;
-            height: 100%;
-            background: rgba(0, 73, 144, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Two Column Layout in Authors Block - 1:1 ratio */
-        .authors-block-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-bottom: 0;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20%;
-            padding-right: 20%;
-        }
-
-        .lab-left {
-            text-align: center;
-            padding: 0 calc(15% + 2rem) 0 15%;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .authors-right {
-            text-align: center;
-            padding: 0 15% 0 calc(15% + 2rem);
-        }
-
-
-
-
-        /* Page Content Wrapper */
-        .page-content {
-            position: relative;
-            z-index: 1;
-            background: white;
-            margin: 0 auto;
-        }
-
-        /* Authors in Authors Block */
-        .authors-block .author-names {
-            font-size: 1.1rem;
-            color: white;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            font-weight: 400;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .authors-block .affiliation-item {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1rem;
-            font-style: italic;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            margin-top: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        .westlake-logo {
-            height: 35px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        /* Affiliation Link Hover Effect */
-        .affiliation-link {
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .affiliation-link:hover .westlake-logo {
-            transform: scale(1.1);
-        }
-
-        .affiliation-link:hover .affiliation-item {
-            color: var(--accent-color);
-        }
-
-        /* Lab Info in Authors Block Right Side */
-        .authors-block .lab-logo {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-            margin-bottom: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .authors-block .lab-name {
-            font-size: 1rem;
-            color: white;
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Lab Link Hover Effect */
-        .lab-link {
-            transition: all 0.3s ease;
-        }
-
-        .lab-link:hover .lab-logo {
-            transform: scale(1.1);
-        }
-
-        .lab-link:hover .lab-name {
-            color: var(--accent-color);
-        }
-
-        .authors-block .contact-info {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            margin: 0.8rem 0;
-        }
-
-        .authors-block .contact-info a {
-            color: var(--accent-light);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .authors-block .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Links Section in Authors Right */
-        .authors-right .links {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .authors-right .links a {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.35);
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .authors-right .links a:hover {
-            background: rgba(241, 141, 0, 0.85);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(241, 141, 0, 0.5);
-        }
-
-        /* Main Content Container */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 1rem 2rem 3rem;
-        }
-
-        /* Abstract Box */
-        .abstract-box {
-            padding: 2rem 0 0.5rem;
-            margin: 2rem 0 0;
-        }
-
-        .abstract-box p {
-            line-height: 1.8;
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .abstract-box .question {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--main-color);
-            margin: 2rem 0;
-            padding-left: 3.5rem;
-            position: relative;
-        }
-
-        .abstract-box .question::before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -0.2rem;
-            font-size: 4rem;
-            color: var(--accent-color);
-            font-family: Georgia, serif;
-            line-height: 1;
-            opacity: 0.6;
-        }
-
-        .abstract-box .answer {
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        /* GIF Gallery in Abstract */
-        .gif-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .gif-item {
-            text-align: center;
-        }
-
-        .gif-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gif-item img:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .gif-item h3 {
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            color: var(--main-color);
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .gif-gallery {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        /* Section Styles */
-        section {
-            margin-bottom: 3.5rem;
-        }
-
-        #comparison {
-            margin-top: 0;
-            padding-top: 0;
-        }
-
-        section h2 {
-            font-size: 2rem;
-            color: var(--main-color);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--accent-color);
-            font-weight: 600;
-        }
-
-        section h3 {
-            font-size: 1.4rem;
-            color: var(--text-dark);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        section p {
-            color: var(--text-medium);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
-        section ul {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        section li {
-            color: var(--text-medium);
-            margin-bottom: 0.5rem;
-            line-height: 1.7;
-        }
-
-        section li strong {
-            color: var(--main-color);
-        }
-
-        /* Task Cards */
-        .task-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .task-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .task-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px var(--shadow-color);
-            border-color: var(--main-color);
-        }
-
-        .task-card h3 {
-            color: var(--main-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            user-select: none;
-        }
-
-        .task-card h3:hover {
-            color: var(--main-light);
-        }
-
-        .task-toggle {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 6px 0 6px 10px;
-            border-color: transparent transparent transparent var(--main-color);
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .task-card.collapsed .task-toggle {
-            transform: rotate(-90deg);
-        }
-
-        .task-content {
-            max-height: 500px;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 1;
-        }
-
-        .task-card.collapsed .task-content {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .task-card p {
-            font-size: 0.95rem;
-            margin-bottom: 0.8rem;
-            text-align: left;
-        }
-
-        .task-label {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            font-weight: 500;
-        }
-
-        .task-footer {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .task-footer .task-label {
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-        }
-
-        .task-footer p {
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(0, 73, 144, 0.05) 0%, rgba(0, 73, 144, 0.08) 100%);
-            border-left: 4px solid var(--main-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px var(--shadow-color);
-        }
-
-        .highlight-box p {
-            margin-bottom: 0.5rem;
-            color: var(--text-medium);
-        }
-
-        .highlight-box strong {
-            color: var(--main-color);
-        }
-
-        /* Table Styles */
-        .table-container {
-            overflow-x: auto;
-            margin: 0 auto;
-            max-width: 750px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-white);
-        }
-
-        table th {
-            background: var(--main-color);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        table td {
-            padding: 0.9rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-            color: var(--text-medium);
-            font-size: 0.9rem;
-        }
-
-        table tr.highlight-row {
-            background: var(--bg-blue-light);
-        }
-
-        table tr.highlight-row td {
-            color: var(--main-color);
-            font-weight: 600;
-        }
-
-        table tr:hover {
-            background: var(--bg-light);
-        }
-
-        table sup {
-            color: var(--main-color);
-            font-weight: 600;
-        }
-
-        /* Workflow Boxes */
-        .workflow-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .workflow-box {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .workflow-box:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 16px rgba(241, 141, 0, 0.15);
-            background: white;
-        }
-
-        .workflow-box h4 {
-            color: var(--main-color);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .workflow-box p {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            text-align: center;
-        }
-
-        /* Expandable Workflow Cards */
-        .workflow-grid-expandable {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .workflow-card {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .workflow-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px var(--shadow-color);
-            border-color: var(--main-color);
-        }
-
-        .workflow-card h4 {
-            color: var(--main-color);
-            margin: 0;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            user-select: none;
-            text-align: center;
-            justify-content: center;
-        }
-
-        .workflow-card h4:hover {
-            color: var(--main-light);
-        }
-
-        .workflow-toggle {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 5px 0 5px 8px;
-            border-color: transparent transparent transparent var(--main-color);
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .workflow-card.collapsed .workflow-toggle {
-            transform: rotate(-90deg);
-        }
-
-        .workflow-content {
-            max-height: 500px;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 1;
-        }
-
-        .workflow-card.collapsed .workflow-content {
-            max-height: 0;
-            opacity: 0;
-        }
-
-        .workflow-card p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-            text-align: left;
-            color: var(--text-medium);
-            line-height: 1.6;
-        }
-
-        /* Key Findings - Elegant Style */
-        .findings-list {
-            max-width: 900px;
-            margin: 2rem auto;
-        }
-
-        .finding-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid #e5e7eb;
-            align-items: flex-start;
-        }
-
-        .finding-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .finding-number {
-            flex-shrink: 0;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--main-color);
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(59, 130, 246, 0.05));
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .finding-number::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-        }
-
-        .finding-content {
-            flex: 1;
-        }
-
-        .finding-content h4 {
-            margin: 0 0 0.75rem 0;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            line-height: 1.4;
-        }
-
-        .finding-content p {
-            margin: 0;
-            color: var(--text-medium);
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        .finding-content strong {
-            color: var(--main-color);
-            font-weight: 600;
-        }
-
-        /* Badge */
-        .badge {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
-        .badge-excellent {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge-good {
-            background: #fff4e6;
-            color: var(--accent-dark);
-        }
-
-        .badge-moderate {
-            background: var(--bg-blue-light);
-            color: var(--main-color);
-        }
-
-        /* References */
-        .references-list {
-            margin-top: 2rem;
-        }
-
-        .reference-item {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            text-align: left;
-            padding-left: 2.5rem;
-            position: relative;
-        }
-
-        .ref-number {
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--main-color);
-            font-weight: 600;
-        }
-
-        .reference-item strong {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .reference-item em {
-            font-style: italic;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--main-color);
-            color: white;
-            text-align: center;
-            padding: 2.5rem 2rem;
-            margin-top: 4rem;
-            border-top: 4px solid var(--accent-color);
-        }
-
-        footer p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--accent-light);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Large Screen Layout - Width >= 2000px */
-        @media (min-width: 2000px) {
-            .title-block h1 {
-                padding-left: 10%;
-                padding-right: 10%;
-            }
-
-            .title-block .subtitle {
-                padding-left: 10%;
-                padding-right: 10%;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .title-block::before,
-            .authors-block::before {
-                display: block;
-            }
-
-            .title-block {
-                padding: 1.5rem 0;
-                position: absolute;
-            }
-
-            .title-block h1 {
-                font-size: 3rem;
-                text-align: left;
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .title-block .subtitle {
-                font-size: 1.3rem;
-                display: block;
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .authors-block {
-                padding: 1.5rem 0 1rem;
-                background: linear-gradient(to top, rgba(0, 73, 144, 0.9) 0%, rgba(0, 73, 144, 0.5) 100%) !important;
-                transform: none !important;
-                z-index: 10;
-                position: static !important;
-                width: 100%;
-                order: 3;
-            }
-
-            .authors-block-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding-left: 20%;
-                padding-right: 20%;
-            }
-
-            .lab-left {
-                padding: 0 15% 1.5rem 15%;
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            }
-
-            .authors-right {
-                padding: 1rem 15% 0 15%;
-            }
-
-            .authors-block .author-names {
-                font-size: 0.95rem;
-            }
-
-            .authors-block .lab-logo {
-                height: 40px;
-            }
-
-            .header-container {
-                height: auto;
-                overflow: visible;
-            }
-
-            .header-image {
-                height: auto;
-                max-height: 400px;
-                width: 100%;
-                object-fit: contain;
-            }
-
-            .page-content {
-                margin: 0 auto;
-            }
-
-
-            .workflow-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .workflow-grid-expandable {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .workflow-card {
-                padding: 1.2rem;
-            }
-
-            .workflow-card h4 {
-                font-size: 1rem;
-            }
-
-            .workflow-card p {
-                font-size: 0.9rem;
-            }
-
-            .task-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .task-card {
-                padding: 1.2rem;
-            }
-
-            .task-card h3 {
-                font-size: 1.2rem;
-            }
-
-            .task-card p {
-                font-size: 0.95rem;
-            }
-
-            section h2 {
-                font-size: 1.6rem;
-            }
-
-            section p {
-                font-size: 0.9rem;
-            }
-
-            .abstract-box p {
-                font-size: 0.95rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-                max-width: 100%;
-            }
-
-            .header-container::before {
-                display: block;
-            }
-
-            body {
-                background: var(--bg-white);
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Header Container with Dual Overlay -->
     <div class="header-container">
         <!-- Header Image Wrapper with Title Overlay -->
         <div style="position: relative; width: 100%;">
-            <img src="header_image.png" alt="Build Arena Header" class="header-image">
+            <!-- Carousel Container -->
+            <div class="carousel-container">
+                <video autoplay muted playsinline class="header-image carousel-image active" id="header-video">
+                    <source src="header_rocket.mp4" type="video/mp4">
+                </video>
+                <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
+                <img src="header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">‹</button>
+            <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">›</button>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+            </div>
             
             <!-- Title Block Overlay on Image -->
             <div class="title-block">
                 <h1>Build Arena</h1>
-                <p class="subtitle">Towards Physics-Aligned Interactive Agentic Engineering Construction</p>
+                <p class="subtitle">Towards Physics-Aligned Interactive <strong>Agentic Engineering Construction Automation</strong></p>
             </div>
         </div>
 
@@ -1105,6 +87,140 @@
     <div class="container">
         <!-- Abstract -->
         <div class="abstract-box">
+
+            <!-- Agentic Engineering Construction Automation Arena -->
+            <div class="arena-section">
+                <h2 class="arena-title">Agentic Engineering Construction Automation Arena</h2>
+                
+                <!-- Grok -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/grok.svg" alt="Grok">
+                        <span class="model-name">Grok</span>
+                    </div>
+                    <img src="assets/construction_grid/grok/0.gif" alt="Grok Construction 0">
+                    <img src="assets/construction_grid/grok/1.gif" alt="Grok Construction 1">
+                    <img src="assets/construction_grid/grok/2.gif" alt="Grok Construction 2">
+                    <img src="assets/construction_grid/grok/3.gif" alt="Grok Construction 3">
+                    <img src="assets/construction_grid/grok/4.gif" alt="Grok Construction 4">
+                    <img src="assets/construction_grid/grok/5.gif" alt="Grok Construction 5">
+                    <img src="assets/construction_grid/grok/6.gif" alt="Grok Construction 6">
+                    <img src="assets/construction_grid/grok/7.gif" alt="Grok Construction 7">
+                </div>
+
+                <!-- Claude -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/claude-color.svg" alt="Claude">
+                        <span class="model-name">Claude</span>
+                    </div>
+                    <img src="assets/construction_grid/claude/0.gif" alt="Claude Construction 0">
+                    <img src="assets/construction_grid/claude/1.gif" alt="Claude Construction 1">
+                    <img src="assets/construction_grid/claude/2.gif" alt="Claude Construction 2">
+                    <img src="assets/construction_grid/claude/3.gif" alt="Claude Construction 3">
+                    <img src="assets/construction_grid/claude/4.gif" alt="Claude Construction 4">
+                    <img src="assets/construction_grid/claude/5.gif" alt="Claude Construction 5">
+                    <img src="assets/construction_grid/claude/6.gif" alt="Claude Construction 6">
+                    <img src="assets/construction_grid/claude/7.gif" alt="Claude Construction 7">
+                </div>
+
+                <!-- Doubao (Seed) -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/doubao-color.svg" alt="Doubao">
+                        <span class="model-name">Doubao</span>
+                    </div>
+                    <img src="assets/construction_grid/doubao/0.gif" alt="Doubao Construction 0">
+                    <img src="assets/construction_grid/doubao/1.gif" alt="Doubao Construction 1">
+                    <img src="assets/construction_grid/doubao/2.gif" alt="Doubao Construction 2">
+                    <img src="assets/construction_grid/doubao/3.gif" alt="Doubao Construction 3">
+                    <img src="assets/construction_grid/doubao/4.gif" alt="Doubao Construction 4">
+                    <img src="assets/construction_grid/doubao/5.gif" alt="Doubao Construction 5">
+                    <img src="assets/construction_grid/doubao/6.gif" alt="Doubao Construction 6">
+                    <div class="arena-placeholder"></div>
+                </div>
+
+                <!-- GPT -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/openai.svg" alt="GPT">
+                        <span class="model-name">GPT</span>
+                    </div>
+                    <img src="assets/construction_grid/gpt/0.gif" alt="GPT Construction 0">
+                    <img src="assets/construction_grid/gpt/1.gif" alt="GPT Construction 1">
+                    <img src="assets/construction_grid/gpt/2.gif" alt="GPT Construction 2">
+                    <img src="assets/construction_grid/gpt/3.gif" alt="GPT Construction 3">
+                    <img src="assets/construction_grid/gpt/4.gif" alt="GPT Construction 4">
+                    <img src="assets/construction_grid/gpt/5.gif" alt="GPT Construction 5">
+                    <img src="assets/construction_grid/gpt/6.gif" alt="GPT Construction 6">
+                    <img src="assets/construction_grid/gpt/7.gif" alt="GPT Construction 7">
+                </div>
+
+                <!-- Kimi -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/kimi-color.svg" alt="Kimi">
+                        <span class="model-name">Kimi</span>
+                    </div>
+                    <img src="assets/construction_grid/kimi/0.gif" alt="Kimi Construction 0">
+                    <img src="assets/construction_grid/kimi/1.gif" alt="Kimi Construction 1">
+                    <img src="assets/construction_grid/kimi/2.gif" alt="Kimi Construction 2">
+                    <img src="assets/construction_grid/kimi/3.gif" alt="Kimi Construction 3">
+                    <img src="assets/construction_grid/kimi/4.gif" alt="Kimi Construction 4">
+                    <img src="assets/construction_grid/kimi/5.gif" alt="Kimi Construction 5">
+                    <img src="assets/construction_grid/kimi/6.gif" alt="Kimi Construction 6">
+                    <img src="assets/construction_grid/kimi/7.gif" alt="Kimi Construction 7">
+                </div>
+
+                <!-- Qwen -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/qwen-color.svg" alt="Qwen">
+                        <span class="model-name">Qwen</span>
+                    </div>
+                    <img src="assets/construction_grid/qwen/0.gif" alt="Qwen Construction 0">
+                    <img src="assets/construction_grid/qwen/1.gif" alt="Qwen Construction 1">
+                    <img src="assets/construction_grid/qwen/2.gif" alt="Qwen Construction 2">
+                    <img src="assets/construction_grid/qwen/3.gif" alt="Qwen Construction 3">
+                    <img src="assets/construction_grid/qwen/4.gif" alt="Qwen Construction 4">
+                    <img src="assets/construction_grid/qwen/5.gif" alt="Qwen Construction 5">
+                    <div class="arena-placeholder"></div>
+                    <div class="arena-placeholder"></div>
+                </div>
+
+                <!-- DeepSeek -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/deepseek-color.svg" alt="DeepSeek">
+                        <span class="model-name">DeepSeek</span>
+                    </div>
+                    <img src="assets/construction_grid/deepseek/0.gif" alt="DeepSeek Construction 0">
+                    <img src="assets/construction_grid/deepseek/1.gif" alt="DeepSeek Construction 1">
+                    <img src="assets/construction_grid/deepseek/2.gif" alt="DeepSeek Construction 2">
+                    <img src="assets/construction_grid/deepseek/3.gif" alt="DeepSeek Construction 3">
+                    <img src="assets/construction_grid/deepseek/4.gif" alt="DeepSeek Construction 4">
+                    <img src="assets/construction_grid/deepseek/5.gif" alt="DeepSeek Construction 5">
+                    <img src="assets/construction_grid/deepseek/6.gif" alt="DeepSeek Construction 6">
+                    <img src="assets/construction_grid/deepseek/7.gif" alt="DeepSeek Construction 7">
+                </div>
+
+                <!-- Gemini -->
+                <div class="arena-row">
+                    <div class="arena-model-logo">
+                        <img src="assets/construction_grid/model_logos/gemini-color.svg" alt="Gemini">
+                        <span class="model-name">Gemini</span>
+                    </div>
+                    <img src="assets/construction_grid/gemini/0.gif" alt="Gemini Construction 0">
+                    <img src="assets/construction_grid/gemini/1.gif" alt="Gemini Construction 1">
+                    <img src="assets/construction_grid/gemini/2.gif" alt="Gemini Construction 2">
+                    <img src="assets/construction_grid/gemini/3.gif" alt="Gemini Construction 3">
+                    <img src="assets/construction_grid/gemini/4.gif" alt="Gemini Construction 4">
+                    <img src="assets/construction_grid/gemini/5.gif" alt="Gemini Construction 5">
+                    <img src="assets/construction_grid/gemini/6.gif" alt="Gemini Construction 6">
+                    <img src="assets/construction_grid/gemini/7.gif" alt="Gemini Construction 7">
+                </div>
+            </div>
+
             <!-- GIF Gallery -->
             <div class="gif-gallery">
                 <div class="gif-item">
@@ -1136,7 +252,12 @@
                 Here, we introduce <strong style="color: var(--accent-color);">Build Arena</strong>, the first physics-aligned interactive 
                 benchmark designed for language-driven engineering construction.
             </p>
+
+
+
+
         </div>
+
 
         <!-- Comparison Table -->
         <section id="comparison">
@@ -1635,38 +756,6 @@
         </footer>
     </div>
 
-    <script>
-        // Animation on scroll for content sections
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Toggle task card collapse/expand
-        function toggleTask(element) {
-            const taskCard = element.closest('.task-card');
-            taskCard.classList.toggle('collapsed');
-        }
-
-        // Toggle workflow card collapse/expand
-        function toggleWorkflow(element) {
-            const workflowCard = element.closest('.workflow-card');
-            workflowCard.classList.toggle('collapsed');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
