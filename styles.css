@@ -498,7 +498,7 @@ video.carousel-image {
     border-top: none;
     border-bottom: 2px solid rgba(0, 73, 144, 0.15);
     font-weight: 600;
-    text-align: left;
+    text-align: center;
 }
 
 .arena-row {
