@@ -50,7 +50,7 @@ body {
     background-color: var(--main-color);
     background-image: 
         linear-gradient(rgba(0, 73, 144, 0.7), rgba(0, 73, 144, 0.7)),
-        url('header_background.png');
+        url('assets/header_background.png');
     background-repeat: no-repeat, repeat;
     background-size: cover, auto;
     z-index: -1;
