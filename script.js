@@ -85,11 +85,14 @@ let autoSlideInterval;
 const slides = document.querySelectorAll('.carousel-image');
 const indicators = document.querySelectorAll('.indicator');
 const headerRocketVideo = document.getElementById('header-rocket-video');
+const rocketDemo1Video = document.getElementById('rocket-demo1-video');
 const headerVehicleVideo = document.getElementById('header-vehicle-video');
 const headerBridgeVideo = document.getElementById('header-bridge-video');
+const bridgeDemoVideo = document.getElementById('bridge-demo-video');
+const rocketDemo2Video = document.getElementById('rocket-demo2-video');
 
 // Slide durations: video plays through once (no timer), static images stay for 3 seconds
-const slideDurations = [null, 3000, null, 3000, null]; // milliseconds (null for videos - use 'ended' event instead)
+const slideDurations = [null, 3000, null, null, 3000, null, null, null]; // milliseconds (null for videos - use 'ended' event instead)
 
 function showSlide(index) {
     // Update indicators immediately
@@ -114,16 +117,34 @@ function showSlide(index) {
         headerRocketVideo.play();
     }
     
-    // If switching to header vehicle video (index 2), restart it
-    if (index === 2 && headerVehicleVideo) {
+    // If switching to rocket demo1 video (index 2), restart it
+    if (index === 2 && rocketDemo1Video) {
+        rocketDemo1Video.currentTime = 0;
+        rocketDemo1Video.play();
+    }
+    
+    // If switching to header vehicle video (index 3), restart it
+    if (index === 3 && headerVehicleVideo) {
         headerVehicleVideo.currentTime = 0;
         headerVehicleVideo.play();
     }
     
-    // If switching to header bridge video (index 4), restart it
-    if (index === 4 && headerBridgeVideo) {
+    // If switching to header bridge video (index 5), restart it
+    if (index === 5 && headerBridgeVideo) {
         headerBridgeVideo.currentTime = 0;
         headerBridgeVideo.play();
+    }
+    
+    // If switching to bridge demo video (index 6), restart it
+    if (index === 6 && bridgeDemoVideo) {
+        bridgeDemoVideo.currentTime = 0;
+        bridgeDemoVideo.play();
+    }
+    
+    // If switching to rocket demo2 video (index 7), restart it
+    if (index === 7 && rocketDemo2Video) {
+        rocketDemo2Video.currentTime = 0;
+        rocketDemo2Video.play();
     }
     
     // Reset auto-slide timer with appropriate duration
@@ -174,9 +195,17 @@ if (headerRocketVideo) {
     });
 }
 
+if (rocketDemo1Video) {
+    rocketDemo1Video.addEventListener('ended', function() {
+        if (currentSlide === 2) {
+            nextSlide();
+        }
+    });
+}
+
 if (headerVehicleVideo) {
     headerVehicleVideo.addEventListener('ended', function() {
-        if (currentSlide === 2) {
+        if (currentSlide === 3) {
             nextSlide();
         }
     });
@@ -184,7 +213,23 @@ if (headerVehicleVideo) {
 
 if (headerBridgeVideo) {
     headerBridgeVideo.addEventListener('ended', function() {
-        if (currentSlide === 4) {
+        if (currentSlide === 5) {
+            nextSlide();
+        }
+    });
+}
+
+if (bridgeDemoVideo) {
+    bridgeDemoVideo.addEventListener('ended', function() {
+        if (currentSlide === 6) {
+            nextSlide();
+        }
+    });
+}
+
+if (rocketDemo2Video) {
+    rocketDemo2Video.addEventListener('ended', function() {
+        if (currentSlide === 7) {
             nextSlide();
         }
     });
@@ -208,11 +253,20 @@ if (carouselContainer) {
         if (currentSlide === 0 && headerRocketVideo) {
             headerRocketVideo.loop = true;
         }
-        if (currentSlide === 2 && headerVehicleVideo) {
+        if (currentSlide === 2 && rocketDemo1Video) {
+            rocketDemo1Video.loop = true;
+        }
+        if (currentSlide === 3 && headerVehicleVideo) {
             headerVehicleVideo.loop = true;
         }
-        if (currentSlide === 4 && headerBridgeVideo) {
+        if (currentSlide === 5 && headerBridgeVideo) {
             headerBridgeVideo.loop = true;
+        }
+        if (currentSlide === 6 && bridgeDemoVideo) {
+            bridgeDemoVideo.loop = true;
+        }
+        if (currentSlide === 7 && rocketDemo2Video) {
+            rocketDemo2Video.loop = true;
         }
     });
     
@@ -221,11 +275,20 @@ if (carouselContainer) {
         if (headerRocketVideo) {
             headerRocketVideo.loop = false;
         }
+        if (rocketDemo1Video) {
+            rocketDemo1Video.loop = false;
+        }
         if (headerVehicleVideo) {
             headerVehicleVideo.loop = false;
         }
         if (headerBridgeVideo) {
             headerBridgeVideo.loop = false;
+        }
+        if (bridgeDemoVideo) {
+            bridgeDemoVideo.loop = false;
+        }
+        if (rocketDemo2Video) {
+            rocketDemo2Video.loop = false;
         }
         // Resume auto-slide
         resetAutoSlide();
