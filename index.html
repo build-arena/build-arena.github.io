@@ -9,19 +9,22 @@
     
     <!-- Resource Priority: Load critical resources first -->
     <!-- Highest Priority: Main carousel video -->
-    <link rel="preload" href="header_rocket.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/header_rocket.mp4" as="video" type="video/mp4">
     
-    <!-- High Priority: Header images and carousel videos -->
-    <link rel="preload" href="benchmark_framework.png" as="image">
-    <link rel="preload" href="header_image.png" as="image">
-    <link rel="preload" href="header_arena.png" as="image">
-    <link rel="preload" href="header_vehicle.mp4" as="video" type="video/mp4">
-    <link rel="preload" href="header_bridge.mp4" as="video" type="video/mp4">
-    <link rel="preload" href="radar_plot.jpg" as="image">
-    
-    <!-- Medium Priority: Logos -->
-    <link rel="preload" href="westlake_logo.png" as="image">
-    <link rel="preload" href="lab_logo.png" as="image">
+    <!-- High Priority: Page essential resources-->
+    <link rel="preload" href="assets/westlake_logo.png" as="image">
+    <link rel="preload" href="assets/lab_logo.png" as="image">
+    <link rel="preload" href="assets/radar_plot.jpg" as="image">
+    <link rel="preload" href="assets/benchmark_framework.png" as="image">
+    <link rel="preload" href="assets/header_image.png" as="image">
+
+    <!-- Medium Priority: All carousel videos  -->
+    <link rel="preload" href="assets/rocket_demo1.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/header_arena.png" as="image">
+    <link rel="preload" href="assets/header_vehicle.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/header_bridge.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/bridge_demo.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/rocket_demo2.mp4" as="video" type="video/mp4">
     
     <!-- Low Priority: GIFs will be lazy loaded via Intersection Observer -->
 </head>
@@ -33,15 +36,15 @@
             <!-- Carousel Container -->
             <div class="carousel-container">
                 <video autoplay muted playsinline preload="auto" class="header-image carousel-image active" id="header-rocket-video">
-                    <source src="header_rocket.mp4" type="video/mp4">
+                    <source src="assets/header_rocket.mp4" type="video/mp4">
                 </video>
-                <img src="header_image.png" alt="Build Arena Header" class="header-image carousel-image">
+                <img src="assets/header_image.png" alt="Build Arena Header" class="header-image carousel-image">
                 <video muted playsinline preload="metadata" class="header-image carousel-image" id="header-vehicle-video">
-                    <source src="header_vehicle.mp4" type="video/mp4">
+                    <source src="assets/header_vehicle.mp4" type="video/mp4">
                 </video>
-                <img src="header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
+                <img src="assets/header_arena.png" alt="Build Arena Header" class="header-image carousel-image">
                 <video muted playsinline preload="metadata" class="header-image carousel-image" id="header-bridge-video">
-                    <source src="header_bridge.mp4" type="video/mp4">
+                    <source src="assets/header_bridge.mp4" type="video/mp4">
                 </video>
             </div>
             
@@ -83,7 +86,7 @@
                     <div class="contact-info">*Corresponding author: <a href="mailto:wutailin@westlake.edu.cn">wutailin@westlake.edu.cn</a></div>
                     <a href="https://www.westlake.edu.cn/" target="_blank" class="affiliation-link" style="text-decoration: none; color: inherit;">
                         <div class="affiliation-item">
-                            <img src="westlake_logo.png" alt="Westlake University" class="westlake-logo">
+                            <img src="assets/westlake_logo.png" alt="Westlake University" class="westlake-logo">
                             Westlake University
                         </div>
                     </a>
@@ -92,7 +95,7 @@
                 <!-- Right: Lab Info and Links -->
                 <div class="authors-right">
                     <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank" class="lab-link" style="text-decoration: none; color: inherit; display: block;">
-                        <img src="lab_logo.png" alt="Lab Logo" class="lab-logo">
+                        <img src="assets/lab_logo.png" alt="Lab Logo" class="lab-logo">
                         <div class="lab-name">AI for Scientific Simulation and Discovery Lab</div>
                     </a>
                     
@@ -370,7 +373,7 @@
             <!-- Framework Diagram -->
             <div class="framework-image-container">
                 <div class="framework-image-wrapper">
-                    <img src="benchmark_framework.png" alt="Build Arena Benchmark Framework" />
+                    <img src="assets/benchmark_framework.png" alt="Build Arena Benchmark Framework" />
                 </div>
             </div>
 
@@ -658,7 +661,7 @@
                 </p>
                 
                 <div class="radar-image-wrapper">
-                    <img src="radar_plot.jpg" alt="LLM Performance Radar Chart across Six Task Difficulty Dimensions" class="radar-plot">
+                    <img src="assets/radar_plot.jpg" alt="LLM Performance Radar Chart across Six Task Difficulty Dimensions" class="radar-plot">
                 </div>
             </div>
         </section>
