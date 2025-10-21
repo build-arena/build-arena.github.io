@@ -1052,6 +1052,52 @@ table sup {
     font-style: italic;
 }
 
+/* Citation Section */
+.citation-box {
+    background: var(--bg-light);
+    border: 2px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.citation-box pre {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.citation-box code {
+    color: var(--text-dark);
+    background: transparent;
+    display: block;
+    white-space: pre;
+}
+
+.citation-link {
+    display: inline-block;
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--main-color);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.citation-link:hover {
+    background: var(--main-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 73, 144, 0.3);
+}
+
 /* Footer */
 footer {
     background: var(--main-color);
