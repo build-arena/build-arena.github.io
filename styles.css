@@ -1684,6 +1684,26 @@ section {
     min-height: 0;
 }
 
+.pipeline-terminal-content:has(.terminal-placeholder:only-child) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.terminal-placeholder {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+}
+
+.graphics-placeholder {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+}
+
 /* Terminal Text Styles */
 .message-block {
     margin-bottom: 20px;
@@ -1898,11 +1918,12 @@ section {
     border-radius: 3px;
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .pipeline-speed-control input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
     appearance: none;
+    -webkit-appearance: none;
     width: 16px;
     height: 16px;
     background: var(--main-color);
