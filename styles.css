@@ -1,10 +1,10 @@
 /* Font Face Declarations */
 @font-face {
-    font-family: '3270 Nerd Font Mono';
-    src: url('assets/fonts/3270NerdFontMono-Regular.ttf') format('truetype');
-    font-weight: normal;
+    font-family: '3270NerdFontMono';
+    src: url('/assets/fonts/3270NerdFontMono-Regular.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 * {
@@ -1685,7 +1685,7 @@ section {
     padding: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    font-family: '3270 Nerd Font Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-family: '3270NerdFontMono', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 10px;
     line-height: 1.7;
     color: #d4d4d4;
@@ -1770,7 +1770,7 @@ section {
     padding: 12px 16px;
     margin: 8px 0;
     border-radius: 4px;
-    font-family: '3270 Nerd Font Mono', 'Consolas', 'Monaco', monospace;
+    font-family: '3270NerdFontMono', 'Consolas', 'Monaco', monospace;
     font-size: 8px;
     color: #00ff00;
     overflow-x: auto;
