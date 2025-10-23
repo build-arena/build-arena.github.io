@@ -70,12 +70,10 @@ async function loadConfig() {
         }
         
         config.animationString = taggedString;
-        statusText.textContent = 'Initialization';
         
         console.log('Tagged string built:', taggedString.substring(0, 200) + '...');
     } catch (error) {
         console.error('Failed to load config:', error);
-        statusText.textContent = 'Error loading config.json';
         loadDefaultConfig();
     }
 }
@@ -331,7 +329,7 @@ async function streamAnimation(runId) {
     if (i >= str.length && state.isPlaying && !state.isPaused) {
         removeCursor(); // Remove cursor when complete
         stopAnimation();
-        statusText.textContent = 'Animation complete';
+        updateButtonStates(); // Update button states when complete
         console.log('✅ Animation complete');
     }
     // Keep cursor visible if paused (don't remove it)
@@ -342,12 +340,6 @@ async function streamAnimation(runId) {
 function updateProgress() {
     const progress = (state.globalCharIndex / config.animationString.length) * 100;
     progressFill.style.width = `${progress.toFixed(1)}%`;
-    // Only show play/pause status; do not show character counters
-    if (state.isPlaying && !state.isPaused) {
-        statusText.textContent = 'Playing...';
-    } else if (state.isPaused) {
-        statusText.textContent = 'Paused';
-    }
 }
 
 // Add agent label
@@ -448,6 +440,20 @@ async function executeAnimation() {
     await streamAnimation(runId);
 }
 
+// Update button states based on animation state
+function updateButtonStates() {
+    if (state.isPlaying && !state.isPaused) {
+        playBtn.classList.add('active');
+        pauseBtn.classList.remove('active');
+    } else if (state.isPaused) {
+        playBtn.classList.remove('active');
+        pauseBtn.classList.add('active');
+    } else {
+        playBtn.classList.remove('active');
+        pauseBtn.classList.remove('active');
+    }
+}
+
 // Start animation
 async function startAnimation() {
     if (state.isPlaying && !state.isPaused) return;
@@ -457,7 +463,7 @@ async function startAnimation() {
         console.log(`▶️  Resuming from index ${state.globalCharIndex}`);
         state.isPaused = false;
         state.isPlaying = true;
-        statusText.textContent = 'Playing...';
+        updateButtonStates();
         await executeAnimation();
     } else {
         // Start from beginning
@@ -474,7 +480,7 @@ async function startAnimation() {
             placeholder.style.display = 'none';
         }
         
-        statusText.textContent = 'Playing...';
+        updateButtonStates();
         
         // Preload first batch of images before starting (optional with unified string)
         await preloadUpcomingImages(0);
@@ -488,8 +494,7 @@ function pauseAnimation() {
     if (!state.isPlaying || state.isPaused) return;
     console.log(`⏸️  Pausing at index ${state.globalCharIndex}`);
     state.isPaused = true;
-    // Keep cursor blinking at current position when paused
-    statusText.textContent = 'Paused';
+    updateButtonStates();
     // Invalidate current stream loop so that resume starts cleanly
     state.streamRunId++;
 }
@@ -529,7 +534,7 @@ function resetAnimation() {
     console.log('⏹️  Resetting animation');
     stopAnimation();
     resetDisplay();
-    statusText.textContent = 'Ready';
+    updateButtonStates();
 }
 
 // Update speed in real-time

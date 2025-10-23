@@ -1905,6 +1905,10 @@ section {
     transform: none;
 }
 
+.pipeline-controls button.active {
+    background: var(--accent-color);
+}
+
 .pipeline-speed-control {
     display: flex;
     align-items: center;
@@ -1989,6 +1993,7 @@ section {
     color: #666;
     min-width: 100px;
     text-align: right;
+    display: none;  /* Hide status text, progress bar is sufficient */
 }
 
 /* Scrollbar Styling for Terminal */
