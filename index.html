@@ -181,6 +181,142 @@
                     benchmark designed for language-driven engineering construction.
                 </p>
 
+                <!-- Build Pipeline Animation -->
+                <div id="pipeline" class="pipeline-section">
+                    <h2 class="pipeline-animation-title">Build with language. Build with reasoning.</h2>
+                    <p style="margin-bottom: 2rem;">
+                        Watch how our agentic workflow orchestrates the construction process through multi-party collaboration.
+                        The animation below demonstrates a real construction session where the Guidance entity and Builder agent 
+                        work together iteratively to construct a propulsion machine. <strong style="color: var(--main-color);">Click Play</strong> 
+                        to watch the agents communicate and <strong style="color: var(--main-color);">see the structure evolve</strong> in real-time, 
+                        or <strong style="color: var(--main-color);">adjust the speed</strong> to explore at your own pace.
+                    </p>
+
+                    <!-- Pipeline Animation Container with scaling wrapper -->
+                    <div class="pipeline-scale-wrapper">
+                        <!-- Control Panel (moved above) -->
+                        <div class="pipeline-controls" id="controls">
+                            <button id="play-btn">▶ Play</button>
+                            <button id="pause-btn">⏸ Pause</button>
+                            <button id="reset-btn">⏮ Reset</button>
+                            <div class="pipeline-speed-control">
+                                <label for="speed-slider">Speed:</label>
+                                <input type="range" id="speed-slider" min="2" max="30" value="5" step="1">
+                                <span id="speed-value">5ms</span>
+                            </div>
+                            <div class="pipeline-progress-bar">
+                                <div class="pipeline-progress-fill" id="progress-fill"></div>
+                            </div>
+                            <div class="pipeline-status" id="status">Ready</div>
+                        </div>
+
+                        <div class="pipeline-animation-container">
+                            <div class="pipeline-animation-inner">
+                                <!-- Left Panel: Terminal -->
+                                <div class="pipeline-left-panel">
+                                    <div class="pipeline-terminal">
+                                        <div class="pipeline-terminal-header">
+                                            <div class="pipeline-terminal-buttons">
+                                                <span class="pipeline-btn pipeline-close"></span>
+                                                <span class="pipeline-btn pipeline-minimize"></span>
+                                                <span class="pipeline-btn pipeline-maximize"></span>
+                                            </div>
+                                            <div class="pipeline-terminal-title">Agent Communication Logs</div>
+                                        </div>
+                                        <div class="pipeline-terminal-content" id="terminal-content">
+                                            <!-- Content will be dynamically added here -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Panel: Graphics -->
+                                <div class="pipeline-right-panel">
+                                    <div class="pipeline-graphics-container">
+                                        <div class="pipeline-graphics-header">Render Output</div>
+                                        <div class="pipeline-graphics-content" id="graphics-content">
+                                            <img id="current-image" alt="Render output" style="display: none;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="comparison" class="comparison-section">
+                    <h2 class="comparison-subtitle">What Sets Build Arena Apart?</h2>
+                    <p style="margin-top: 1rem;">
+                        Build Arena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
+                        planning, physical simulation, and interactive environments in a unified framework.
+                    </p>
+    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Benchmark</th>
+                                    <th>Spatial Reasoning</th>
+                                    <th>3D Construction</th>
+                                    <th>Construction Planning</th>
+                                    <th>Physical Simulator</th>
+                                    <th>Interactive Environment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PlanBench<sup>[1]</sup></td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                </tr>
+                                <tr>
+                                    <td>PlanQA<sup>[2]</sup></td>
+                                    <td>✓</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                </tr>
+                                <tr>
+                                    <td>PHYRE<sup>[3]</sup></td>
+                                    <td>✓</td>
+                                    <td>✗</td>
+                                    <td>✗</td>
+                                    <td>✓</td>
+                                    <td>✓</td>
+                                </tr>
+                                <tr>
+                                    <td>VOYAGER<sup>[4]</sup></td>
+                                    <td>✓</td>
+                                    <td>✗</td>
+                                    <td>✓</td>
+                                    <td>✓</td>
+                                    <td>✓</td>
+                                </tr>
+                                <tr>
+                                    <td>Embodied Agent Interface<sup>[5]</sup></td>
+                                    <td>✓</td>
+                                    <td>✓</td>
+                                    <td>✗</td>
+                                    <td>✓</td>
+                                    <td>✓</td>
+                                </tr>
+                                <tr class="highlight-row">
+                                    <td><strong>Build Arena (ours)</strong></td>
+                                    <td><strong>✓</strong></td>
+                                    <td><strong>✓</strong></td>
+                                    <td><strong>✓</strong></td>
+                                    <td><strong>✓</strong></td>
+                                    <td><strong>✓</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
                 <!-- Agentic Engineering Construction Automation Arena -->
                 <div class="arena-section">
                     <h2 class="arena-title">Agentic Engineering Construction Automation Arena</h2>
@@ -315,143 +451,6 @@
                 </div>
 
             </div>
-
-
-            <!-- Comparison Table -->
-            <section id="comparison">
-                <h3 class="comparison-subtitle">What Sets Build Arena Apart?</h3>
-                <p style="margin-top: 1rem;">
-                    Build Arena is the first benchmark that comprehensively addresses spatial reasoning, 3D construction, construction-aimed 
-                    planning, physical simulation, and interactive environments in a unified framework.
-                </p>
-
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Benchmark</th>
-                                <th>Spatial Reasoning</th>
-                                <th>3D Construction</th>
-                                <th>Construction Planning</th>
-                                <th>Physical Simulator</th>
-                                <th>Interactive Environment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PlanBench<sup>[1]</sup></td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                            </tr>
-                            <tr>
-                                <td>PlanQA<sup>[2]</sup></td>
-                                <td>✓</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                            </tr>
-                            <tr>
-                                <td>PHYRE<sup>[3]</sup></td>
-                                <td>✓</td>
-                                <td>✗</td>
-                                <td>✗</td>
-                                <td>✓</td>
-                                <td>✓</td>
-                            </tr>
-                            <tr>
-                                <td>VOYAGER<sup>[4]</sup></td>
-                                <td>✓</td>
-                                <td>✗</td>
-                                <td>✓</td>
-                                <td>✓</td>
-                                <td>✓</td>
-                            </tr>
-                            <tr>
-                                <td>Embodied Agent Interface<sup>[5]</sup></td>
-                                <td>✓</td>
-                                <td>✓</td>
-                                <td>✗</td>
-                                <td>✓</td>
-                                <td>✓</td>
-                            </tr>
-                            <tr class="highlight-row">
-                                <td><strong>Build Arena (ours)</strong></td>
-                                <td><strong>✓</strong></td>
-                                <td><strong>✓</strong></td>
-                                <td><strong>✓</strong></td>
-                                <td><strong>✓</strong></td>
-                                <td><strong>✓</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- Build Pipeline Animation -->
-            <section id="pipeline" class="animate-on-scroll">
-                <h2>Build with language. Build with reasoning.</h2>
-                <p style="margin-bottom: 2rem;">
-                    Watch how our agentic workflow orchestrates the construction process through multi-party collaboration.
-                    The animation below demonstrates a real construction session where the Guidance entity and Builder agent 
-                    work together iteratively to construct a propulsion machine. <strong style="color: var(--main-color);">Click Play</strong> 
-                    to watch the agents communicate and <strong style="color: var(--main-color);">see the structure evolve</strong> in real-time, 
-                    or <strong style="color: var(--main-color);">adjust the speed</strong> to explore at your own pace.
-                </p>
-
-                <!-- Pipeline Animation Container with scaling wrapper -->
-                <div class="pipeline-scale-wrapper">
-                    <!-- Control Panel (moved above) -->
-                    <div class="pipeline-controls" id="controls">
-                        <button id="play-btn">▶ Play</button>
-                        <button id="pause-btn">⏸ Pause</button>
-                        <button id="reset-btn">⏮ Reset</button>
-                        <div class="pipeline-speed-control">
-                            <label for="speed-slider">Speed:</label>
-                            <input type="range" id="speed-slider" min="2" max="30" value="5" step="1">
-                            <span id="speed-value">5ms</span>
-                        </div>
-                        <div class="pipeline-progress-bar">
-                            <div class="pipeline-progress-fill" id="progress-fill"></div>
-                        </div>
-                        <div class="pipeline-status" id="status">Ready</div>
-                    </div>
-
-                    <div class="pipeline-animation-container">
-                        <div class="pipeline-animation-inner">
-                            <!-- Left Panel: Terminal -->
-                            <div class="pipeline-left-panel">
-                                <div class="pipeline-terminal">
-                                    <div class="pipeline-terminal-header">
-                                        <div class="pipeline-terminal-buttons">
-                                            <span class="pipeline-btn pipeline-close"></span>
-                                            <span class="pipeline-btn pipeline-minimize"></span>
-                                            <span class="pipeline-btn pipeline-maximize"></span>
-                                        </div>
-                                        <div class="pipeline-terminal-title">Agent Communication Logs</div>
-                                    </div>
-                                    <div class="pipeline-terminal-content" id="terminal-content">
-                                        <!-- Content will be dynamically added here -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Right Panel: Graphics -->
-                            <div class="pipeline-right-panel">
-                                <div class="pipeline-graphics-container">
-                                    <div class="pipeline-graphics-header">Render Output</div>
-                                    <div class="pipeline-graphics-content" id="graphics-content">
-                                        <img id="current-image" alt="Render output" style="display: none;" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- Benchmark Framework -->
             <section id="benchmark">
