@@ -1,0 +1,381 @@
+{
+  "charDelay": 5,
+  "stepDelay": 1500,
+  "imageTransitionDuration": 500,
+  "steps": [
+    {
+      "agent": "system",
+      "messages": [
+        {
+          "type": "text",
+          "content": "AI Engineer at your service. What goal would you like to achieve today?"
+        }
+      ],
+      "image": "images/empty.png"
+    },
+    {
+      "agent": "user",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Build a machine capable of providing propulsion to a single direction."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "You have successfully added <ID 1: Starting Block>.\nExisting Blocks: 1\n(The starting block) <ID 1: Starting Block>\nPosition: [0., 0., 0.5]\nAttachable Faces:\nFace label: A, Face center: [0.5, 0., 0.5], Facing towards <East with 0.0° pitch>\nFace label: B, Face center: [-0.5, 0., 0.5], Facing towards <West with 0.0° pitch>\nFace label: C, Face center: [0., 0., 1.], Facing towards <straight up>\nFace label: D, Face center: [0., 0., 0.], Facing towards <straight down>\nFace label: E, Face center: [0., 0.5, 0.5], Facing towards <North with 0.0° pitch>\nFace label: F, Face center: [0., -0.5, 0.5], Facing towards <South with 0.0° pitch>"
+        }
+      ],
+      "image": "images/step1.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Small Wooden Block to the top face (face label C, center [0, 0, 1]) of the existing starting block (ID 1). Position its center at [0, 0, 1.5], ensuring it is aligned directly above the starting block with no rotation or offset. This will serve as an extension for elevated attachment points."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "attach_block_to(\n  base_block=1,\n  face='C',\n  new_block='Small Wooden Block',\n  note='extension block: provides elevated attachment points for torches to enable heating'\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Block attached successfully!"
+        }
+      ],
+      "image": "images/step2.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Water Cannon to the west face (face label B, center [-0.5, 0, 0.5]) of the starting block (ID 1). Position its center at [-1, 0, 0.5], with the long axis oriented along the negative z-direction (downward), so the outlet is at [-1, 0, -0.5] and the inlet is at [-1, 0, 1.25]. Ensure the attachment is secure with a 0.5 unit offset from the attachment face, and align it without any additional rotation or pitch. This will serve as the left propulsion unit for downward steam spray."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Water Cannon to the east face (face label A, center [0.5, 0, 0.5]) of the starting block (ID 1). Position its center at [1, 0, 0.5], with the long axis oriented along the negative z-direction (downward), so the outlet is at [1, 0, -0.5] and the inlet is at [1, 0, 1.25]. Ensure the attachment is secure with a 0.5 unit offset from the attachment face, and align it without any additional rotation or pitch. This will serve as the right propulsion unit for downward steam spray."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Water cannons attached successfully!"
+        }
+      ],
+      "image": "images/step3.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Torch to the west face (face label B, center [-0.5, 0, 1.5]) of the Small Wooden Block (ID 2). Position its body center at [-1, 0, 1.5], oriented downward with the vertical shaft along the negative z-direction, so the heating sphere (r=0.3) is centered at [-1, 0, 0.5]. Ensure a 0.5 unit offset from the attachment face and no additional rotation or pitch. This will serve as the left heater to ignite and heat the left water cannon for steam mode."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Torch to the east face (face label A, center [0.5, 0, 1.5]) of the Small Wooden Block (ID 2). Position its body center at [1, 0, 1.5], with the long axis oriented along the negative z-direction (pointing at straight down), so the vertical shaft extends downward and the heating sphere (r=0.3) is centered at [1, 0, 0.5] to overlap with the right water cannon. Ensure a 0.5 unit offset from the attachment face and no additional rotation. This will serve as the right heater to ignite and heat the right water cannon for steam mode."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Torches attached (but pointing South instead of down)"
+        }
+      ],
+      "image": "images/step4.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Please explain why the torches (ID 5 and ID 6) were oriented pointing South instead of straight down as specified in the instructions. Is it possible to reorient or adjust the position of an existing block? If yes, please describe how to do so in the next building step."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Hello! Thanks for the question…\n\n### Why the Torches Are Oriented Pointing South Instead of Straight Down…\n\n### Reorient the Torch (Change Pointing Direction)\n   - Use the `twist_block` tool. This rotates the block clockwise relative to its attachment surface (the rooted face). It's especially designed for directional blocks like torches or pointers.\n     - Required info: `block_id` (e.g., 5 or 6) and `angle` (float in degrees, e.g., 180).\n\n### Suggested Next Building Step\nTo match the blueprint, let's start by reorienting one torch (e.g., ID 5) to point downward…"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✗ Operation failed! The block 5 <Torch> overlaps with existing blocks and it's been restored to previous state already, please try again\nOverlapping detected between <ID 3: Water Cannon> and <ID 5: Torch>"
+        }
+      ],
+      "image": "images/step5.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Please remove the Torch (ID 5) from its current attachment on the west face of the Small Wooden Block (ID 2), then re-attach it to the same west face (face label B, center [-0.5, 0, 1.5]), but oriented downward from the start with the vertical shaft along the negative z-direction, body centered at [-1, 0, 1.5], and heating sphere (r=0.3) centered at [-1, 0, 0.5]. If removal is not possible, please confirm what adjustment operations are available (e.g., removal, repositioning, or reorientation without removal)."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Remove the Torch (ID 6) from its current attachment on the east face of the Small Wooden Block (ID 2). This is to allow for a structural adjustment to resolve heating placement issues while maintaining functional intent."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Torches removed successfully!"
+        }
+      ],
+      "image": "images/step6.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a new Small Wooden Block to the top face (face label E, center [0, 0, 2]) of the existing Small Wooden Block (ID 2). Position its center at [0, 0, 2.5], aligned directly above with no rotation or offset. <PUNCHLINE>This additional extension will provide higher attachment points for the torches to position their heating spheres to overlap with the water cannon inlets without physical overlap of the torch shafts and cannon bodies,</PUNCHLINE> resolving the previous intersection issues while maintaining the functional requirement of reliable heating for steam mode."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "attach_block_to(\n  base_block=2,\n  face='E',\n  new_block='Small Wooden Block',\n  note='additional extension: provides higher attachment points for torches to resolve heating placement issues'\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Extension block attached successfully!"
+        }
+      ],
+      "image": "images/step7.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Torch to the west face (face label B, center [-0.5, 0, 2.5]) of the Small Wooden Block (ID 7). Position its body center at [-1, 0, 2.5], oriented downward with the vertical shaft along the negative z-direction, so the heating sphere (r=0.3) is centered at [-1, 0, 1.5] to overlap with the inlet of the left water cannon (ID 3) at [-1, 0, 1.25] for reliable heating. Ensure a 0.5 unit offset from the attachment face and no additional rotation or pitch. This adjusted position resolves previous intersection issues while maintaining the functional requirement of heating the water cannon for steam mode."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "attach_block_to(\n  base_block=7,\n  face='B',\n  new_block='Torch',\n  note='left heater, ignites and heats the left water cannon for steam mode, adjusted position for inlet overlap at higher extension'\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Left torch attached (pointing up)"
+        }
+      ],
+      "image": "images/step8.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Rotate the Torch (ID 8) by twisting it 90 degrees from its current orientation (straight up) so that it points straight down, with the vertical shaft extending along the negative z-direction. This should reposition the heating sphere (r=0.3) to be centered at [-1, 0, 1.5], ensuring it overlaps with the inlet of the left water cannon (ID 3) at [-1, 0, 1.25] for reliable heating without intersection conflicts due to the higher attachment point. Confirm the new orientation and heating position after the adjustment."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "twist_block(\n  block_id=8,\n  angles=90\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Torch rotated successfully (now pointing down)"
+        }
+      ],
+      "image": "images/step9.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Attach a Torch to the east face (face label A, center [0.5, 0, 2.5]) of the Small Wooden Block (ID 7). Position its body center at [1, 0, 2.5], oriented downward with the vertical shaft along the negative z-direction, so the heating sphere (r=0.3) is centered at [1, 0, 1.5] to overlap with the inlet of the right water cannon (ID 4) at [1, 0, 1.25] for reliable heating. Ensure a 0.5 unit offset from the attachment face and no additional rotation or pitch. This adjusted position resolves previous intersection issues while maintaining the functional requirement of heating the water cannon for steam mode."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "attach_block_to(\n  base_block=7,\n  face='A',\n  new_block='Torch',\n  note='right heater, ignites and heats the right water cannon for steam mode, adjusted position for inlet overlap at higher extension'\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Right torch attached (pointing up)"
+        }
+      ],
+      "image": "images/step10.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "Twist the Torch (ID 9) by 90 degrees so that it points straight down, repositioning the heating sphere (r=0.3) accordingly. This is an intermediate step toward orienting it straight down to center the heating at [1, 0, 1.5] for overlap with the right water cannon inlet at [1, 0, 1.25] without intersection conflicts. Confirm the new orientation, pointing direction, and heating position after the adjustment."
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "builder",
+      "messages": [
+        {
+          "type": "text",
+          "content": "FunctionCall"
+        },
+        {
+          "type": "code",
+          "content": "twist_block(\n  block_id=9,\n  angles=90\n)"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Torch rotated successfully (now pointing down)"
+        }
+      ],
+      "image": "images/step11.png"
+    },
+    {
+      "agent": "guidance",
+      "messages": [
+        {
+          "type": "text",
+          "content": "The current structure aligns with the blueprint's functional intent after necessary adjustments to resolve physical intersection issues between the torches and water cannons, as permitted by the design requirements. The base block (ID 1) and initial extension (ID 2) match the blueprint directly. The water cannons (IDs 3 and 4) are positioned and oriented downward as specified, with inlets at [±1, 0, 1.25] and outlets at [±1, 0, -0.5], enabling balanced downward steam spray for upward recoil thrust when activated. An additional Small Wooden Block (ID 7) at [0, 0, 2.5] was added to elevate the torch attachment points, allowing the torches (IDs 8 and 9) to be placed at [±1, 0, 2.5] and oriented straight down without overlaps. Their heating spheres (centered at [±1, 0, 1.5] with r=0.3) overlap the water cannon inlets (distance of 0.25 units in z < 0.3 radius), ensuring reliable heating of the cannons for steam mode (as heating any part of the cannon activates steam).\nTERMINATE"
+        }
+      ],
+      "image": null
+    },
+    {
+      "agent": "env",
+      "messages": [
+        {
+          "type": "text",
+          "content": "✓ Construction complete! Machine ready for propulsion testing."
+        }
+      ],
+      "image": "images/step12.png"
+    }
+  ]
+}
