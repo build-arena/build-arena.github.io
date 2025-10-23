@@ -1496,3 +1496,413 @@ section {
     }
 }
 
+/* ========================================
+   Pipeline Animation Styles
+   ======================================== */
+
+/* Pipeline Scale Wrapper - scales entire animation based on window width */
+.pipeline-scale-wrapper {
+    width: 90%;
+    max-width: 1800px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transform-origin: center top;
+}
+
+/* Base container - maintains 2:1 aspect ratio (1800:900) */
+.pipeline-animation-container {
+    width: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+.pipeline-animation-container::before {
+    content: '';
+    display: block;
+    padding-bottom: 50%; /* 2:1 aspect ratio (900/1800 = 0.5) */
+}
+
+/* Inner wrapper to position panels with absolute positioning */
+.pipeline-animation-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 20px;
+    background: rgba(74, 144, 226, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 73, 144, 0.15);
+    /* Scale content with CSS transform to maintain aspect ratio */
+    transform-origin: top left;
+}
+
+/* Adjust width for smaller screens */
+@media (max-width: 900px) {
+    .pipeline-scale-wrapper {
+        width: 95%;
+    }
+}
+
+/* Left Panel - Terminal */
+.pipeline-left-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pipeline-terminal {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pipeline-terminal-header {
+    background: #2d2d2d;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #404040;
+    flex-shrink: 0;
+}
+
+.pipeline-terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.pipeline-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.pipeline-btn.pipeline-close { background: #ff5f56; }
+.pipeline-btn.pipeline-minimize { background: #ffbd2e; }
+.pipeline-btn.pipeline-maximize { background: #27c93f; }
+
+.pipeline-terminal-title {
+    color: #888;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.pipeline-terminal-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 10px;
+    line-height: 1.7;
+    color: #d4d4d4;
+    letter-spacing: 0.02em;
+    min-height: 0;
+}
+
+/* Terminal Text Styles */
+.message-block {
+    margin-bottom: 20px;
+    animation: fadeInTerminal 0.3s ease-in;
+}
+
+@keyframes fadeInTerminal {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.agent-name {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.agent-builder {
+    color: #4ec9b0;
+}
+
+.agent-guidance {
+    color: #dcdcaa;
+}
+
+.agent-env {
+    color: #569cd6;
+}
+
+.agent-user {
+    color: #ce9178;
+}
+
+.agent-system {
+    color: #c586c0;
+}
+
+.agent-label {
+    font-weight: bold;
+    display: inline;
+    margin-bottom: 0;
+}
+
+.message-content {
+    margin-left: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #00ff00;
+    display: inline;
+}
+
+.code-block {
+    background: #2d2d2d;
+    border-left: 3px solid #007acc;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 8px;
+    color: #00ff00;
+    overflow-x: auto;
+    letter-spacing: 0.02em;
+}
+
+.punchline {
+    color: #ff0000 !important;
+    font-weight: bold;
+}
+
+.function-call {
+    color: #dcdcaa;
+}
+
+.function-params {
+    color: #9cdcfe;
+}
+
+.cursor-blink {
+    display: inline-block;
+    width: 4px;
+    height: 9px;
+    background: #4ec9b0;
+    margin-left: 1px;
+    animation: blink 1s infinite;
+    vertical-align: baseline;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Right Panel - Graphics */
+.pipeline-right-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pipeline-graphics-container {
+    background: #2d2d2d;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pipeline-graphics-header {
+    background: #3d3d3d;
+    padding: 12px 16px;
+    color: #888;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 1px solid #404040;
+    flex-shrink: 0;
+}
+
+.pipeline-graphics-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
+    padding: 20px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.pipeline-graphics-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pipeline-graphics-content img.fade-out {
+    opacity: 0;
+}
+
+.pipeline-graphics-content img.fade-in {
+    opacity: 1;
+}
+
+/* Controls */
+.pipeline-controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.11%;  /* scales with wrapper width */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0, 73, 144, 0.2);
+    width: 100%;
+    flex-wrap: wrap;
+    transform-origin: center top;
+}
+
+.pipeline-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: var(--main-color);
+    color: white;
+    font-size: 0.875rem;  /* 14px base */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 73, 144, 0.3);
+}
+
+.pipeline-controls button:hover {
+    background: var(--main-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 73, 144, 0.4);
+}
+
+.pipeline-controls button:active {
+    transform: translateY(0);
+}
+
+.pipeline-controls button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.pipeline-speed-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    border-left: 2px solid #e0e0e0;
+    border-right: 2px solid #e0e0e0;
+}
+
+.pipeline-speed-control label {
+    font-size: 0.8125rem;  /* 13px base */
+    font-weight: 600;
+    color: #666;
+}
+
+.pipeline-speed-control input[type="range"] {
+    width: 120px;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.pipeline-speed-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--main-color);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pipeline-speed-control input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--main-dark);
+    transform: scale(1.1);
+}
+
+.pipeline-speed-control input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--main-color);
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pipeline-speed-control input[type="range"]::-moz-range-thumb:hover {
+    background: var(--main-dark);
+    transform: scale(1.1);
+}
+
+.pipeline-speed-control #speed-value {
+    font-size: 0.75rem;  /* 12px base */
+    color: var(--main-color);
+    font-weight: 600;
+    min-width: 45px;
+    text-align: right;
+}
+
+.pipeline-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.pipeline-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--main-color) 0%, var(--main-dark) 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.pipeline-status {
+    font-size: 0.8125rem;  /* 13px base */
+    color: #666;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Scrollbar Styling for Terminal */
+.pipeline-terminal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.pipeline-terminal-content::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.pipeline-terminal-content::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+}
+
+.pipeline-terminal-content::-webkit-scrollbar-thumb:hover {
+    background: #505050;
+}
+
