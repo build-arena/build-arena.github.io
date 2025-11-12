@@ -1,0 +1,23 @@
+[project]
+name = "AI_Engineer"
+version = "0.1.0"
+description = "Text-interface for AI Agent Engineer"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.2.1",
+    "flask>=3.1.1",
+    "numpy-quaternion>=2024.0.8",
+    "prompt-toolkit>=3.0.51",
+    "python-fcl>=0.7.0.8",
+    "pyyaml>=6.0.3",
+    "rich>=14.2.0",
+    "trimesh>=4.6.10",
+]
+
+[[tool.uv.index]]
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+default = true
+ 
+[tool.uv.pip]
+index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
