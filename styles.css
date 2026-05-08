@@ -2014,3 +2014,15 @@ section {
     background: #505050;
 }
 
+
+/* ========================================
+   PROPORTIONAL CONTENT SCALE (mirrors RealPDEBench)
+   Below 768px viewport, lock layout at 768px and visually scale-down via transform.
+   ======================================== */
+.rp-scale-outer { position: relative; }
+.rp-scale-outer.rp-scale-active { overflow: hidden; }
+.rp-scale-outer.rp-scale-active .rp-scale-inner {
+    width: 768px;
+    transform: scale(var(--rp-page-scale, 1));
+    transform-origin: top left;
+}

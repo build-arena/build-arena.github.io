@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=768, minimum-scale=0.1, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
     <title>Build Arena: Towards Physics-Aligned Interactive Agentic Engineering Construction Automation</title>
     <link rel="preload" href="/assets/fonts/3270NerdFontMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -46,6 +46,8 @@
     <!-- Low Priority: GIFs will be lazy loaded via Intersection Observer -->
 </head>
 <body>
+<div class="rp-scale-outer">
+<div class="rp-scale-inner">
     <!-- Header Container with Dual Overlay -->
     <div class="header-container">
         <!-- Header Image Wrapper with Title Overlay -->
@@ -915,7 +917,56 @@
         </footer>
     </div>
 
+</div><!-- /.rp-scale-inner -->
+</div><!-- /.rp-scale-outer -->
+
     <script src="script.js"></script>
     <script src="pipeline_animation.js"></script>
+    <script>
+    /* ========================================
+       Proportional Content Scale (mirrors RealPDEBench)
+       Below 768px viewport, lock layout at 768px and visually scale-down via transform.
+       ======================================== */
+    (function () {
+      var BASE = 768;
+      var outer = document.querySelector('.rp-scale-outer');
+      var inner = document.querySelector('.rp-scale-inner');
+      if (!outer || !inner) return;
+
+      var raf = null;
+      function vwidth() {
+        var vv = window.visualViewport;
+        if (vv && typeof vv.width === 'number') {
+          var s = (typeof vv.scale === 'number' && vv.scale > 0) ? vv.scale : 1;
+          return vv.width * s;
+        }
+        return window.innerWidth || document.documentElement.clientWidth || 0;
+      }
+      function update() {
+        var w = vwidth();
+        if (w > 0 && w < BASE) {
+          var scale = w / BASE;
+          outer.classList.add('rp-scale-active');
+          outer.style.setProperty('--rp-page-scale', String(scale));
+          var h = inner.scrollHeight || inner.offsetHeight || 0;
+          outer.style.height = (h * scale).toFixed(2) + 'px';
+        } else {
+          outer.classList.remove('rp-scale-active');
+          outer.style.removeProperty('--rp-page-scale');
+          outer.style.removeProperty('height');
+        }
+        window.dispatchEvent(new Event('rp-scale-changed'));
+      }
+      function schedule() {
+        if (raf != null) return;
+        raf = window.requestAnimationFrame(function () { raf = null; update(); });
+      }
+      schedule();
+      window.addEventListener('resize', schedule);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
+      if (window.ResizeObserver) new ResizeObserver(schedule).observe(inner);
+      window.addEventListener('load', schedule);
+    })();
+    </script>
 </body>
 </html>
