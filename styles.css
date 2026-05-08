@@ -402,6 +402,15 @@ video.carousel-image {
     margin: 0;
 }
 
+.authors-block .venue-line {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+    margin: 0.2rem 0 0;
+}
+
 .authors-block .contact-info a {
     color: var(--accent-light);
     text-decoration: none;
