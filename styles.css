@@ -247,30 +247,64 @@ video.carousel-image {
     pointer-events: none;
 }
 
-/* Two Column Layout in Authors Block - 1:1 ratio */
+/* Authors Block — vertical stack, max-width container, stable across widths */
 .authors-block-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 0;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20%;
-    padding-right: 20%;
+    text-align: center;
+    gap: 1rem;
 }
 
-.lab-left {
-    text-align: center;
-    padding: 0 calc(15% + 2rem) 0 15%;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+/* Top strip: institution + lab inline */
+.affil-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
 }
 
-.authors-right {
-    text-align: center;
-    padding: 0 15% 0 calc(15% + 2rem);
+.affil-link,
+.lab-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
+
+.affil-link:hover,
+.lab-link:hover {
+    transform: translateY(-1px);
+}
+
+.affil-link .affil-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.lab-link .lab-name {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.affil-logo {
+    height: 36px;
+    width: auto;
+    flex: 0 0 auto;
+}
+
+/* Old .westlake-logo lookalike width hold — keep for any leftover usage */
+.westlake-logo { height: 35px; width: auto; }
 
 
 
@@ -285,12 +319,18 @@ video.carousel-image {
 
 /* Authors in Authors Block */
 .authors-block .author-names {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: white;
-    margin-bottom: 1rem;
-    line-height: 1.8;
+    margin: 0;
+    line-height: 1.65;
     font-weight: 400;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    max-width: 760px;
+}
+.authors-block .author-names sup {
+    font-size: 0.72em;
+    vertical-align: super;
+    line-height: 0;
 }
 
 .authors-block .affiliation-item {
@@ -327,19 +367,19 @@ video.carousel-image {
 
 /* Lab Info in Authors Block Right Side */
 .authors-block .lab-logo {
-    height: 50px;
+    height: 40px;
     width: auto;
     object-fit: contain;
-    margin-bottom: 0.8rem;
     transition: transform 0.3s ease;
+    flex: 0 0 auto;
 }
 
 .authors-block .lab-name {
     font-size: 1rem;
     color: white;
     font-weight: 600;
-    margin-bottom: 0.2rem;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
 /* Lab Link Hover Effect */
@@ -359,7 +399,7 @@ video.carousel-image {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-    margin: 0.8rem 0;
+    margin: 0;
 }
 
 .authors-block .contact-info a {
@@ -372,16 +412,16 @@ video.carousel-image {
     text-decoration: underline;
 }
 
-/* Links Section in Authors Right */
-.authors-right .links {
+/* Buttons row — pinned to one line, never reflows */
+.authors-block .links {
     display: flex;
     gap: 0.8rem;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
+    flex-wrap: nowrap;
+    margin-top: 0.8rem;
 }
 
-.authors-right .links a {
+.authors-block .links a {
     background: rgba(255, 255, 255, 0.2);
     color: white;
     padding: 0.6rem 1.2rem;
@@ -393,9 +433,11 @@ video.carousel-image {
     transition: all 0.3s ease;
     font-size: 0.85rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
-.authors-right .links a:hover {
+.authors-block .links a:hover {
     background: rgba(241, 141, 0, 0.85);
     border-color: var(--accent-color);
     transform: translateY(-2px);
@@ -1230,23 +1272,8 @@ footer a:hover {
         order: 3;
     }
 
-    .authors-block-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding-left: 20%;
-        padding-right: 20%;
-    }
-
-    .lab-left {
-        padding: 0 15% 1.5rem 15%;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .authors-right {
-        padding: 1rem 15% 0 15%;
-    }
-
+    /* Authors-block now uses a max-width flex stack — no narrow-viewport overrides
+       needed here; the page-level rp-scale wrapper locks the layout at 768. */
     .authors-block .author-names {
         font-size: 0.95rem;
     }
