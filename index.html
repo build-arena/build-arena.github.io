@@ -666,25 +666,32 @@
                         </thead>
                         <tbody>
                             <tr class="highlight-row">
-                                <td><strong>Grok-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">grok4-0709</span></td>
-                                <td><strong>11.5%</strong></td>
-                                <td><strong>20.8%</strong></td>
-                                <td><strong>21.9%</strong></td>
+                                <td><strong>GPT-5</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">gpt-5</span></td>
+                                <td><strong>42.7%</strong></td>
+                                <td><strong>52.1%</strong></td>
+                                <td><strong>41.1%</strong></td>
                                 <td><span class="badge badge-excellent">🥇 Excellent</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grok-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">grok4-0709</span></td>
+                                <td>11.5%</td>
+                                <td>20.8%</td>
+                                <td>21.9%</td>
+                                <td><span class="badge badge-good">🥈 Good</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Claude-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">claude-sonnet-4-20250514</span></td>
                                 <td>12.5%</td>
                                 <td>3.1%</td>
                                 <td>4.2%</td>
-                                <td><span class="badge badge-good">🥈 Good</span></td>
+                                <td><span class="badge badge-good">🥉 Good</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Seed-1.6</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">doubao-seed-1-6-250615</span></td>
                                 <td>6.2%</td>
                                 <td>19.3%</td>
                                 <td>2.1%</td>
-                                <td><span class="badge badge-good">🥉 Good</span></td>
+                                <td><span class="badge badge-moderate">Moderate</span></td>
                             </tr>
                             <tr>
                                 <td><strong>GPT-4o</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">gpt-4o</span></td>
@@ -697,7 +704,7 @@
                                 <td><strong>Kimi-K2</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">kimi-k2-turbo-preview</span></td>
                                 <td>4.7%</td>
                                 <td>11.5%</td>
-                                <td>5.2%</td>
+                                <td>3.1%</td>
                                 <td><span class="badge badge-moderate">Moderate</span></td>
                             </tr>
                             <tr>
@@ -730,7 +737,7 @@
                     Full model snapshots and detailed experimental setup are available in the paper appendix.
                 </p>
                 <p>
-                    We evaluate eight frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
+                    We evaluate nine frontier large language models on Build Arena across three task categories (Transport, Support, Lift) 
                     and three difficulty levels (Lv.1 Easy, Lv.2 Medium, Lv.3 Hard) under our baseline agentic workflow. Performance is measured by success rate, with 64 samples 
                     per task-model pair to ensure statistical reliability.
                 </p>
@@ -759,7 +766,7 @@
                         <div class="finding-number">1</div>
                         <div class="finding-content">
                             <h4>LLMs Can Perform Language-Driven 3D Construction</h4>
-                            <p>Eight frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
+                            <p>Nine frontier LLMs successfully completed construction tasks across multiple difficulty levels, demonstrating 
                             that language models can translate natural language into physically viable 3D structures.</p>
                         </div>
                     </div>
@@ -768,7 +775,7 @@
                         <div class="finding-number">2</div>
                         <div class="finding-content">
                             <h4>Performance Varies Significantly Across Models</h4>
-                            <p>Grok-4 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
+                            <p>GPT-5 shows the strongest overall performance, particularly excelling in <strong>Precision</strong> and 
                             <strong>Robustness</strong>. Most models handle <strong>Magnitude</strong> and <strong>Ambiguity</strong> well 
                             but struggle with <strong>Compositionality</strong> and <strong>Precision</strong>.</p>
                         </div>
@@ -797,7 +804,7 @@
                         <div class="finding-content">
                             <h4>Significant Limitations Remain</h4>
                             <p>Success rates drop sharply in hierarchical assembly tasks (Support Lv.3) and high-precision tasks (Lift). 
-                            Most models except Grok-4 fail completely at the hardest difficulty levels, indicating challenges with compositional 
+                            Most models fail completely at the hardest difficulty levels, indicating challenges with compositional 
                             construction and precise spatial alignment.</p>
                         </div>
                     </div>
