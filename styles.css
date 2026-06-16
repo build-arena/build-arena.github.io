@@ -41,6 +41,260 @@ body {
     overflow-x: hidden;
 }
 
+.page-view {
+    display: none;
+}
+
+.page-view.active {
+    display: block;
+}
+
+.site-switcher {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 1000;
+    display: flex;
+    gap: 0.7rem;
+    padding: 0.55rem;
+    background: rgba(0, 73, 144, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    box-shadow: 0 8px 26px rgba(0, 73, 144, 0.26);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+.site-switcher-btn {
+    font-family: inherit;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.18);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    padding: 0.58rem 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-switcher-btn:hover,
+.site-switcher-btn.active {
+    color: white;
+    background: rgba(241, 141, 0, 0.9);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(241, 141, 0, 0.42);
+}
+
+body.challenge-mode .site-switcher {
+    gap: 10px;
+    padding: 8px;
+    background: rgba(6, 10, 18, 0.84);
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    border-radius: 0;
+    box-shadow: 0 0 0 2px rgba(117, 8, 25, 0.9), 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+body.challenge-mode .site-switcher-btn {
+    font-family: '3270NerdFontMono', 'Courier New', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: #f5f7ff;
+    background: #171b29;
+    border: 2px solid #6f7489;
+    border-radius: 0;
+    padding: 0.58rem 0.85rem;
+    text-transform: uppercase;
+    box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.45), inset 3px 3px 0 rgba(255, 255, 255, 0.08);
+}
+
+body.challenge-mode .site-switcher-btn:hover,
+body.challenge-mode .site-switcher-btn.active {
+    color: #ffffff;
+    background: #c8102e;
+    border-color: #ff304f;
+    box-shadow: inset -3px -3px 0 rgba(73, 0, 13, 0.7), 0 0 22px rgba(200, 16, 46, 0.58);
+}
+
+.challenge-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #f8fbff;
+    background:
+        radial-gradient(circle at 50% 16%, rgba(200, 16, 46, 0.28) 0, transparent 23%),
+        radial-gradient(circle at 16% 78%, rgba(0, 73, 144, 0.22) 0, transparent 20%),
+        radial-gradient(circle at 88% 72%, rgba(241, 141, 0, 0.16) 0, transparent 18%),
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.07) 0, transparent 25%),
+        radial-gradient(circle at 80% 12%, rgba(154, 12, 36, 0.2) 0, transparent 24%),
+        linear-gradient(135deg, #06111e 0%, #102c39 44%, #07111f 100%);
+    font-family: '3270NerdFontMono', 'Courier New', monospace;
+}
+
+.pixel-grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(200, 16, 46, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 73, 144, 0.1) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 88%);
+}
+
+.challenge-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(#fff 1px, transparent 1px),
+        radial-gradient(#ff304f 1px, transparent 1px),
+        radial-gradient(#d6d9e8 1px, transparent 1px),
+        radial-gradient(#f18d00 1px, transparent 1px);
+    background-position: 18px 38px, 90px 120px, 170px 70px, 40px 180px;
+    background-size: 190px 160px, 230px 210px, 270px 190px, 310px 240px;
+    opacity: 0.6;
+}
+
+.challenge-hero {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, calc(100% - 72px));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 118px 0 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.challenge-kicker {
+    display: inline-block;
+    margin-bottom: 1.4rem;
+    padding: 0.55rem 0.9rem;
+    color: #ffffff;
+    background: rgba(139, 10, 31, 0.92);
+    border: 2px solid #ff304f;
+    box-shadow: 0 0 24px rgba(200, 16, 46, 0.42), 6px 6px 0 rgba(0, 73, 144, 0.8), inset -4px -4px 0 rgba(0, 0, 0, 0.42);
+    text-transform: uppercase;
+}
+
+.challenge-hero h1 {
+    max-width: 980px;
+    margin: 0;
+    font-size: clamp(4rem, 9vw, 8.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    color: #f7f8ff;
+    text-shadow:
+        5px 5px 0 #0f1224,
+        9px 9px 0 #c8102e,
+        0 0 36px rgba(200, 16, 46, 0.42);
+}
+
+.challenge-subtitle {
+    max-width: 760px;
+    margin: 2rem auto 0;
+    color: #d6d9e8;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.challenge-slogan-card {
+    margin: 2.8rem 0 2.5rem;
+    padding: 1.4rem 1.6rem;
+    width: min(760px, 100%);
+    background: rgba(8, 12, 26, 0.86);
+    border: 3px solid #d6d9e8;
+    box-shadow: 10px 10px 0 #c8102e, inset -5px -5px 0 rgba(0, 0, 0, 0.48);
+}
+
+.challenge-slogan-card p {
+    margin: 0.35rem 0;
+    color: #eef8ff;
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    line-height: 1.45;
+}
+
+.challenge-slogan-card .wrong {
+    color: #ff304f;
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+}
+
+.challenge-slogan-card .correct {
+    color: #ffffff;
+    text-shadow: 0 0 16px rgba(200, 16, 46, 0.65);
+}
+
+.coming-soon {
+    position: relative;
+    margin: 0 auto 3rem;
+    padding: 0.6rem 1.2rem 0.8rem;
+    color: #ffffff;
+    background: #c8102e;
+    border: 4px solid #f7f8ff;
+    font-size: clamp(3.2rem, 8.8vw, 8rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    box-shadow: 14px 14px 0 #6d0719, 0 0 42px rgba(200, 16, 46, 0.48);
+    transform: rotate(-1.5deg);
+}
+
+.coming-soon::after {
+    content: 'PRESS START SOON';
+    position: absolute;
+    right: 18px;
+    bottom: -1.75rem;
+    color: #f7f8ff;
+    font-size: 0.95rem;
+    letter-spacing: 0.16em;
+    text-shadow: 2px 2px 0 #0f1224;
+}
+
+.challenge-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    width: 100%;
+    margin-top: 1.8rem;
+}
+
+.challenge-feature-card {
+    min-height: 190px;
+    padding: 1.35rem;
+    text-align: left;
+    background: rgba(13, 25, 54, 0.82);
+    border: 2px solid rgba(214, 217, 232, 0.62);
+    box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.35);
+}
+
+.challenge-feature-card span {
+    color: #f18d00;
+    font-size: 0.95rem;
+    text-shadow: 2px 2px 0 rgba(0, 73, 144, 0.75);
+}
+
+.challenge-feature-card h2 {
+    margin: 0.6rem 0;
+    color: #ffffff;
+    font-size: 1.28rem;
+}
+
+.challenge-feature-card p {
+    margin: 0;
+    color: #b9d8e8;
+    font-size: 0.96rem;
+    line-height: 1.65;
+}
+
 /* Header Container */
 .header-container {
     position: relative;
@@ -1247,6 +1501,36 @@ footer a:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .site-switcher {
+        top: 12px;
+        right: 12px;
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .site-switcher-btn {
+        font-size: 0.68rem;
+        padding: 0.48rem 0.6rem;
+    }
+
+    .challenge-hero {
+        width: calc(100% - 48px);
+        padding-top: 96px;
+    }
+
+    .challenge-hero h1 {
+        font-size: 4.3rem;
+    }
+
+    .challenge-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .coming-soon::after {
+        right: 10px;
+        font-size: 0.75rem;
+    }
+
     .title-block::before,
     .authors-block::before {
         display: block;

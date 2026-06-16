@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Build Arena: A Physics-Aligned Interactive Benchmark of LLMs for Engineering Construction">
-    <title>Build Arena: Towards Physics-Aligned Interactive Agentic Engineering Construction Automation</title>
+    <title>Build Arena: Towards Physics-Aligned Agentic Engineering Construction</title>
     <link rel="preload" href="/assets/fonts/3270NerdFontMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="styles.css">
     
@@ -46,7 +46,12 @@
     <!-- Low Priority: GIFs will be lazy loaded via Intersection Observer -->
 </head>
 <body>
-<div class="rp-scale-outer">
+<nav class="site-switcher" aria-label="Page switcher">
+    <button class="site-switcher-btn active" type="button" data-page-target="home">ICML 2026</button>
+    <button class="site-switcher-btn" type="button" data-page-target="challenge">BuildArena 2.0</button>
+</nav>
+
+<div id="buildarena-page" class="rp-scale-outer page-view active">
 <div class="rp-scale-inner">
     <!-- Header Container with Dual Overlay -->
     <div class="header-container">
@@ -933,6 +938,44 @@
 
 </div><!-- /.rp-scale-inner -->
 </div><!-- /.rp-scale-outer -->
+
+<main id="challenge-page" class="challenge-page page-view" aria-hidden="true">
+    <div class="pixel-grid-bg"></div>
+    <div class="challenge-stars" aria-hidden="true"></div>
+
+    <section class="challenge-hero">
+        <div class="challenge-kicker">BuildArena 2.0</div>
+        <h1>Construction Challenge</h1>
+        <p class="challenge-subtitle">
+            The next arena for agent-native engineering construction.
+        </p>
+
+        <div class="challenge-slogan-card" aria-label="BuildArena 2.0 slogans">
+            <p><span class="wrong">X build by yourself</span></p>
+            <p><span class="correct">✓ build with your agents</span></p>
+        </div>
+
+        <div class="coming-soon">COMING SOON...</div>
+
+        <div class="challenge-feature-grid">
+            <article class="challenge-feature-card">
+                <span>01</span>
+                <h2>Agent Squads</h2>
+                <p>Bring planners, builders, reviewers, and custom tools into one construction run.</p>
+            </article>
+            <article class="challenge-feature-card">
+                <span>02</span>
+                <h2>Physics Trials</h2>
+                <p>Compete on seasonal mission packs, each with a distinct task theme and fresh construction constraints.</p>
+            </article>
+            <article class="challenge-feature-card">
+                <span>03</span>
+                <h2>Leaderboard Mode</h2>
+                <p>Submit agent workflows, watch them build, and climb a public arena ranking.</p>
+            </article>
+        </div>
+    </section>
+</main>
 
     <script src="script.js"></script>
     <script src="pipeline_animation.js"></script>

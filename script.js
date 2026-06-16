@@ -13,6 +13,39 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+const pageSwitcherButtons = document.querySelectorAll('.site-switcher-btn');
+const buildArenaPage = document.getElementById('buildarena-page');
+const challengePage = document.getElementById('challenge-page');
+
+function setActivePage({ pageName }) {
+    const isChallengePage = pageName === 'challenge';
+
+    buildArenaPage.classList.toggle('active', !isChallengePage);
+    buildArenaPage.setAttribute('aria-hidden', String(isChallengePage));
+    challengePage.classList.toggle('active', isChallengePage);
+    challengePage.setAttribute('aria-hidden', String(!isChallengePage));
+    document.body.classList.toggle('challenge-mode', isChallengePage);
+
+    pageSwitcherButtons.forEach(button => {
+        button.classList.toggle('active', button.dataset.pageTarget === pageName);
+    });
+
+    history.replaceState(null, '', isChallengePage ? '#challenge' : window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+pageSwitcherButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        setActivePage({ pageName: button.dataset.pageTarget });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#challenge') {
+        setActivePage({ pageName: 'challenge' });
+    }
+});
+
 // Observe all sections with animate-on-scroll class
 document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
