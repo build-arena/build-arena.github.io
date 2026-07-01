@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Build Arena Project",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3000 --open /index.html"
+    "dev": "vite --host 0.0.0.0 --port 3000 --open /index.html",
+    "copy-render-webps": "node scripts/copy-render-webps.js"
   },
   "keywords": [],
   "author": "",

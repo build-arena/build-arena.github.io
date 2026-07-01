@@ -160,8 +160,8 @@
             </div>
             
             <!-- Carousel Navigation -->
-            <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">‹</button>
-            <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">›</button>
+            <button class="carousel-btn carousel-btn-prev" onclick="changeSlide(-1)">&lsaquo;</button>
+            <button class="carousel-btn carousel-btn-next" onclick="changeSlide(1)">&rsaquo;</button>
             
             <!-- Carousel Indicators -->
             <div class="carousel-indicators">
@@ -199,17 +199,17 @@
 
                 <!-- Authors flowing -->
                 <p class="author-names">
-                    Tian Xia&ensp;·&ensp;Tianrun Gao&ensp;·&ensp;Wenhao Deng&ensp;·&ensp;Long Wei&ensp;·&ensp;Xiaowei Qian&ensp;·&ensp;Chenglei Yu&ensp;·&ensp;Tailin Wu<sup>*</sup>
+                    Tian Xia&ensp;&middot;&ensp;Tianrun Gao&ensp;&middot;&ensp;Wenhao Deng&ensp;&middot;&ensp;Long Wei&ensp;&middot;&ensp;Xiaowei Qian&ensp;&middot;&ensp;Chenglei Yu&ensp;&middot;&ensp;Tailin Wu<sup>*</sup>
                 </p>
                 <p class="contact-info"><sup>*</sup>Corresponding author: <a href="mailto:wutailin@westlake.edu.cn">wutailin@westlake.edu.cn</a></p>
                 <p class="venue-line">Accepted to <strong>ICML 2026</strong> (Forty-Third International Conference on Machine Learning)</p>
 
                 <!-- Stable button row (nowrap so they never reflow on resize) -->
                 <div class="links">
-                    <a href="https://arxiv.org/abs/2510.16559" target="_blank" rel="noopener noreferrer">📄 Paper</a>
-                    <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank" rel="noopener noreferrer">💻 Code</a>
-                    <a href="#benchmark">📈 Bench</a>
-                    <a href="https://store.steampowered.com/app/346010/" target="_blank" rel="noopener noreferrer">🎮 Besiege</a>
+                    <a href="https://arxiv.org/abs/2510.16559" target="_blank" rel="noopener noreferrer">&#128196; Paper</a>
+                    <a href="https://github.com/AI4Science-WestlakeU/BuildArena" target="_blank" rel="noopener noreferrer">&#128187; Code</a>
+                    <a href="#benchmark">&#128200; Bench</a>
+                    <a href="https://store.steampowered.com/app/346010/" target="_blank" rel="noopener noreferrer">&#127918; Besiege</a>
                 </div>
             </div>
         </div>
@@ -273,9 +273,9 @@
                     <div class="pipeline-scale-wrapper">
                         <!-- Control Panel (moved above) -->
                         <div class="pipeline-controls" id="controls">
-                            <button id="play-btn">▶ Play</button>
-                            <button id="pause-btn">⏸ Pause</button>
-                            <button id="reset-btn">⏮ Reset</button>
+                            <button id="play-btn">&#9654; Play</button>
+                            <button id="pause-btn">&#9208; Pause</button>
+                            <button id="reset-btn">&#9198; Reset</button>
                             <div class="pipeline-speed-control">
                                 <label for="speed-slider">Speed:</label>
                                 <input type="range" id="speed-slider" min="2" max="30" value="5" step="1">
@@ -343,51 +343,51 @@
                             <tbody>
                                 <tr>
                                     <td>PlanBench<sup>[1]</sup></td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
                                 </tr>
                                 <tr>
                                     <td>PlanQA<sup>[2]</sup></td>
-                                    <td>✓</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
                                 </tr>
                                 <tr>
                                     <td>PHYRE<sup>[3]</sup></td>
-                                    <td>✓</td>
-                                    <td>✗</td>
-                                    <td>✗</td>
-                                    <td>✓</td>
-                                    <td>✓</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10003;</td>
                                 </tr>
                                 <tr>
                                     <td>VOYAGER<sup>[4]</sup></td>
-                                    <td>✓</td>
-                                    <td>✗</td>
-                                    <td>✓</td>
-                                    <td>✓</td>
-                                    <td>✓</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10003;</td>
                                 </tr>
                                 <tr>
                                     <td>Embodied Agent Interface<sup>[5]</sup></td>
-                                    <td>✓</td>
-                                    <td>✓</td>
-                                    <td>✗</td>
-                                    <td>✓</td>
-                                    <td>✓</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10007;</td>
+                                    <td>&#10003;</td>
+                                    <td>&#10003;</td>
                                 </tr>
                                 <tr class="highlight-row">
                                     <td><strong>Build Arena (ours)</strong></td>
-                                    <td><strong>✓</strong></td>
-                                    <td><strong>✓</strong></td>
-                                    <td><strong>✓</strong></td>
-                                    <td><strong>✓</strong></td>
-                                    <td><strong>✓</strong></td>
+                                    <td><strong>&#10003;</strong></td>
+                                    <td><strong>&#10003;</strong></td>
+                                    <td><strong>&#10003;</strong></td>
+                                    <td><strong>&#10003;</strong></td>
+                                    <td><strong>&#10003;</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -405,14 +405,14 @@
                             <img src="assets/construction_grid/model_logos/openai.svg" alt="GPT-5">
                             <span class="model-name">GPT-5</span>
                         </div>
-                        <img data-src="assets/construction_grid/gpt5/1.gif" alt="GPT-5 Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/2.gif" alt="GPT-5 Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/3.gif" alt="GPT-5 Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/4.gif" alt="GPT-5 Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/5.gif" alt="GPT-5 Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/6.gif" alt="GPT-5 Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/7.gif" alt="GPT-5 Construction 7" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt5/8.gif" alt="GPT-5 Construction 8" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/0.webp" alt="GPT-5 Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/1.webp" alt="GPT-5 Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/2.webp" alt="GPT-5 Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/3.webp" alt="GPT-5 Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/4.webp" alt="GPT-5 Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/5.webp" alt="GPT-5 Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/6.webp" alt="GPT-5 Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt5/7.webp" alt="GPT-5 Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Grok -->
@@ -421,14 +421,14 @@
                             <img src="assets/construction_grid/model_logos/grok.svg" alt="Grok">
                             <span class="model-name">Grok</span>
                         </div>
-                        <img data-src="assets/construction_grid/grok/0.gif" alt="Grok Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/1.gif" alt="Grok Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/2.gif" alt="Grok Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/3.gif" alt="Grok Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/4.gif" alt="Grok Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/5.gif" alt="Grok Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/6.gif" alt="Grok Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/grok/7.gif" alt="Grok Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/0.webp" alt="Grok Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/1.webp" alt="Grok Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/2.webp" alt="Grok Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/3.webp" alt="Grok Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/4.webp" alt="Grok Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/5.webp" alt="Grok Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/6.webp" alt="Grok Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/grok/7.webp" alt="Grok Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Claude -->
@@ -437,14 +437,14 @@
                             <img src="assets/construction_grid/model_logos/claude-color.svg" alt="Claude">
                             <span class="model-name">Claude</span>
                         </div>
-                        <img data-src="assets/construction_grid/claude/0.gif" alt="Claude Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/1.gif" alt="Claude Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/2.gif" alt="Claude Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/3.gif" alt="Claude Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/4.gif" alt="Claude Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/5.gif" alt="Claude Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/6.gif" alt="Claude Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/claude/7.gif" alt="Claude Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/0.webp" alt="Claude Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/1.webp" alt="Claude Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/2.webp" alt="Claude Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/3.webp" alt="Claude Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/4.webp" alt="Claude Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/5.webp" alt="Claude Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/6.webp" alt="Claude Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/claude/7.webp" alt="Claude Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Doubao (Seed) -->
@@ -453,14 +453,14 @@
                             <img src="assets/construction_grid/model_logos/doubao-color.svg" alt="Doubao">
                             <span class="model-name">Doubao</span>
                         </div>
-                        <img data-src="assets/construction_grid/doubao/0.gif" alt="Doubao Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/1.gif" alt="Doubao Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/2.gif" alt="Doubao Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/3.gif" alt="Doubao Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/4.gif" alt="Doubao Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/5.gif" alt="Doubao Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/doubao/6.gif" alt="Doubao Construction 6" class="lazy-gif" loading="lazy">
-                        <div class="arena-placeholder"></div>
+                        <img data-src="assets/construction_grid/doubao/0.webp" alt="Doubao Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/1.webp" alt="Doubao Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/2.webp" alt="Doubao Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/3.webp" alt="Doubao Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/4.webp" alt="Doubao Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/5.webp" alt="Doubao Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/6.webp" alt="Doubao Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/doubao/7.webp" alt="Doubao Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- GPT-4o -->
@@ -469,14 +469,14 @@
                             <img src="assets/construction_grid/model_logos/openai.svg" alt="GPT-4o">
                             <span class="model-name">GPT-4o</span>
                         </div>
-                        <img data-src="assets/construction_grid/gpt/0.gif" alt="GPT Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/1.gif" alt="GPT Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/2.gif" alt="GPT Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/3.gif" alt="GPT Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/4.gif" alt="GPT Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/5.gif" alt="GPT Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/6.gif" alt="GPT Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gpt/7.gif" alt="GPT Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/0.webp" alt="GPT Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/1.webp" alt="GPT Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/2.webp" alt="GPT Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/3.webp" alt="GPT Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/4.webp" alt="GPT Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/5.webp" alt="GPT Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/6.webp" alt="GPT Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gpt/7.webp" alt="GPT Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Kimi -->
@@ -485,14 +485,14 @@
                             <img src="assets/construction_grid/model_logos/kimi-color.svg" alt="Kimi">
                             <span class="model-name">Kimi</span>
                         </div>
-                        <img data-src="assets/construction_grid/kimi/0.gif" alt="Kimi Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/1.gif" alt="Kimi Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/2.gif" alt="Kimi Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/3.gif" alt="Kimi Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/4.gif" alt="Kimi Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/5.gif" alt="Kimi Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/6.gif" alt="Kimi Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/kimi/7.gif" alt="Kimi Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/0.webp" alt="Kimi Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/1.webp" alt="Kimi Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/2.webp" alt="Kimi Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/3.webp" alt="Kimi Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/4.webp" alt="Kimi Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/5.webp" alt="Kimi Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/6.webp" alt="Kimi Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/kimi/7.webp" alt="Kimi Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Qwen -->
@@ -501,14 +501,14 @@
                             <img src="assets/construction_grid/model_logos/qwen-color.svg" alt="Qwen">
                             <span class="model-name">Qwen</span>
                         </div>
-                        <img data-src="assets/construction_grid/qwen/0.gif" alt="Qwen Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/qwen/1.gif" alt="Qwen Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/qwen/2.gif" alt="Qwen Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/qwen/3.gif" alt="Qwen Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/qwen/4.gif" alt="Qwen Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/qwen/5.gif" alt="Qwen Construction 5" class="lazy-gif" loading="lazy">
-                        <div class="arena-placeholder"></div>
-                        <div class="arena-placeholder"></div>
+                        <img data-src="assets/construction_grid/qwen/0.webp" alt="Qwen Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/1.webp" alt="Qwen Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/2.webp" alt="Qwen Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/3.webp" alt="Qwen Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/4.webp" alt="Qwen Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/5.webp" alt="Qwen Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/6.webp" alt="Qwen Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/qwen/7.webp" alt="Qwen Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- DeepSeek -->
@@ -517,14 +517,14 @@
                             <img src="assets/construction_grid/model_logos/deepseek-color.svg" alt="DeepSeek">
                             <span class="model-name">DeepSeek</span>
                         </div>
-                        <img data-src="assets/construction_grid/deepseek/0.gif" alt="DeepSeek Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/1.gif" alt="DeepSeek Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/2.gif" alt="DeepSeek Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/3.gif" alt="DeepSeek Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/4.gif" alt="DeepSeek Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/5.gif" alt="DeepSeek Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/6.gif" alt="DeepSeek Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/deepseek/7.gif" alt="DeepSeek Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/0.webp" alt="DeepSeek Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/1.webp" alt="DeepSeek Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/2.webp" alt="DeepSeek Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/3.webp" alt="DeepSeek Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/4.webp" alt="DeepSeek Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/5.webp" alt="DeepSeek Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/6.webp" alt="DeepSeek Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/deepseek/7.webp" alt="DeepSeek Construction 7" class="lazy-gif" loading="lazy">
                     </div>
 
                     <!-- Gemini -->
@@ -533,14 +533,14 @@
                             <img src="assets/construction_grid/model_logos/gemini-color.svg" alt="Gemini">
                             <span class="model-name">Gemini</span>
                         </div>
-                        <img data-src="assets/construction_grid/gemini/0.gif" alt="Gemini Construction 0" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/1.gif" alt="Gemini Construction 1" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/2.gif" alt="Gemini Construction 2" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/3.gif" alt="Gemini Construction 3" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/4.gif" alt="Gemini Construction 4" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/5.gif" alt="Gemini Construction 5" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/6.gif" alt="Gemini Construction 6" class="lazy-gif" loading="lazy">
-                        <img data-src="assets/construction_grid/gemini/7.gif" alt="Gemini Construction 7" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/0.webp" alt="Gemini Construction 0" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/1.webp" alt="Gemini Construction 1" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/2.webp" alt="Gemini Construction 2" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/3.webp" alt="Gemini Construction 3" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/4.webp" alt="Gemini Construction 4" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/5.webp" alt="Gemini Construction 5" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/6.webp" alt="Gemini Construction 6" class="lazy-gif" loading="lazy">
+                        <img data-src="assets/construction_grid/gemini/7.webp" alt="Gemini Construction 7" class="lazy-gif" loading="lazy">
                     </div>
                 </div>
 
@@ -582,7 +582,7 @@
                     <div class="workflow-card collapsed">
                         <h4 onclick="toggleWorkflow(this)">
                             <span class="workflow-toggle"></span>
-                            📋 Planner
+                            &#128203; Planner
                         </h4>
                         <div class="workflow-content">
                             <p>
@@ -596,7 +596,7 @@
                     <div class="workflow-card collapsed">
                         <h4 onclick="toggleWorkflow(this)">
                             <span class="workflow-toggle"></span>
-                            ✏️ Drafter
+                            &#9999;&#65039; Drafter
                         </h4>
                         <div class="workflow-content">
                             <p>
@@ -610,7 +610,7 @@
                     <div class="workflow-card collapsed">
                         <h4 onclick="toggleWorkflow(this)">
                             <span class="workflow-toggle"></span>
-                            🔍 Reviewer
+                            &#128269; Reviewer
                         </h4>
                         <div class="workflow-content">
                             <p>
@@ -624,7 +624,7 @@
                     <div class="workflow-card collapsed">
                         <h4 onclick="toggleWorkflow(this)">
                             <span class="workflow-toggle"></span>
-                            🔨 Builder
+                            &#128296; Builder
                         </h4>
                         <div class="workflow-content">
                             <p>
@@ -638,7 +638,7 @@
                     <div class="workflow-card collapsed">
                         <h4 onclick="toggleWorkflow(this)">
                             <span class="workflow-toggle"></span>
-                            🧭 Guidance
+                            &#129517; Guidance
                         </h4>
                         <div class="workflow-content">
                             <p>
@@ -651,7 +651,7 @@
                 </div>
 
                 <p style="margin-top: 1.5rem;">
-                    The baseline workflow progresses through three stages: <strong>Plan Phase</strong> → <strong>Draft-Review Loop</strong> → 
+                    The baseline workflow progresses through three stages: <strong>Plan Phase</strong> &rarr; <strong>Draft-Review Loop</strong> &rarr; 
                     <strong>Build-Guidance Loop</strong>, producing a simulation-compatible construction result. 
                     Our framework supports <strong>flexible workflow customization</strong>: you can define your own agent 
                     collaboration patterns, modify the multi-stage structure, or integrate alternative reasoning strategies to suit specific task requirements.
@@ -669,14 +669,14 @@
                     Build Arena includes three representative engineering task categories, each with three difficulty levels (Easy, Medium, Hard). 
                     Tasks are designed along six difficulty dimensions: <strong>Quantification</strong>, <strong>Robustness</strong>, 
                     <strong>Magnitude</strong>, <strong>Compositionality</strong>, <strong>Precision</strong>, and <strong>Ambiguity</strong>. 
-                    Click the <strong>⚙️ Yours</strong> card below to learn about customizing your own tasks.
+                    Click the <strong>&#9881;&#65039; Yours</strong> card below to learn about customizing your own tasks.
                 </p>
                 
                 <div class="task-grid">
                     <div class="task-card collapsed">
                         <h3 onclick="toggleTask(this)">
                             <span class="task-toggle"></span>
-                            🚗 Transport
+                            &#128663; Transport
                         </h3>
                         <div class="task-content">
                             <p>
@@ -694,11 +694,11 @@
                     <div class="task-card collapsed">
                         <h3 onclick="toggleTask(this)">
                             <span class="task-toggle"></span>
-                            🌉 Support
+                            &#127753; Support
                         </h3>
                         <div class="task-content">
                             <p>
-                                Build static structures to support loads across gaps—essentially designing bridges. The span multiplies across 
+                                Build static structures to support loads across gaps&mdash;essentially designing bridges. The span multiplies across 
                                 difficulty levels, requiring larger-scale structures and more precise assembly. Modular construction with multiple 
                                 substructures is required at higher levels.
                             </p>
@@ -712,7 +712,7 @@
                     <div class="task-card collapsed">
                         <h3 onclick="toggleTask(this)">
                             <span class="task-toggle"></span>
-                            🚀 Lift
+                            &#128640; Lift
                         </h3>
                         <div class="task-content">
                             <p>
@@ -730,7 +730,7 @@
                     <div class="task-card collapsed">
                         <h3 onclick="toggleTask(this)">
                             <span class="task-toggle"></span>
-                            ⚙️ Yours
+                            &#9881;&#65039; Yours
                         </h3>
                         <div class="task-content">
                             <p>
@@ -769,21 +769,21 @@
                                 <td><strong>42.7%</strong></td>
                                 <td><strong>52.1%</strong></td>
                                 <td><strong>41.1%</strong></td>
-                                <td><span class="badge badge-excellent">🥇 Excellent</span></td>
+                                <td><span class="badge badge-excellent">&#129351; Excellent</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Grok-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">grok4-0709</span></td>
                                 <td>11.5%</td>
                                 <td>20.8%</td>
                                 <td>21.9%</td>
-                                <td><span class="badge badge-good">🥈 Good</span></td>
+                                <td><span class="badge badge-good">&#129352; Good</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Claude-4</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">claude-sonnet-4-20250514</span></td>
                                 <td>12.5%</td>
                                 <td>3.1%</td>
                                 <td>4.2%</td>
-                                <td><span class="badge badge-good">🥉 Good</span></td>
+                                <td><span class="badge badge-good">&#129353; Good</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Seed-1.6</strong><br><span style="font-size: 0.8rem; color: var(--text-light);">doubao-seed-1-6-250615</span></td>
@@ -911,7 +911,7 @@
                     <div class="finding-item">
                         <div class="finding-number">6</div>
                         <div class="finding-content">
-                            <h4>More Tokens ≠ Better Performance</h4>
+                            <h4>More Tokens &ne; Better Performance</h4>
                             <p>Cost analysis reveals that massive inference does not guarantee high performance. Best construction results often 
                             consume only moderate numbers of tokens, while many failed attempts incur massive token usage. Beyond a capability 
                             threshold, additional inference cost does not translate into better results.</p>
@@ -979,7 +979,7 @@
                         <span class="ref-number">[5]</span>
                         Manling Li, Shiyu Zhao, Qineng Wang, Kangrui Wang, Yu Zhou, Sanjana Srivastava, Cem Gokmen, Tony Lee, Erran Li, Ruohan Zhang, et al. 
                         <strong>Embodied agent interface: Benchmarking llms for embodied decision making.</strong>
-                        <em>Advances in Neural Information Processing Systems</em>, 37:100428–100534, 2024.
+                        <em>Advances in Neural Information Processing Systems</em>, 37:100428&ndash;100534, 2024.
                     </p>
                 </div>
             </section>
@@ -1005,8 +1005,8 @@
         <footer>
         <p>&copy; 2025 AI for Scientific Simulation and Discovery Lab, Westlake University. All rights reserved.</p>
         <p style="margin-top: 0.8rem;">
-            <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank">🔬 Lab Website</a> | 
-            <a href="mailto:wutailin@westlake.edu.cn">✉️ Contact</a>
+            <a href="https://ai4s.lab.westlake.edu.cn/" target="_blank">&#128300; Lab Website</a> | 
+            <a href="mailto:wutailin@westlake.edu.cn">&#9993;&#65039; Contact</a>
         </p>
         <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
             For questions and collaborations, please reach out via email or GitHub Issues
@@ -1030,7 +1030,7 @@
 
         <div class="challenge-slogan-card" aria-label="BuildArena 2.0 slogans">
             <p><span class="wrong">X build by yourself</span></p>
-            <p><span class="correct">✓ build with your agents</span></p>
+            <p><span class="correct">&#10003; build with your agents</span></p>
         </div>
 
         <div class="coming-soon">COMING SOON...</div>
@@ -1089,7 +1089,7 @@
       }
     })();
     </script>
-    <script src="script.js?v=20260616-switcher"></script>
+    <script src="script.js?v=20260630-webp-registry"></script>
     <script src="pipeline_animation.js"></script>
     <script>
     /* ========================================
