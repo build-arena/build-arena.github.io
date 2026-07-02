@@ -51,6 +51,65 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
 });
 
+function normalizeAssetPath({ value }) {
+    const url = new URL(value, window.location.href);
+
+    return url.pathname.replace(/^\/+/, '');
+}
+
+function getGridImageAssetPath({ image }) {
+    const source = image.dataset.src || image.getAttribute('src');
+
+    if (!source) {
+        return null;
+    }
+
+    return normalizeAssetPath({ value: source });
+}
+
+function getRegistryEntriesByTargetPath({ registry }) {
+    const entriesByTargetPath = new Map();
+
+    Object.values(registry.models).flat().forEach(entry => {
+        entriesByTargetPath.set(entry.targetPath, entry);
+    });
+
+    return entriesByTargetPath;
+}
+
+function applyWebpRegistryTooltips({ registry }) {
+    const entriesByTargetPath = getRegistryEntriesByTargetPath({ registry });
+    const images = document.querySelectorAll('img[data-src^="assets/construction_grid/"], img[src*="assets/construction_grid/"]');
+
+    images.forEach(image => {
+        const assetPath = getGridImageAssetPath({ image });
+        const registryEntry = entriesByTargetPath.get(assetPath);
+
+        if (!registryEntry) {
+            return;
+        }
+
+        const label = registryEntry.originalFileId;
+        image.title = label;
+        image.setAttribute('aria-label', `${image.alt}: ${label}`);
+    });
+}
+
+async function initializeWebpRegistryTooltips() {
+    const response = await fetch('assets/construction_grid/webp_registry.json');
+
+    if (!response.ok) {
+        throw new Error(`Failed to load webp registry: ${response.status}`);
+    }
+
+    const registry = await response.json();
+    applyWebpRegistryTooltips({ registry });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeWebpRegistryTooltips();
+});
+
 // Lazy Loading for GIFs using Intersection Observer
 const lazyGifOptions = {
     root: null,
