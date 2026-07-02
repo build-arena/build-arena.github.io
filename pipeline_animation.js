@@ -37,7 +37,7 @@ const statusText = document.getElementById('status');
 // Load configuration and build unified tagged string
 async function loadConfig() {
     try {
-        const response = await fetch('assets/pipeline_config.json');
+        const response = await fetch('site_assets/pipeline_config.json');
         const data = await response.json();
         config = { ...config, ...data };
         
@@ -47,7 +47,7 @@ async function loadConfig() {
             // Add image tag FIRST (will trigger image load without printing)
             if (step.image) {
                 // Update image path to use assets folder
-                const imagePath = step.image.replace('images/', 'assets/pipeline_images/');
+                const imagePath = step.image.replace('images/', 'site_assets/pipeline_images/');
                 taggedString += `<image:${imagePath}>`;
             }
             
@@ -94,14 +94,14 @@ function loadDefaultConfig() {
                 },
                 {
                     type: "text",
-                    content: "You have successfully added <ID 1: Starting Block>.\nExisting Blocks: 1\n(The starting block) <ID 1: Starting Block>\nPosition: [0, 0, 0.5]\nAttachable Faces:\nFace label: A, Face center: [0.5, 0., 0.5], Facing towards <East with 0.0° pitch>\nFace label: B, Face center: [-0.5, 0., 0.5], Facing towards <West with 0.0° pitch>\nFace label: C, Face center: [0., 0., 1.], Facing towards <straight up>\nFace label: D, Face center: [0., 0., 0.], Facing towards <straight down>\nFace label: E, Face center: [0., 0.5, 0.5], Facing towards <North with 0.0° pitch>\nFace label: F, Face center: [0., -0.5, 0.5], Facing towards <South with 0.0° pitch>"
+                    content: "You have successfully added <ID 1: Starting Block>.\nExisting Blocks: 1\n(The starting block) <ID 1: Starting Block>\nPosition: [0, 0, 0.5]\nAttachable Faces:\nFace label: A, Face center: [0.5, 0., 0.5], Facing towards <East with 0.0掳 pitch>\nFace label: B, Face center: [-0.5, 0., 0.5], Facing towards <West with 0.0掳 pitch>\nFace label: C, Face center: [0., 0., 1.], Facing towards <straight up>\nFace label: D, Face center: [0., 0., 0.], Facing towards <straight down>\nFace label: E, Face center: [0., 0.5, 0.5], Facing towards <North with 0.0掳 pitch>\nFace label: F, Face center: [0., -0.5, 0.5], Facing towards <South with 0.0掳 pitch>"
                 }
             ],
-            image: "assets/pipeline_images/step1.png"
+            image: "site_assets/pipeline_images/step1.png"
         }
     ];
     // Build the tagged string from default config
-    config.animationString = '<agent:builder>Builder:\nInitializing build arena environment...<code>add_block(id=1, type=\'Starting Block\', position=[0, 0, 0.5])</code>You have successfully added <ID 1: Starting Block>...<image:assets/pipeline_images/step1.png>\n\n';
+    config.animationString = '<agent:builder>Builder:\nInitializing build arena environment...<code>add_block(id=1, type=\'Starting Block\', position=[0, 0, 0.5])</code>You have successfully added <ID 1: Starting Block>...<image:site_assets/pipeline_images/step1.png>\n\n';
 }
 
 // Helper: Create agent label element
@@ -162,13 +162,13 @@ async function streamAnimation(runId) {
     const str = config.animationString;
     let i = state.globalCharIndex;
     
-    console.log(`🎬 Starting stream from index ${i}/${str.length}`);
+    console.log(`馃幀 Starting stream from index ${i}/${str.length}`);
     state.isStreaming = true;
     
     while (i < str.length && state.isPlaying && !state.isPaused) {
         // Abort if a newer streaming run has started
         if (runId !== state.streamRunId) {
-            console.log('⛔ Aborting outdated streaming run');
+            console.log('鉀?Aborting outdated streaming run');
             break;
         }
         // Check for tags
@@ -184,14 +184,14 @@ async function streamAnimation(runId) {
                 state.globalCharIndex = i;
                 updateProgress();
                 await new Promise(resolve => { state.currentTimeout = setTimeout(resolve, config.charDelay); });
-                if (runId !== state.streamRunId) { console.log('⛔ Aborting outdated streaming run after wait'); break; }
-                if (!state.isPlaying || state.isPaused) { console.log(`⏸️  Paused at index ${state.globalCharIndex}/${str.length}`); break; }
+                if (runId !== state.streamRunId) { console.log('鉀?Aborting outdated streaming run after wait'); break; }
+                if (!state.isPlaying || state.isPaused) { console.log(`鈴革笍  Paused at index ${state.globalCharIndex}/${str.length}`); break; }
                 continue;
             }
 
             const tagEnd = str.indexOf('>', i);
             if (tagEnd === -1) {
-                console.error('❌ Unclosed tag at index', i);
+                console.error('鉂?Unclosed tag at index', i);
                 break;
             }
             
@@ -210,12 +210,12 @@ async function streamAnimation(runId) {
                 state.globalCharIndex = i;
                 updateProgress();
                 await new Promise(resolve => { state.currentTimeout = setTimeout(resolve, config.charDelay); });
-                if (runId !== state.streamRunId) { console.log('⛔ Aborting outdated streaming run after wait'); break; }
-                if (!state.isPlaying || state.isPaused) { console.log(`⏸️  Paused at index ${state.globalCharIndex}/${str.length}`); break; }
+                if (runId !== state.streamRunId) { console.log('鉀?Aborting outdated streaming run after wait'); break; }
+                if (!state.isPlaying || state.isPaused) { console.log(`鈴革笍  Paused at index ${state.globalCharIndex}/${str.length}`); break; }
                 continue;
             }
             
-            console.log(`🏷️  Tag found: <${tagContent}>`);
+            console.log(`馃彿锔? Tag found: <${tagContent}>`);
             
             // Handle different tag types
             if (tagContent.startsWith('agent:')) {
@@ -223,7 +223,7 @@ async function streamAnimation(runId) {
                 const agent = tagContent.split(':')[1];
                 const label = createAgentLabel(agent);
                 terminalContent.appendChild(label);
-                console.log(`👤 Agent label added: ${agent}`);
+                console.log(`馃懁 Agent label added: ${agent}`);
                 
                 // Reset current element for new agent's messages
                 state.currentElement = null;
@@ -234,9 +234,9 @@ async function streamAnimation(runId) {
                 const imagePath = tagContent.split(':')[1];
                 // If image is "none", skip and keep previous image
                 if (imagePath === 'none') {
-                    console.log(`🖼️  Keeping previous image (none specified)`);
+                    console.log(`馃柤锔? Keeping previous image (none specified)`);
                 } else {
-                    console.log(`🖼️  Loading image: ${imagePath}`);
+                    console.log(`馃柤锔? Loading image: ${imagePath}`);
                     await preloadImage(imagePath);
                     await changeImage(imagePath);
                     state.currentImagePath = imagePath;
@@ -246,13 +246,13 @@ async function streamAnimation(runId) {
                 // Start code block
                 state.currentElement = createCodeBlock();
                 state.isCodeBlock = true;
-                console.log('💻 Code block started');
+                console.log('馃捇 Code block started');
             }
             else if (tagContent === '/code') {
                 // End code block
                 state.currentElement = null;
                 state.isCodeBlock = false;
-                console.log('💻 Code block ended');
+                console.log('馃捇 Code block ended');
             }
             else if (tagContent === 'PUNCHLINE') {
                 // Start punchline span
@@ -262,12 +262,12 @@ async function streamAnimation(runId) {
                 state.punchlineSpan = document.createElement('span');
                 state.punchlineSpan.className = 'punchline';
                 state.currentElement.appendChild(state.punchlineSpan);
-                console.log('🎯 Punchline started');
+                console.log('馃幆 Punchline started');
             }
             else if (tagContent === '/PUNCHLINE') {
                 // End punchline
                 state.punchlineSpan = null;
-                console.log('🎯 Punchline ended');
+                console.log('馃幆 Punchline ended');
             }
             
             // Skip past the tag
@@ -314,12 +314,12 @@ async function streamAnimation(runId) {
             
             // Abort if a newer streaming run has started while we were waiting
             if (runId !== state.streamRunId) {
-                console.log('⛔ Aborting outdated streaming run after wait');
+                console.log('鉀?Aborting outdated streaming run after wait');
                 break;
             }
             // Check pause/play state after each character
             if (!state.isPlaying || state.isPaused) {
-                console.log(`⏸️  Paused at index ${state.globalCharIndex}/${str.length}`);
+                console.log(`鈴革笍  Paused at index ${state.globalCharIndex}/${str.length}`);
                 break;
             }
         }
@@ -330,7 +330,7 @@ async function streamAnimation(runId) {
         removeCursor(); // Remove cursor when complete
         stopAnimation();
         updateButtonStates(); // Update button states when complete
-        console.log('✅ Animation complete');
+        console.log('鉁?Animation complete');
     }
     // Keep cursor visible if paused (don't remove it)
     state.isStreaming = false;
@@ -460,14 +460,14 @@ async function startAnimation() {
     
     if (state.isPaused) {
         // Resume from where we paused
-        console.log(`▶️  Resuming from index ${state.globalCharIndex}`);
+        console.log(`鈻讹笍  Resuming from index ${state.globalCharIndex}`);
         state.isPaused = false;
         state.isPlaying = true;
         updateButtonStates();
         await executeAnimation();
     } else {
         // Start from beginning
-        console.log('▶️  Starting from beginning');
+        console.log('鈻讹笍  Starting from beginning');
         state.isPlaying = true;
         state.isPaused = false;
         state.globalCharIndex = 0;
@@ -492,7 +492,7 @@ async function startAnimation() {
 // Pause animation
 function pauseAnimation() {
     if (!state.isPlaying || state.isPaused) return;
-    console.log(`⏸️  Pausing at index ${state.globalCharIndex}`);
+    console.log(`鈴革笍  Pausing at index ${state.globalCharIndex}`);
     state.isPaused = true;
     updateButtonStates();
     // Invalidate current stream loop so that resume starts cleanly
@@ -510,7 +510,7 @@ function stopAnimation() {
 
 // Reset display
 function resetDisplay() {
-    console.log('🔄 Resetting display');
+    console.log('馃攧 Resetting display');
     removeCursor(); // Remove cursor on reset
     terminalContent.innerHTML = '<div class="terminal-placeholder">Please click on the Play button.</div>';
     const graphicsContent = document.getElementById('graphics-content');
@@ -531,7 +531,7 @@ function resetDisplay() {
 
 // Reset animation
 function resetAnimation() {
-    console.log('⏹️  Resetting animation');
+    console.log('鈴癸笍  Resetting animation');
     stopAnimation();
     resetDisplay();
     updateButtonStates();

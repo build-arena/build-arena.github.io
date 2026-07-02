@@ -1,7 +1,7 @@
 /* Font Face Declarations */
 @font-face {
     font-family: '3270NerdFontMono';
-    src: url('/assets/fonts/3270NerdFontMono-Regular.ttf') format('truetype');
+    src: url('/site_assets/fonts/3270NerdFontMono-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: block;
@@ -14,22 +14,22 @@
 }
 
 :root {
-    --main-color: #004990;           /* 主色：深蓝 */
-    --main-dark: #003366;            /* 主色深色变体 */
-    --main-light: #0066cc;           /* 主色浅色变体 */
-    --accent-color: #f18d00;         /* 辅助色：橙色 */
-    --accent-light: #ffa726;         /* 辅助色浅色 */
-    --accent-dark: #e67e00;          /* 辅助色深色 */
-    --text-dark: #1a1a1a;            /* 深色文字 */
-    --text-medium: #4a4a4a;          /* 中等文字 */
-    --text-light: #666666;           /* 浅色文字 */
-    --bg-light: #fafafa;             /* 浅色背景 */
-    --bg-white: #ffffff;             /* 白色背景 */
-    --bg-blue-light: #e6f2ff;        /* 浅蓝背景 */
-    --border-color: #e0e0e0;         /* 边框颜色 */
-    --shadow-color: rgba(0, 73, 144, 0.1);  /* 阴影颜色 */
-    --gradient-start: #003d7a;       /* 渐变起始 */
-    --gradient-end: #004990;         /* 渐变结束 */
+    --main-color: #004990;           /* 娑撴槒澹婇敍姘箒閽?*/
+    --main-dark: #003366;            /* 娑撴槒澹婂ǎ杈閸欐ü缍?*/
+    --main-light: #0066cc;           /* 娑撴槒澹婂ù鍛板閸欐ü缍?*/
+    --accent-color: #f18d00;         /* 鏉堝懎濮懝璇х窗濮楁瑨澹?*/
+    --accent-light: #ffa726;         /* 鏉堝懎濮懝鍙夌ガ閼?*/
+    --accent-dark: #e67e00;          /* 鏉堝懎濮懝鍙夌箒閼?*/
+    --text-dark: #1a1a1a;            /* 濞ｈ精澹婇弬鍥х摟 */
+    --text-medium: #4a4a4a;          /* 娑擃厾鐡戦弬鍥х摟 */
+    --text-light: #666666;           /* 濞村懓澹婇弬鍥х摟 */
+    --bg-light: #fafafa;             /* 濞村懓澹婇懗灞炬珯 */
+    --bg-white: #ffffff;             /* 閻у€熷閼冲本娅?*/
+    --bg-blue-light: #e6f2ff;        /* 濞村懓鎽戦懗灞炬珯 */
+    --border-color: #e0e0e0;         /* 鏉堣顢嬫０婊嗗 */
+    --shadow-color: rgba(0, 73, 144, 0.1);  /* 闂冩潙濂栨０婊嗗 */
+    --gradient-start: #003d7a;       /* 濞撴劕褰夌挧宄邦潗 */
+    --gradient-end: #004990;         /* 濞撴劕褰夌紒鎾存将 */
 }
 
 body {
@@ -313,7 +313,7 @@ body.challenge-mode .site-switcher-btn.active {
     background-color: var(--main-color);
     background-image: 
         linear-gradient(rgba(0, 73, 144, 0.7), rgba(0, 73, 144, 0.7)),
-        url('assets/header_background.png');
+        url('site_assets/header_background.png');
     background-repeat: no-repeat, repeat;
     background-size: cover, auto;
     z-index: -1;
@@ -501,7 +501,7 @@ video.carousel-image {
     pointer-events: none;
 }
 
-/* Authors Block — vertical stack, max-width container, stable across widths */
+/* Authors Block 閳?vertical stack, max-width container, stable across widths */
 .authors-block-content {
     max-width: 920px;
     margin: 0 auto;
@@ -557,7 +557,7 @@ video.carousel-image {
     flex: 0 0 auto;
 }
 
-/* Old .westlake-logo lookalike width hold — keep for any leftover usage */
+/* Old .westlake-logo lookalike width hold 閳?keep for any leftover usage */
 .westlake-logo { height: 35px; width: auto; }
 
 
@@ -675,7 +675,7 @@ video.carousel-image {
     text-decoration: underline;
 }
 
-/* Buttons row — pinned to one line, never reflows */
+/* Buttons row 閳?pinned to one line, never reflows */
 .authors-block .links {
     display: flex;
     gap: 0.8rem;
@@ -1565,7 +1565,7 @@ footer a:hover {
         order: 3;
     }
 
-    /* Authors-block now uses a max-width flex stack — no narrow-viewport overrides
+    /* Authors-block now uses a max-width flex stack 閳?no narrow-viewport overrides
        needed here; the page-level rp-scale wrapper locks the layout at 768. */
     .authors-block .author-names {
         font-size: 0.95rem;

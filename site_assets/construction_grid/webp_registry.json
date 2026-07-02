@@ -11,7 +11,7 @@
     "gpt5": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/gpt5/0.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/0.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:lift/hard/5z5nquvb/bsg_view_2",
@@ -26,7 +26,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/gpt5/1.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/1.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:lift/hard/jcf3bt10/bsg_view_2",
@@ -41,7 +41,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/gpt5/2.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/2.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:support/soft/gvy3ze5w/bsg_view_2",
@@ -56,7 +56,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/gpt5/3.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/3.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:transport/hard/hd35q3i8_rfd/bsg_view_2",
@@ -71,7 +71,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/gpt5/4.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/4.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:transport/hard/rb0984zp_rfd/bsg_view_2",
@@ -86,7 +86,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/gpt5/5.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/5.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:transport/medium/x1f0ayc5_rfd/bsg_view_2",
@@ -101,7 +101,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/gpt5/6.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/6.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:transport/soft/45riamdx_rfd/bsg_view_2",
@@ -116,7 +116,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/gpt5/7.webp",
+        "targetPath": "site_assets/construction_grid/gpt5/7.webp",
         "sourceModel": "gpt-5",
         "targetModel": "gpt5",
         "originalFileId": "gpt-5:transport/soft/pyjn8vn9_rfd/bsg_view_2",
@@ -133,7 +133,7 @@
     "grok": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/grok/0.webp",
+        "targetPath": "site_assets/construction_grid/grok/0.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:lift/medium/ae62nrsq/bsg_view_2",
@@ -148,7 +148,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/grok/1.webp",
+        "targetPath": "site_assets/construction_grid/grok/1.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:lift/medium/jhm4ksjz/bsg_view_2",
@@ -163,7 +163,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/grok/2.webp",
+        "targetPath": "site_assets/construction_grid/grok/2.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:lift/medium/q12xp1za/bsg_view_2",
@@ -178,7 +178,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/grok/3.webp",
+        "targetPath": "site_assets/construction_grid/grok/3.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:support/medium/sntr2uei/bsg_view_2",
@@ -193,7 +193,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/grok/4.webp",
+        "targetPath": "site_assets/construction_grid/grok/4.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:transport/hard/8fk4nrqw_rfd/bsg_view_2",
@@ -208,7 +208,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/grok/5.webp",
+        "targetPath": "site_assets/construction_grid/grok/5.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:transport/hard/yzvhadl2_rfd/bsg_view_2",
@@ -223,7 +223,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/grok/6.webp",
+        "targetPath": "site_assets/construction_grid/grok/6.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:transport/soft/0ynnec7y_rfd/bsg_view_2",
@@ -238,7 +238,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/grok/7.webp",
+        "targetPath": "site_assets/construction_grid/grok/7.webp",
         "sourceModel": "grok-4-0709",
         "targetModel": "grok",
         "originalFileId": "grok-4-0709:transport/soft/7xg1xis2_rfd/bsg_view_2",
@@ -255,7 +255,7 @@
     "claude": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/claude/0.webp",
+        "targetPath": "site_assets/construction_grid/claude/0.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/hard/3s5q4s9u_rfd/bsg_view_2",
@@ -270,7 +270,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/claude/1.webp",
+        "targetPath": "site_assets/construction_grid/claude/1.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/hard/hianjq0l_rfd/bsg_view_2",
@@ -285,7 +285,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/claude/2.webp",
+        "targetPath": "site_assets/construction_grid/claude/2.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/hard/topmwtun_rfd/bsg_view_2",
@@ -300,7 +300,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/claude/3.webp",
+        "targetPath": "site_assets/construction_grid/claude/3.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/medium/c52sqrwz_rfd/bsg_view_2",
@@ -315,7 +315,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/claude/4.webp",
+        "targetPath": "site_assets/construction_grid/claude/4.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/medium/h0ygk914_rfd/bsg_view_2",
@@ -330,7 +330,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/claude/5.webp",
+        "targetPath": "site_assets/construction_grid/claude/5.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/soft/1sgqw2ek_rfd/bsg_view_2",
@@ -345,7 +345,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/claude/6.webp",
+        "targetPath": "site_assets/construction_grid/claude/6.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/soft/74frftnr_rfd/bsg_view_2",
@@ -360,7 +360,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/claude/7.webp",
+        "targetPath": "site_assets/construction_grid/claude/7.webp",
         "sourceModel": "claude-sonnet-4-20250514",
         "targetModel": "claude",
         "originalFileId": "claude-sonnet-4-20250514:transport/soft/q5ixm393_rfd/bsg_view_2",
@@ -377,7 +377,7 @@
     "deepseek": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/deepseek/0.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/0.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:support/soft/3ra64y37_rfd/bsg_view_2",
@@ -392,7 +392,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/deepseek/1.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/1.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:support/soft/ijydzva7_rfd/bsg_view_2",
@@ -407,7 +407,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/deepseek/2.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/2.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:support/soft/j40uv8rm/bsg_view_2",
@@ -422,7 +422,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/deepseek/3.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/3.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:support/soft/lbraslx7_rfd/bsg_view_2",
@@ -437,7 +437,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/deepseek/4.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/4.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:support/soft/u3haniqc_rfd/bsg_view_2",
@@ -452,7 +452,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/deepseek/5.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/5.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:transport/hard/dqx2x78t_rfd/bsg_view_2",
@@ -467,7 +467,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/deepseek/6.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/6.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:transport/soft/7kukmdcl_rfd/bsg_view_2",
@@ -482,7 +482,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/deepseek/7.webp",
+        "targetPath": "site_assets/construction_grid/deepseek/7.webp",
         "sourceModel": "deepseek-chat",
         "targetModel": "deepseek",
         "originalFileId": "deepseek-chat:transport/soft/b99fupv8_rfd/bsg_view_2",
@@ -499,7 +499,7 @@
     "doubao": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/doubao/0.webp",
+        "targetPath": "site_assets/construction_grid/doubao/0.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/medium/s5z8m25d/bsg_view_2",
@@ -514,7 +514,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/doubao/1.webp",
+        "targetPath": "site_assets/construction_grid/doubao/1.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/soft/k9vpkirg/bsg_view_2",
@@ -529,7 +529,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/doubao/2.webp",
+        "targetPath": "site_assets/construction_grid/doubao/2.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/soft/n0ulx8u9/bsg_view_2",
@@ -544,7 +544,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/doubao/3.webp",
+        "targetPath": "site_assets/construction_grid/doubao/3.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/soft/q1hr9833/bsg_view_2",
@@ -559,7 +559,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/doubao/4.webp",
+        "targetPath": "site_assets/construction_grid/doubao/4.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/soft/rsbcgx4s/bsg_view_2",
@@ -574,7 +574,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/doubao/5.webp",
+        "targetPath": "site_assets/construction_grid/doubao/5.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:support/soft/uzp6hbjt/bsg_view_2",
@@ -589,7 +589,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/doubao/6.webp",
+        "targetPath": "site_assets/construction_grid/doubao/6.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:transport/medium/6k697wd7_rfd/bsg_view_2",
@@ -604,7 +604,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/doubao/7.webp",
+        "targetPath": "site_assets/construction_grid/doubao/7.webp",
         "sourceModel": "doubao-seed-1-6-250615",
         "targetModel": "doubao",
         "originalFileId": "doubao-seed-1-6-250615:transport/soft/iwc61dfr_rfd/bsg_view_2",
@@ -621,7 +621,7 @@
     "gemini": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/gemini/0.webp",
+        "targetPath": "site_assets/construction_grid/gemini/0.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:support/soft/2t0ynnvu/bsg_view_2",
@@ -636,7 +636,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/gemini/1.webp",
+        "targetPath": "site_assets/construction_grid/gemini/1.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:support/soft/fpm10ncd/bsg_view_2",
@@ -651,7 +651,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/gemini/2.webp",
+        "targetPath": "site_assets/construction_grid/gemini/2.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:support/soft/kyqr687c/bsg_view_2",
@@ -666,7 +666,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/gemini/3.webp",
+        "targetPath": "site_assets/construction_grid/gemini/3.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:support/soft/qgea8y8h/bsg_view_2",
@@ -681,7 +681,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/gemini/4.webp",
+        "targetPath": "site_assets/construction_grid/gemini/4.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:support/soft/sx100unr/bsg_view_2",
@@ -696,7 +696,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/gemini/5.webp",
+        "targetPath": "site_assets/construction_grid/gemini/5.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:transport/hard/oespy1uc/bsg_view_2",
@@ -711,7 +711,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/gemini/6.webp",
+        "targetPath": "site_assets/construction_grid/gemini/6.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:transport/hard/yre44otf/bsg_view_2",
@@ -726,7 +726,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/gemini/7.webp",
+        "targetPath": "site_assets/construction_grid/gemini/7.webp",
         "sourceModel": "gemini-2-0-flash",
         "targetModel": "gemini",
         "originalFileId": "gemini-2-0-flash:transport/soft/2h0ofjtj_rfd/bsg_view_2",
@@ -743,7 +743,7 @@
     "gpt": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/gpt/0.webp",
+        "targetPath": "site_assets/construction_grid/gpt/0.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:support/soft/e1dnz8oe_rfd/bsg_view_2",
@@ -758,7 +758,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/gpt/1.webp",
+        "targetPath": "site_assets/construction_grid/gpt/1.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/hard/3aas4wcx_rfd/bsg_view_2",
@@ -773,7 +773,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/gpt/2.webp",
+        "targetPath": "site_assets/construction_grid/gpt/2.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/hard/64wljzq8_rfd/bsg_view_2",
@@ -788,7 +788,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/gpt/3.webp",
+        "targetPath": "site_assets/construction_grid/gpt/3.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/hard/9p08afum_rfd/bsg_view_2",
@@ -803,7 +803,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/gpt/4.webp",
+        "targetPath": "site_assets/construction_grid/gpt/4.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/soft/6yawq4ry_rfd/bsg_view_2",
@@ -818,7 +818,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/gpt/5.webp",
+        "targetPath": "site_assets/construction_grid/gpt/5.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/soft/9a0aufun_rfd/bsg_view_2",
@@ -833,7 +833,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/gpt/6.webp",
+        "targetPath": "site_assets/construction_grid/gpt/6.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/soft/s2arxv3e_rfd/bsg_view_2",
@@ -848,7 +848,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/gpt/7.webp",
+        "targetPath": "site_assets/construction_grid/gpt/7.webp",
         "sourceModel": "gpt-4o",
         "targetModel": "gpt",
         "originalFileId": "gpt-4o:transport/soft/wrrg4hgu_rfd/bsg_view_2",
@@ -865,7 +865,7 @@
     "kimi": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/kimi/0.webp",
+        "targetPath": "site_assets/construction_grid/kimi/0.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:lift/soft/5x70eupo/bsg_view_2",
@@ -880,7 +880,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/kimi/1.webp",
+        "targetPath": "site_assets/construction_grid/kimi/1.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:support/soft/3xjjie5u/bsg_view_2",
@@ -895,7 +895,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/kimi/2.webp",
+        "targetPath": "site_assets/construction_grid/kimi/2.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:support/soft/c3nbb8n8/bsg_view_2",
@@ -910,7 +910,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/kimi/3.webp",
+        "targetPath": "site_assets/construction_grid/kimi/3.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:support/soft/r61ar677/bsg_view_2",
@@ -925,7 +925,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/kimi/4.webp",
+        "targetPath": "site_assets/construction_grid/kimi/4.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:transport/hard/2w1unfcn_rfd/bsg_view_2",
@@ -940,7 +940,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/kimi/5.webp",
+        "targetPath": "site_assets/construction_grid/kimi/5.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:transport/soft/4sf0uxr6_rfd/bsg_view_2",
@@ -955,7 +955,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/kimi/6.webp",
+        "targetPath": "site_assets/construction_grid/kimi/6.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:transport/soft/74vj6ebe_rfd/bsg_view_2",
@@ -970,7 +970,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/kimi/7.webp",
+        "targetPath": "site_assets/construction_grid/kimi/7.webp",
         "sourceModel": "kimi-k2-turbo-preview",
         "targetModel": "kimi",
         "originalFileId": "kimi-k2-turbo-preview:transport/soft/x67prj6y_rfd/bsg_view_2",
@@ -987,7 +987,7 @@
     "qwen": [
       {
         "index": 0,
-        "targetPath": "assets/construction_grid/qwen/0.webp",
+        "targetPath": "site_assets/construction_grid/qwen/0.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:support/medium/28tm7k6o/bsg_view_2",
@@ -1002,7 +1002,7 @@
       },
       {
         "index": 1,
-        "targetPath": "assets/construction_grid/qwen/1.webp",
+        "targetPath": "site_assets/construction_grid/qwen/1.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:support/medium/c1cscolp/bsg_view_2",
@@ -1017,7 +1017,7 @@
       },
       {
         "index": 2,
-        "targetPath": "assets/construction_grid/qwen/2.webp",
+        "targetPath": "site_assets/construction_grid/qwen/2.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/hard/fs3j74wj_rfd/bsg_view_2",
@@ -1032,7 +1032,7 @@
       },
       {
         "index": 3,
-        "targetPath": "assets/construction_grid/qwen/3.webp",
+        "targetPath": "site_assets/construction_grid/qwen/3.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/soft/bhzjot3x_rfd/bsg_view_2",
@@ -1047,7 +1047,7 @@
       },
       {
         "index": 4,
-        "targetPath": "assets/construction_grid/qwen/4.webp",
+        "targetPath": "site_assets/construction_grid/qwen/4.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/soft/clyd7zr7_rfd/bsg_view_2",
@@ -1062,7 +1062,7 @@
       },
       {
         "index": 5,
-        "targetPath": "assets/construction_grid/qwen/5.webp",
+        "targetPath": "site_assets/construction_grid/qwen/5.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/soft/u9zsjwe6_rfd/bsg_view_2",
@@ -1077,7 +1077,7 @@
       },
       {
         "index": 6,
-        "targetPath": "assets/construction_grid/qwen/6.webp",
+        "targetPath": "site_assets/construction_grid/qwen/6.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/soft/v7yq74pl_rfd/bsg_view_2",
@@ -1092,7 +1092,7 @@
       },
       {
         "index": 7,
-        "targetPath": "assets/construction_grid/qwen/7.webp",
+        "targetPath": "site_assets/construction_grid/qwen/7.webp",
         "sourceModel": "qwen-plus",
         "targetModel": "qwen",
         "originalFileId": "qwen-plus:transport/soft/wca3fmom_rfd/bsg_view_2",

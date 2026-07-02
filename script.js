@@ -79,7 +79,7 @@ function getRegistryEntriesByTargetPath({ registry }) {
 
 function applyWebpRegistryTooltips({ registry }) {
     const entriesByTargetPath = getRegistryEntriesByTargetPath({ registry });
-    const images = document.querySelectorAll('img[data-src^="assets/construction_grid/"], img[src*="assets/construction_grid/"]');
+    const images = document.querySelectorAll('img[data-src^="site_assets/construction_grid/"], img[src*="site_assets/construction_grid/"]');
 
     images.forEach(image => {
         const assetPath = getGridImageAssetPath({ image });
@@ -96,7 +96,7 @@ function applyWebpRegistryTooltips({ registry }) {
 }
 
 async function initializeWebpRegistryTooltips() {
-    const response = await fetch('assets/construction_grid/webp_registry.json');
+    const response = await fetch('site_assets/construction_grid/webp_registry.json');
 
     if (!response.ok) {
         throw new Error(`Failed to load webp registry: ${response.status}`);
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lazyGifObserver.observe(gif);
     });
     
-    console.log(`🎯 Lazy loading initialized for ${lazyGifs.length} GIFs`);
+    console.log(`馃幆 Lazy loading initialized for ${lazyGifs.length} GIFs`);
 });
 
 // Toggle task card collapse/expand
