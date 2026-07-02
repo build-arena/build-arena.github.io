@@ -816,6 +816,39 @@ video.carousel-image {
     text-align: center;
 }
 
+.arena-assets-cta {
+    display: flex;
+    justify-content: center;
+    margin: -0.5rem 0 1.8rem;
+}
+
+.arena-assets-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 8px 24px rgba(241, 141, 0, 0.36);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.arena-assets-cta a:hover {
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(241, 141, 0, 0.48);
+}
+
+.external-link-icon {
+    font-size: 1.05em;
+    line-height: 1;
+}
+
 .comparison-subtitle {
     font-size: 1.8rem;
     color: var(--main-color);
