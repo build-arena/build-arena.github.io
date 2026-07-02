@@ -246,13 +246,13 @@ async function streamAnimation(runId) {
                 // Start code block
                 state.currentElement = createCodeBlock();
                 state.isCodeBlock = true;
-                console.log('馃捇 Code block started');
+                console.log('Code block started');
             }
             else if (tagContent === '/code') {
                 // End code block
                 state.currentElement = null;
                 state.isCodeBlock = false;
-                console.log('馃捇 Code block ended');
+                console.log('Code block ended');
             }
             else if (tagContent === 'PUNCHLINE') {
                 // Start punchline span
@@ -262,12 +262,12 @@ async function streamAnimation(runId) {
                 state.punchlineSpan = document.createElement('span');
                 state.punchlineSpan.className = 'punchline';
                 state.currentElement.appendChild(state.punchlineSpan);
-                console.log('馃幆 Punchline started');
+                console.log('Punchline started');
             }
             else if (tagContent === '/PUNCHLINE') {
                 // End punchline
                 state.punchlineSpan = null;
-                console.log('馃幆 Punchline ended');
+                console.log('Punchline ended');
             }
             
             // Skip past the tag

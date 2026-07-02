@@ -14,22 +14,22 @@
 }
 
 :root {
-    --main-color: #004990;           /* 娑撴槒澹婇敍姘箒閽?*/
-    --main-dark: #003366;            /* 娑撴槒澹婂ǎ杈閸欐ü缍?*/
-    --main-light: #0066cc;           /* 娑撴槒澹婂ù鍛板閸欐ü缍?*/
-    --accent-color: #f18d00;         /* 鏉堝懎濮懝璇х窗濮楁瑨澹?*/
-    --accent-light: #ffa726;         /* 鏉堝懎濮懝鍙夌ガ閼?*/
-    --accent-dark: #e67e00;          /* 鏉堝懎濮懝鍙夌箒閼?*/
-    --text-dark: #1a1a1a;            /* 濞ｈ精澹婇弬鍥х摟 */
-    --text-medium: #4a4a4a;          /* 娑擃厾鐡戦弬鍥х摟 */
-    --text-light: #666666;           /* 濞村懓澹婇弬鍥х摟 */
-    --bg-light: #fafafa;             /* 濞村懓澹婇懗灞炬珯 */
-    --bg-white: #ffffff;             /* 閻у€熷閼冲本娅?*/
-    --bg-blue-light: #e6f2ff;        /* 濞村懓鎽戦懗灞炬珯 */
-    --border-color: #e0e0e0;         /* 鏉堣顢嬫０婊嗗 */
-    --shadow-color: rgba(0, 73, 144, 0.1);  /* 闂冩潙濂栨０婊嗗 */
-    --gradient-start: #003d7a;       /* 濞撴劕褰夌挧宄邦潗 */
-    --gradient-end: #004990;         /* 濞撴劕褰夌紒鎾存将 */
+    --main-color: #004990;           /* primary blue */
+    --main-dark: #003366;            /* darker primary blue */
+    --main-light: #0066cc;           /* lighter primary blue */
+    --accent-color: #f18d00;         /* accent orange */
+    --accent-light: #ffa726;         /* lighter accent orange */
+    --accent-dark: #e67e00;          /* darker accent orange */
+    --text-dark: #1a1a1a;            /* dark text */
+    --text-medium: #4a4a4a;          /* medium text */
+    --text-light: #666666;           /* light text */
+    --bg-light: #fafafa;             /* light background */
+    --bg-white: #ffffff;             /* white background */
+    --bg-blue-light: #e6f2ff;        /* light blue background */
+    --border-color: #e0e0e0;         /* border color */
+    --shadow-color: rgba(0, 73, 144, 0.1);  /* shadow color */
+    --gradient-start: #003d7a;       /* gradient start */
+    --gradient-end: #004990;         /* gradient end */
 }
 
 body {
@@ -501,7 +501,7 @@ video.carousel-image {
     pointer-events: none;
 }
 
-/* Authors Block 閳?vertical stack, max-width container, stable across widths */
+/* Authors Block: vertical stack, max-width container, stable across widths */
 .authors-block-content {
     max-width: 920px;
     margin: 0 auto;
@@ -557,7 +557,7 @@ video.carousel-image {
     flex: 0 0 auto;
 }
 
-/* Old .westlake-logo lookalike width hold 閳?keep for any leftover usage */
+/* Old .westlake-logo lookalike width hold: keep for any leftover usage */
 .westlake-logo { height: 35px; width: auto; }
 
 
@@ -675,7 +675,7 @@ video.carousel-image {
     text-decoration: underline;
 }
 
-/* Buttons row 閳?pinned to one line, never reflows */
+/* Buttons row: pinned to one line, never reflows */
 .authors-block .links {
     display: flex;
     gap: 0.8rem;
@@ -754,19 +754,19 @@ video.carousel-image {
     color: var(--text-dark);
 }
 
-/* GIF Gallery in Abstract */
-.gif-gallery {
+/* Construction Media Gallery in Abstract */
+.media-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 2.5rem;
 }
 
-.gif-item {
+.media-item {
     text-align: center;
 }
 
-.gif-item img {
+.media-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -774,12 +774,12 @@ video.carousel-image {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gif-item img:hover {
+.media-item img:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.gif-item h3 {
+.media-item h3 {
     margin-top: 1rem;
     font-size: 1.1rem;
     color: var(--main-color);
@@ -787,7 +787,7 @@ video.carousel-image {
 }
 
 @media (max-width: 768px) {
-    .gif-gallery {
+    .media-gallery {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
@@ -1565,7 +1565,7 @@ footer a:hover {
         order: 3;
     }
 
-    /* Authors-block now uses a max-width flex stack 閳?no narrow-viewport overrides
+    /* Authors-block now uses a max-width flex stack: no narrow-viewport overrides
        needed here; the page-level rp-scale wrapper locks the layout at 768. */
     .authors-block .author-names {
         font-size: 0.95rem;
@@ -1803,8 +1803,8 @@ section {
     animation: fadeIn 0.6s ease-out;
 }
 
-/* Lazy Loading GIF Styles */
-.lazy-gif {
+/* Lazy Loading Image Styles */
+.lazy-image {
     background-color: #f0f0f0;
     background-image: linear-gradient(
         90deg,
@@ -1820,7 +1820,7 @@ section {
     transition: opacity 0.3s ease-in;
 }
 
-.lazy-gif.lazy-loaded {
+.lazy-image.lazy-loaded {
     background: none;
     animation: none;
 }
@@ -1836,7 +1836,7 @@ section {
 }
 
 /* Performance: GPU acceleration for lazy loading */
-.lazy-gif {
+.lazy-image {
     will-change: opacity;
     transform: translateZ(0);
     backface-visibility: hidden;

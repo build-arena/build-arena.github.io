@@ -110,14 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeWebpRegistryTooltips();
 });
 
-// Lazy Loading for GIFs using Intersection Observer
-const lazyGifOptions = {
+// Lazy loading for images using Intersection Observer
+const lazyImageOptions = {
     root: null,
     rootMargin: '200px', // Start loading 200px before entering viewport
     threshold: 0.01
 };
 
-const lazyGifObserver = new IntersectionObserver((entries, observer) => {
+const lazyImageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const img = entry.target;
@@ -128,7 +128,7 @@ const lazyGifObserver = new IntersectionObserver((entries, observer) => {
                 img.style.opacity = '0';
                 img.style.transition = 'opacity 0.3s ease-in';
                 
-                // Load the actual GIF
+                // Load the actual image
                 img.src = img.dataset.src;
                 
                 // When loaded, fade in and remove data-src
@@ -143,20 +143,20 @@ const lazyGifObserver = new IntersectionObserver((entries, observer) => {
             }
         }
     });
-}, lazyGifOptions);
+}, lazyImageOptions);
 
-// Observe all lazy GIFs
+// Observe all lazy images
 document.addEventListener('DOMContentLoaded', () => {
-    const lazyGifs = document.querySelectorAll('.lazy-gif');
-    lazyGifs.forEach(gif => {
+    const lazyImages = document.querySelectorAll('.lazy-image');
+    lazyImages.forEach(image => {
         // Add initial styling - aspect-ratio in CSS handles dimensions
-        if (gif.dataset.src) {
-            gif.style.backgroundColor = '#f0f0f0'; // Placeholder background
+        if (image.dataset.src) {
+            image.style.backgroundColor = '#f0f0f0'; // Placeholder background
         }
-        lazyGifObserver.observe(gif);
+        lazyImageObserver.observe(image);
     });
     
-    console.log(`馃幆 Lazy loading initialized for ${lazyGifs.length} GIFs`);
+    console.log(`Lazy loading initialized for ${lazyImages.length} images`);
 });
 
 // Toggle task card collapse/expand
