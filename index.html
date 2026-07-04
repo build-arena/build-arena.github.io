@@ -37,6 +37,7 @@
             font-size: 0.84rem;
             font-weight: 600;
             color: white;
+            text-decoration: none;
             background: rgba(255, 255, 255, 0.18);
             border: 2px solid rgba(255, 255, 255, 0.35);
             border-radius: 999px;
@@ -126,7 +127,7 @@
 <body>
 <nav class="site-switcher" aria-label="Page switcher">
     <button class="site-switcher-btn active" type="button" data-page-target="home">ICML 2026</button>
-    <button class="site-switcher-btn" type="button" data-page-target="challenge">BuildArena 2.0</button>
+    <a class="site-switcher-btn" href="https://build-arena.github.io/ConstructionChallenge/" target="_blank" rel="noopener noreferrer">BuildArena 2.0</a>
 </nav>
 
 <div id="buildarena-page" class="rp-scale-outer page-view active">
@@ -1061,7 +1062,7 @@
 
     <script>
     (function () {
-      var pageSwitcherButtons = document.querySelectorAll('.site-switcher-btn');
+      var pageSwitcherButtons = document.querySelectorAll('.site-switcher-btn[data-page-target]');
       var buildArenaPage = document.getElementById('buildarena-page');
       var challengePage = document.getElementById('challenge-page');
       if (!buildArenaPage || !challengePage || pageSwitcherButtons.length === 0) return;

@@ -13,7 +13,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-const pageSwitcherButtons = document.querySelectorAll('.site-switcher-btn');
+const pageSwitcherButtons = document.querySelectorAll('.site-switcher-btn[data-page-target]');
 const buildArenaPage = document.getElementById('buildarena-page');
 const challengePage = document.getElementById('challenge-page');
 
